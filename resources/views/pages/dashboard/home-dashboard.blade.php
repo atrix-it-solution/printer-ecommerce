@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.dashboard-main-layout')
+@extends('layouts.dashboard.master')
 
 @section('title', 'Dashboard Home')
 
@@ -17,9 +17,9 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-theme text-uppercase mb-1">
                                 Total Orders</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1,248</div>
+                            <div class="h5 mb-0 font-weight-bold ">1,248</div>
                         </div>
                         <div class="col-auto">
                             <i class="bi bi-cart-check fa-2x text-gray-300"></i>
@@ -34,9 +34,9 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-theme text-uppercase mb-1">
                                 Revenue</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$54,823</div>
+                            <div class="h5 mb-0 font-weight-bold ">$54,823</div>
                         </div>
                         <div class="col-auto">
                             <i class="bi bi-currency-dollar fa-2x text-gray-300"></i>
@@ -51,9 +51,9 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-theme text-uppercase mb-1">
                                 Products</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">324</div>
+                            <div class="h5 mb-0 font-weight-bold ">324</div>
                         </div>
                         <div class="col-auto">
                             <i class="bi bi-box-seam fa-2x text-gray-300"></i>
@@ -68,9 +68,9 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-theme text-uppercase mb-1">
                                 Pending Orders</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold ">18</div>
                         </div>
                         <div class="col-auto">
                             <i class="bi bi-clock-history fa-2x text-gray-300"></i>
