@@ -8,19 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-            padding: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .header {
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+      
+      
         .image-container {
             position: relative;
             margin-bottom: 1rem;
@@ -33,18 +22,18 @@
             width: 100%;
             height: 150px;
             object-fit: cover;
-            border: 3px solid transparent;
+            border: 5px solid transparent;
             transition: all 0.3s ease;
         }
         .image-container.selected img {
-            border-color: #6c5ce7;
+            border-color: var(--theme);
             box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
         }
         .image-container .checkmark {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: #6c5ce7;
+            background: var(--theme);
             color: white;
             width: 24px;
             height: 24px;
@@ -75,14 +64,7 @@
         .image-container:hover .overlay {
             opacity: 1;
         }
-        .btn-primary {
-            background-color: #6c5ce7;
-            border-color: #6c5ce7;
-        }
-        .btn-primary:hover {
-            background-color: #5649c0;
-            border-color: #5649c0;
-        }
+     
         .frontend-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -106,12 +88,13 @@
             right: 10px;
         }
         .nav-tabs .nav-link.active {
-            background-color: #6c5ce7;
+            background-color: var(--theme);
             color: white;
             border: none;
         }
         .nav-tabs .nav-link {
             font-weight: 600;
+            color: black;
         }
         .alert {
             display: none;
@@ -127,7 +110,7 @@
             transition: all 0.3s ease;
         }
         .upload-area:hover {
-            border-color: #6c5ce7;
+            border-color: var(--theme);
             background-color: #f0f0ff;
         }
         .spinner-border-sm {
@@ -148,7 +131,7 @@
         #selectedImagePreview {
             max-height: 150px;
             border-radius: 8px;
-            border: 2px solid #6c5ce7;
+            border: 2px solid var(--theme);
             display: none;
         }
         .featured-image-preview {
@@ -163,6 +146,7 @@
         #uploadPreview{
             display: none;
         }
+        
     
     </style>
 </head>
@@ -180,16 +164,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <!-- Button to trigger modal -->
-  
-
-
         <!-- Bootstrap Modal -->
         <div class="modal fade" id="uploadImageModal" tabindex="-1" aria-labelledby="uploadImageModalLabel" aria-hidden="true" data-bs-backdrop="static" >
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="uploadImageModalLabel"><i class="fas fa-image me-2"></i>Featured Image</h5>
+                        <h5 class="modal-title" id="uploadImageModalLabel"><i class="fas fa-image me-2"></i> Image</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -251,13 +231,13 @@
                                     <!-- <img id="selectedImagePreview" src="" class="img-fluid rounded mt-3"> -->
                                       <!-- <img id="selectedImagePreview" src="" class="img-fluid rounded mt-3" style="max-height:150px; display:none;"> -->
                                     <div class="mt-3">
-                                        <button type="button" class="btn btn-primary mt-2" onclick="setAsFeaturedimage()" aria-label="Set selected image as featured image">
-                                            <i class="fas fa-check me-2" aria-hidden="true"></i>Set as Featured Image
+                                        <button type="button" class=" mediabtn mt-2" onclick="setAsMediaImage()" aria-label="Set selected image as featured image">
+                                            <i class="fas fa-check me-2" aria-hidden="true"></i>Set as Image
                                         </button>
                                     </div>
                                 </div>
 
-                                 <input type="hidden" name="image" id="featuredImageInput">
+                                 <input type="hidden" name="image" id="MediaImageInput">
                             </div>
                         </div>
                     </div>

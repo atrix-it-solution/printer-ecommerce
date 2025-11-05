@@ -8,20 +8,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.pages.home-dashboard');
+        return view('pages.dashboard.home-dashboard');
     }
 
     public function products()
     {
-        return view('dashboard.pages.products');
+        return view('pages.dashboard.products');
     }
 
     public function orders()
     {
-        return view('dashboard.pages.orders');
+        return view('pages.dashboard.orders');
     }
     public function dashboardsettings()
     {
-        return view('dashboard.pages.dashboard-settings');
+        return view('pages.dashboard.dashboard-settings');
     }
 }

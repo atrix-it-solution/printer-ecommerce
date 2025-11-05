@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\dashboardSettings\SettingsController;
 use App\Http\Controllers\media\MediaController;
-
+use App\Http\Controllers\Product\ProductCategoryController;
+use App\Http\Controllers\Product\ProductController;
 
 
 Route::get('/', function () {
@@ -69,7 +70,8 @@ Route::get('/category', function () {
 // Dashboard Routes
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/products', [DashboardController::class, 'products'])->name('products');
+    Route::resource('/productcategories', ProductCategoryController::class);
+    Route::resource('/products', ProductController::class);
     Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
     
     // Settings Routes with more descriptive names

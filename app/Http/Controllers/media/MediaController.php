@@ -15,7 +15,7 @@ class MediaController extends Controller
     public function index()
     {
         $medias = Media::all();
-        return view('dashboard.common.media.index', compact('medias'));
+        return view('pages.dashboard.common.media.index', compact('medias'));
     }
 
     /**
@@ -109,7 +109,7 @@ class MediaController extends Controller
     // Other methods for regular common
     public function create() 
     {
-        return view('dashboard.common.media.create');
+        return view('pages.dashboard.common.media.create');
     }
     
     public function show(Media $media) 
@@ -119,7 +119,7 @@ class MediaController extends Controller
     
     public function edit(Media $media) 
     {
-        return view('dashboard.common.media.edit', compact('media'));
+        return view('pages.dashboard.common.media.edit', compact('media'));
     }
     
     public function update(Request $request, Media $media) 
