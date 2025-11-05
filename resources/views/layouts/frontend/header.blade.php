@@ -1,0 +1,97 @@
+        <header>
+            <div class="topbar bg-theme text-white py-2">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="offer_slider common_slider">
+                                <div class="offer_slide text-center">
+                                    <p class="mb-0">Summer sale discount off 30%! <a href="#">Shop now</a></p>
+                                </div>
+                                <div class="offer_slide text-center">
+                                    <p class="mb-0">Summer sale discount off 10%! <a href="#">Shop now</a></p>
+                                </div>
+                                <div class="offer_slide text-center">
+                                    <p class="mb-0">Summer sale discount off 50%! <a href="#">Shop now</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="topbar_info_list d-flex align-items-center justify-content-center justify-content-lg-end gap-4 mb-0 list-unstyled">
+                                <li><a href="tel:+919410109369"><i class="fa-solid fa-phone"></i> +91 12345-67890</a></li>
+                                <li><a href="mailto:info@vsipl.com"><i class="fa-solid fa-envelope"></i> info@domain.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-xl">
+                <div class="container-fluid px-lg-4">
+                    <div class="menubtn d-flex align-items-center d-xl-none">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 200 200"><g stroke-width="6.5" stroke-linecap="round"><path d="M72 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)"/><path d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554" fill="none" stroke="var(--theme)" /><path d="M72 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)"/><path d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554" fill="none" stroke="var(--theme)" /><path d="M100.75 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" /><path d="M100.75 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" /></g></svg>
+                        </button>
+                        <div class="d-xl-none pt-1"><a href="javascript:void(0);" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></div>
+                    </div>
+                    <a class="navbar-brand" href="/">
+                        <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="VSIPL Logo" class="img-fluid" />
+                    </a>
+                    <div class="d-flex align-items-center justify-content-end justify-content-xl-between flex-xl-grow-1">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <a class="navbar-brand d-block pt-0 d-xl-none text-center me-0 mb-3" href="/">
+                                <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="VSIPL Logo" class="img-fluid" />
+                            </a>
+                            <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 ps-xl-3 ps-xxl-4">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about">About Us</a>
+                                </li>
+                                <!-- <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Dropdown
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </li> -->
+                                <li class="nav-item">
+                                    <a href="/shop" class="nav-link">Shop</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/category" class="nav-link">Grocery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="category" class="nav-link">Garments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="category" class="nav-link">Food Essentials</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/category" class="nav-link">Accessories</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/contact" class="nav-link">Contact Us</a>
+                                </li>
+                            </ul>
+                            <div class="mobile_info d-xl-none">
+                                <ul class="navbar-nav pt-4">
+                                    <li><a href="tel:+919410109369"><i class="text-theme me-2 fa-solid fa-phone"></i> +91 94101-09369</a></li>
+                                    <li><a href="mailto:info@thevsipl.com"><i class="text-theme me-2 fa-regular fa-envelope"></i> info@thevsipl.com</a></li>
+                                    <li><a href="javascript:void(0);"><i class="text-theme me-2 fa-solid fa-map-marker-alt"></i> Saharanpur, UP, India</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul class="navbar-nav flex-row d-flex gap-2 gap-xxl-4 header_right_area">
+                            <li class="d-none d-xl-block"><a href="javascript:void(0);" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></li>
+                            <li><a href="my-account.html" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="My Account"><i class="fa-regular fa-user"></i></a></li>
+                            <li class="me-1"><a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist"><i class="fa-regular fa-heart"></i> <span class="count">2</span></a></li>
+                            <li><a href="cart" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Cart"><i class="fa fa-cart-shopping"></i> <span class="count">4</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>

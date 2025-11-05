@@ -1,9 +1,9 @@
 @import url(fontface.css);
 :root{
-    --theme: #b06b54;
-    --theme-dark: #351d12;
-    --theme-light: #de8787;
-    --dark: #212121;
+    --theme: #31694E ;
+    --theme-dark: #393E46;
+    --theme-light: #93F859;
+    --dark: #222831;
     --subfont: "Edu NSW ACT Cursive", cursive;
     --headfont: "Lexend", sans-serif;
     --bodyfont: "Outfit", sans-serif;;
@@ -283,9 +283,12 @@ header nav ul>li.nav-item .nav-link.active {
 .product_box .product_img img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
+    object-fit: contain;
     display: block;
     transition: all .5s ease;
+    background: rgb(238, 237, 237);
+  
 }
 .product_box .product_img img.hover_img {
     position: absolute;
@@ -700,6 +703,9 @@ ul.social_menu li a {
 }
 ul.social_menu li a:hover {
     background-color: var(--theme);
+}
+.topbar_info_list a:hover{
+    color: var(--theme-light);
 }
 .payment-icon svg {
     width: 55px;
