@@ -23,30 +23,31 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8 text-center">
                             <div class="cusheading_row pb-3">
-                                <h5 class="subheading ffs text-theme">it’s about your skin, but it’s also about you.</h5>
-                                <h2>Advanced Science Of Care That <br class="d-none d-lg-block"> Uplifts And Inspires.</h2>
+                                <h5 class="subheading ffs text-theme">it’s about your printing needs, but it’s also about your experience.</h5>
+                                <h2>Reliable Printing Solutions That <br class="d-none d-lg-block"> Support Your Home & Business.</h2>
                             </div>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus fuga animi assumenda iusto voluptatibus, eaque maxime, enim ipsam a, et aut laudantium officiis consectetur fugit temporibus officia quisquam! Reiciendis, perferendis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolor quae itaque repellat facere, dolorem, accusamus quo non rerum obcaecati, eos corrupti vero totam minima. Vel esse accusamus molestiae obcaecati.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil libero similique eveniet ullam temporibus saepe nisi illum obcaecati, veritatis repellat earum iusto incidunt consequuntur quasi! Modi, temporibus? Deleniti, quo dolorem?</p>
+                            <p>We started with a simple goal: to make purchasing printers and printing supplies easy, transparent, and reliable for everyone. From home users to growing businesses, we ensure every customer gets the right printer at the right price — without confusion or compromise.</p>
+                            <p>Our catalog includes top brands, trusted models, and genuine supplies, all selected to deliver high performance and long-lasting value.</p>
+                            <p>We believe in offering more than just products. We offer guidance, fast delivery, real support, and a seamless shopping experience that keeps you confident from purchase to setup. With us, printing becomes simpler, smarter, and more efficient.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="py-5">
+            <section class="py-5 mission-vision_sec">
                 <div class="container pb-lg-5">
                     <div class="row gx-lg-0 mb-4 mb-lg-0">
                         <div class="col-lg-6">
                             <div class="img_box">
-                                <img src="{{ asset('assets/frontend/images/mission_img.webp') }}" alt="Our Mission" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/best_collection_3.png') }}" alt="Our Mission" class="img-fluid w-100" />
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
                             <div class="contentbox px-0 px-lg-5 pt-4 pt-lg-5 pb-5 m-lg-4">
                                 <h5 class="subheading ffs text-theme">excited</h5>
                                 <h2>Our Mission</h2>
-                                <p>Sea Level Swim captures the essence of our Australian lifestyle through relaxed escapism, a celebration of form and function and sustainable ideas.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis praesentium ad delectus? Rerum dolore aut dolorem quasi, corrupti ullam iusto quam accusamus magnam impedit aspernatur debitis est animi eaque?</p>
+                                <p>We are dedicated to helping customers find the right printer for their home or business needs. By offering a wide range of trusted brands, competitive prices, and dependable support, our goal is to make printing easier and more accessible for everyone.</p>
+                                <p>From selection to delivery, we ensure quality, transparency, and customer satisfaction at every step.</p>
                             </div>
                         </div>
                     </div>
@@ -59,27 +60,27 @@
                     <div class="row gx-lg-0">
                         <div class="col-lg-6 order-lg-1">
                             <div class="img_box">
-                                <img src="{{ asset('assets/frontend/images/vision_img.jpg') }}" alt="Our Vision" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/best_collection_1.png') }}" alt="Our Vision" class="img-fluid w-100" />
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
                             <div class="contentbox p-3 p-lg-5 ps-0 ps-lg-0 ms-0 ms-lg-0 m-3 m-lg-4">
                                 <h5 class="subheading ffs text-theme">excited</h5>
                                 <h2>Our Vision</h2>
-                                <p>Introducing the foundation of an essential holiday wardrobe: we are dedicated to creating the ultimate in form-flattering shape, enhancing confidence via innovative fit technology and the best in body sculpting design.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis praesentium ad delectus? Rerum dolore aut dolorem quasi, corrupti ullam iusto quam accusamus magnam impedit aspernatur debitis est animi eaque?</p>                                
+                                <p>We envision a world where buying a printer is simple, transparent, and stress-free. Our goal is to guide customers toward the right printing solution while offering top-quality brands, great prices, and reliable support.</p>
+                                <p>Through innovation and dedication, we aim to become the go-to platform for printers and printing supplies.</p>                                
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="video_sec overflow-hidden">
+            <!-- <section class="video_sec overflow-hidden">
                 <video autoplay muted class="d-block">
-                    <source src="images/about_video.mp4" type="video/mp4">
+                    <source src="{{ asset('assets/frontend/images/about_video.mp4') }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-            </section>
+            </section> -->
 
             <section class="teamsec py-5">
                 <div class="container py-lg-5">
@@ -221,13 +222,14 @@
                 <div class="container py-lg-3">
                     <div class="row align-items-center">
                         <div class="col-lg-6 my-2">
-                            <h2 class="text-center ffs text-theme">Subscribe</h2>
+                              <h3>Subscribe and get $5 off your next order!</h3>
+                                <p>Get the latest deals, new printer launches, and exclusive promotions delivered to your inbox — plus enjoy savings on your next order.</p>
+                                <p>*Valid once per customer. Terms apply.</p>
+                            
                         </div>
                         <div class="col-lg-6 my-2">
                             <div class="subcribe_text">
-                                <h3>Subscribe and get $5 off your next order!</h3>
-                                <p>Simply subscribe to our newsletter to receive emails with the latest news and exclusive promotion details from Stella Beauty and get $5 off your next order.</p>
-                                <p>*One per customer, minimum spend $40 & excludes sale items</p>
+                              
                                 <form action="">
                                     <div class="form-group mb-3">
                                         <label for="name" class="d-none">Name</label>
@@ -261,7 +263,7 @@
                                 <h5 class="subheading ffs text-theme">Super offer</h5>
                                 <h2 class="text-uppercase py-2">Summer sale</h2>
                                 <h4 class="pb-3">Up to 50% off</h4>
-                                <p>Spend minimal $100 get 50% off voucher code for your next order.</p>
+                                <p>Spend just $100 and get a 50% off voucher for your next printer or accessory purchase.</p>
                                 <div class="cusbtn pt-4">
                                     <a href="#" class="btn btn-dark px-5 py-3">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
@@ -279,13 +281,13 @@
                     <div class="testimonial_slider common_slider">
                         <div>
                             <div class="review_box">
-                                <a href="javascript:void(0);" class="review_img">
+                                <!-- <a href="javascript:void(0);" class="review_img">
                                     <img src="{{ asset('assets/frontend/images/review-1.jpg') }}" alt="Review" class="img-fluid" />
-                                </a>
+                                </a> -->
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">I was sceptical at first, but wow! the material, the design, everything is amazing, I’ll definitely be ordering more!</p>
+                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
@@ -308,13 +310,13 @@
                         </div>
                         <div>
                             <div class="review_box">
-                                <a href="javascript:void(0);" class="review_img">
+                                <!-- <a href="javascript:void(0);" class="review_img">
                                     <img src="{{ asset('assets/frontend/images/review-2.jpg') }}" alt="Review" class="img-fluid" />
-                                </a>
+                                </a> -->
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Absolutely love this denim jacket! the fit is perfect, and it goes with everything, a must-have staple for every wardrobe!</p>
+                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
@@ -337,13 +339,13 @@
                         </div>
                         <div>
                             <div class="review_box">
-                                <a href="javascript:void(0);" class="review_img">
+                                <!-- <a href="javascript:void(0);" class="review_img">
                                     <img src="{{ asset('assets/frontend/images/review-1.jpg') }}" alt="Review" class="img-fluid" />
-                                </a>
+                                </a> -->
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">I was sceptical at first, but wow! the material, the design, everything is amazing, I’ll definitely be ordering more!</p>
+                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
@@ -446,7 +448,7 @@
                                 </div>
                             </div>
                         </form>
-                        <p class="text-center mb-0 pt-5">This site is protected by reCAPTCHA and the Google <a href="privacy-policy.html" class="text-decoration-underline">Privacy Policy</a> and <a href="terms-and-conditions.html" class="text-decoration-underline">Terms of Service</a> apply.</p>
+                        <p class="text-center mb-0 pt-5">This site is protected by reCAPTCHA and the Google <a href="privacy-policy" class="text-decoration-underline">Privacy Policy</a> and <a href="terms-and-conditions" class="text-decoration-underline">Terms of Service</a> apply.</p>
                     </div>
                 </div>
             </section>
@@ -487,7 +489,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@thevsipl.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
                             </div>
                         </div>
                     </div>

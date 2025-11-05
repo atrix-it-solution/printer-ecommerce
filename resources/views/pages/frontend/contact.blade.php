@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                         </form>
-                        <p class="text-center mb-0 pt-5">This site is protected by reCAPTCHA and the Google <a href="privacy-policy.html" class="text-decoration-underline">Privacy Policy</a> and <a href="terms-and-conditions.html" class="text-decoration-underline">Terms of Service</a> apply.</p>
+                        <p class="text-center mb-0 pt-5">This site is protected by reCAPTCHA and the Google <a href="privacy-policy" class="text-decoration-underline">Privacy Policy</a> and <a href="terms-and-conditions" class="text-decoration-underline">Terms of Service</a> apply.</p>
                     </div>
                 </div>
             </section>
@@ -80,7 +80,7 @@
                         <h3 class="pb-2">Contact Info</h3>
                         <ul class="list-unstyled infobox d-flex flex-column">
                             <li class="border-bottom"><a class="d-flex" href="tel:+919876543210"><i class="fa-solid text-theme fa-phone"></i> +91 98765-43210</a></li>
-                            <li class="border-bottom"><a class="d-flex" href="mailto:info@thevsipl.com"><i class="fa-regular text-theme fa-envelope"></i> info@thevsipl.com</a></li>
+                            <li class="border-bottom"><a class="d-flex" href="mailto:info@printer.com"><i class="fa-regular text-theme fa-envelope"></i> info@printer.com</a></li>
                             <li class="border-bottom"><a class="d-flex" href="javascript:void(0);"><i class="fa-solid text-theme fa-map-marker-alt"></i> 1901 thorn ridge cir. shiloh, hawai 81063</a></li>
                             <li class=""><a class="d-flex" href="javascript:void(0);"><i class="fa-regular text-theme fa-clock"></i> We are an online store, so you can shop 24 hours a day!</a></li>
                         </ul>
@@ -112,19 +112,31 @@
                                     <div class="accordion-item">
                                         <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">How long will shipping take?</h5>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">All orders are shipped within 12-36 hours from our warehouse in Bellingham WA.  Delivery times will depend on your shipping option but all orders are tracked from our facility to your door. </div>
+                                            <div class="accordion-body">Most orders are dispatched within 24–48 hours. Delivery time depends on your location and shipping option, but every order includes full tracking from our warehouse to your doorstep. </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">How do I know if my order is confirmed?</h5>
                                         <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall.</div>
+                                            <div class="accordion-body">Once your order is placed, you’ll receive an order confirmation email with all details. You can also track your order status anytime by logging into your account.</div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Can I change my shipping address after my order is placed?</h5>
                                         <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall.</div>
+                                            <div class="accordion-body">Yes, you can request an address change before the order is shipped. Just contact our support team as soon as possible. Once the package is dispatched, we may not be able to modify the address.</div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Do your printers come with a warranty?</h5>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">Yes, every printer includes the official manufacturer warranty, usually ranging from 1 to 3 years depending on the brand. Extended warranty options are available for selected models.</div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Do you offer installation or setup assistance?</h5>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">Yes, we provide printer setup guidance through online support. We help you install drivers, connect to Wi-Fi, and configure print settings for both PC and mobile.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +182,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@thevsipl.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
                             </div>
                         </div>
                     </div>

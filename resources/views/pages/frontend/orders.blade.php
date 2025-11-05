@@ -30,11 +30,11 @@
                                     </div>
                                 </div>
                                 <ul class="account-menu list-unstyled">
-                                    <li><a href="my-account.html"><i class="fa-solid fa-grip"></i> <span>Dashboard</span></a></li>
-                                    <li><a href="orders.html" class="active"><i class="fa-solid fa-bag-shopping"></i> <span>My Orders</span></a></li>
+                                    <li><a href="my-account"><i class="fa-solid fa-grip"></i> <span>Dashboard</span></a></li>
+                                    <li><a href="orders" class="active"><i class="fa-solid fa-bag-shopping"></i> <span>My Orders</span></a></li>
                                     <li><a href="#"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
-                                    <li><a href="edit-address.html"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
-                                    <li><a href="edit-account.html"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
+                                    <li><a href="edit-address"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
+                                    <li><a href="edit-account"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
                                     <li><a href="#"><i class="fa-solid fa-sign-out"></i> <span>Logout</span></a></li>
                                 </ul>
                             </div>
@@ -57,7 +57,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <a href="view-order.html" class="fw-semibold">#6888</a>
+                                                        <a href="view-order" class="fw-semibold">#6888</a>
                                                     </td>
                                                     <td>October 14, 2025</td>
                                                     <td>
@@ -67,13 +67,13 @@
                                                         $590.99 for 1 item
                                                     </td>
                                                     <td class="">
-                                                        <a href="view-order.html" class="text-decoration-underline me-2">View</a>
+                                                        <a href="view-order" class="text-decoration-underline me-2">View</a>
                                                         <a href="#" class="text-decoration-underline">Invoice</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <a href="view-order.html" class="fw-semibold">#6888</a>
+                                                        <a href="view-order" class="fw-semibold">#6888</a>
                                                     </td>
                                                     <td>October 14, 2025</td>
                                                     <td>
@@ -83,13 +83,13 @@
                                                         $590.99 for 1 item
                                                     </td>
                                                     <td class="">
-                                                        <a href="view-order.html" class="text-decoration-underline me-2">View</a>
+                                                        <a href="view-order" class="text-decoration-underline me-2">View</a>
                                                         <a href="#" class="text-decoration-underline">Invoice</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <a href="view-order.html" class="fw-semibold">#6888</a>
+                                                        <a href="view-order" class="fw-semibold">#6888</a>
                                                     </td>
                                                     <td>October 14, 2025</td>
                                                     <td>
@@ -99,13 +99,13 @@
                                                         $590.99 for 1 item
                                                     </td>
                                                     <td class="">
-                                                        <a href="view-order.html" class="text-decoration-underline me-2">View</a>
+                                                        <a href="view-order" class="text-decoration-underline me-2">View</a>
                                                         <a href="#" class="text-decoration-underline">Invoice</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <a href="view-order.html" class="fw-semibold">#6888</a>
+                                                        <a href="view-order" class="fw-semibold">#6888</a>
                                                     </td>
                                                     <td>October 14, 2025</td>
                                                     <td>
@@ -115,7 +115,7 @@
                                                         $590.99 for 1 item
                                                     </td>
                                                     <td class="">
-                                                        <a href="view-order.html" class="text-decoration-underline me-2">View</a>
+                                                        <a href="view-order" class="text-decoration-underline me-2">View</a>
                                                         <a href="#" class="text-decoration-underline">Invoice</a>
                                                     </td>
                                                 </tr>
@@ -169,7 +169,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@thevsipl.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
                             </div>
                         </div>
                     </div>

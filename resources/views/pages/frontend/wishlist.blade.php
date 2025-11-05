@@ -121,7 +121,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@thevsipl.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
                             </div>
                         </div>
                     </div>

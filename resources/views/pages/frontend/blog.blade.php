@@ -20,11 +20,11 @@
                     <div class="row gx-lg-4">
                         <div class="col-md-6 col-lg-4 my-3">
                             <div class="blog_box h-100 d-flex flex-column overflow-hidden rounded-3 bg-white shadow-lg p-2 border">
-                                <a href="single-blog.html" class="blog_img">
+                                <a href="single-blog" class="blog_img">
                                     <img src="{{ asset('assets/frontend/images/cat1.jpg') }}" alt="Blog" class="img-fluid h-100 w-100 object-fit-cover" />
                                 </a>
                                 <div class="blog_content flex-grow-1 d-flex flex-column p-3 px-2">
-                                    <h4 class="fw-normal"><a href="single-blog.html">Blog Title</a></h4>
+                                    <h4 class="fw-normal"><a href="single-blog">Blog Title</a></h4>
                                     <p class="pb-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio perspiciatis quis dolorum, dolor maxime alias in quidem. Magni deleniti mollitia, ea cum fuga reprehenderit libero dolorum alias id culpa dolores.</p>
                                     <div class="readmore mt-auto">
                                         <a href="#" class="cusbtn">Read More <i class="fa-solid fa-arrow-right"></i></a>
@@ -34,11 +34,11 @@
                         </div>
                         <div class="col-md-6 col-lg-4 my-3">
                             <div class="blog_box h-100 d-flex flex-column overflow-hidden rounded-3 bg-white shadow-lg p-2 border">
-                                <a href="single-blog.html" class="blog_img">
+                                <a href="single-blog" class="blog_img">
                                     <img src="{{ asset('assets/frontend/images/cat1.jpg') }}" alt="Blog" class="img-fluid h-100 w-100 object-fit-cover" />
                                 </a>
                                 <div class="blog_content flex-grow-1 d-flex flex-column p-3 px-2">
-                                    <h4 class="fw-normal"><a href="single-blog.html">Blog Title</a></h4>
+                                    <h4 class="fw-normal"><a href="single-blog">Blog Title</a></h4>
                                     <p class="pb-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio perspiciatis quis dolorum, dolor maxime alias in quidem. Magni deleniti mollitia.</p>
                                     <div class="readmore mt-auto">
                                         <a href="#" class="cusbtn">Read More <i class="fa-solid fa-arrow-right"></i></a>
@@ -48,11 +48,11 @@
                         </div>
                         <div class="col-md-6 col-lg-4 my-3">
                             <div class="blog_box h-100 d-flex flex-column overflow-hidden rounded-3 bg-white shadow-lg p-2 border">
-                                <a href="single-blog.html" class="blog_img">
+                                <a href="single-blog" class="blog_img">
                                     <img src="{{ asset('assets/frontend/images/cat1.jpg') }}" alt="Blog" class="img-fluid h-100 w-100 object-fit-cover" />
                                 </a>
                                 <div class="blog_content flex-grow-1 d-flex flex-column p-3 px-2">
-                                    <h4 class="fw-normal"><a href="single-blog.html">Blog Title</a></h4>
+                                    <h4 class="fw-normal"><a href="single-blog">Blog Title</a></h4>
                                     <p class="pb-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio perspiciatis quis dolorum, dolor maxime alias in quidem. Magni deleniti mollitia.</p>
                                     <div class="readmore mt-auto">
                                         <a href="#" class="cusbtn">Read More <i class="fa-solid fa-arrow-right"></i></a>
@@ -63,11 +63,11 @@
 
                         <div class="col-md-6 col-lg-4 my-3">
                             <div class="blog_box h-100 d-flex flex-column overflow-hidden rounded-3 bg-white shadow-lg p-2 border">
-                                <a href="single-blog.html" class="blog_img">
+                                <a href="single-blog" class="blog_img">
                                     <img src="{{ asset('assets/frontend/images/cat1.jpg') }}" alt="Blog" class="img-fluid h-100 w-100 object-fit-cover" />
                                 </a>
                                 <div class="blog_content flex-grow-1 d-flex flex-column p-3 px-2">
-                                    <h4 class="fw-normal"><a href="single-blog.html">Blog Title</a></h4>
+                                    <h4 class="fw-normal"><a href="single-blog">Blog Title</a></h4>
                                     <p class="pb-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio perspiciatis quis dolorum, dolor maxime alias in quidem. Magni deleniti mollitia, ea cum fuga reprehenderit libero dolorum alias id culpa dolores.</p>
                                     <div class="readmore mt-auto">
                                         <a href="#" class="cusbtn">Read More <i class="fa-solid fa-arrow-right"></i></a>
@@ -77,11 +77,11 @@
                         </div>
                         <div class="col-md-6 col-lg-4 my-3">
                             <div class="blog_box h-100 d-flex flex-column overflow-hidden rounded-3 bg-white shadow-lg p-2 border">
-                                <a href="single-blog.html" class="blog_img">
+                                <a href="single-blog" class="blog_img">
                                     <img src="{{ asset('assets/frontend/images/cat1.jpg') }}" alt="Blog" class="img-fluid h-100 w-100 object-fit-cover" />
                                 </a>
                                 <div class="blog_content flex-grow-1 d-flex flex-column p-3 px-2">
-                                    <h4 class="fw-normal"><a href="single-blog.html">Blog Title</a></h4>
+                                    <h4 class="fw-normal"><a href="single-blog">Blog Title</a></h4>
                                     <p class="pb-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio perspiciatis quis dolorum, dolor maxime alias in quidem. Magni deleniti mollitia.</p>
                                     <div class="readmore mt-auto">
                                         <a href="#" class="cusbtn">Read More <i class="fa-solid fa-arrow-right"></i></a>
@@ -91,11 +91,11 @@
                         </div>
                         <div class="col-md-6 col-lg-4 my-3">
                             <div class="blog_box h-100 d-flex flex-column overflow-hidden rounded-3 bg-white shadow-lg p-2 border">
-                                <a href="single-blog.html" class="blog_img">
+                                <a href="single-blog" class="blog_img">
                                     <img src="{{ asset('assets/frontend/images/cat1.jpg') }}" alt="Blog" class="img-fluid h-100 w-100 object-fit-cover" />
                                 </a>
                                 <div class="blog_content flex-grow-1 d-flex flex-column p-3 px-2">
-                                    <h4 class="fw-normal"><a href="single-blog.html">Blog Title</a></h4>
+                                    <h4 class="fw-normal"><a href="single-blog">Blog Title</a></h4>
                                     <p class="pb-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio perspiciatis quis dolorum, dolor maxime alias in quidem. Magni deleniti mollitia.</p>
                                     <div class="readmore mt-auto">
                                         <a href="#" class="cusbtn">Read More <i class="fa-solid fa-arrow-right"></i></a>
@@ -155,7 +155,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@thevsipl.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
                             </div>
                         </div>
                     </div>

@@ -7,10 +7,10 @@
                                 <aside>
                                     <h4 class="widget-title">Collection</h4>
                                     <ul class="menu">
-                                        <li><a href="#">T shirt</a></li>
-                                        <li><a href="#">Sweat wear</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Skirt & shorts</a></li>
+                                        <li><a href="/category">Deskjet Printers</a></li>
+                                        <li><a href="/category">Envy Printers</a></li>
+                                        <li><a href="/category">Laserjet Printers</a></li>
+                                        <li><a href="/category">Officejet Printers</a></li>
                                     </ul>
                                 </aside>
                             </div>
@@ -18,7 +18,7 @@
                                 <aside>
                                     <h4 class="widget-title">Information</h4>
                                     <ul class="menu">
-                                        <li><a href="about.html">About us</a></li>
+                                        <li><a href="about">About us</a></li>
                                         <li><a href="#">Careers</a></li>
                                         <li><a href="#">Delivery information</a></li>
                                         <li><a href="#">Privacy policy</a></li>
@@ -30,7 +30,7 @@
                                     <h4 class="widget-title">Contact us</h4>
                                     <ul class="menu">
                                         <li class="phone_icon"><a href="tel:+919410109369">+91 94101-09369</a></li>
-                                        <li class="email_icon"><a href="mailto:info@thevsipl.com">info@thevsipl.com</a></li>
+                                        <li class="email_icon"><a href="mailto:info@printer.com">info@printer.com</a></li>
                                     </ul>
                                 </aside>
                             </div>
@@ -44,8 +44,8 @@
                                         <li><a href="#">Code Of Ethics And Conducts</a></li>
                                         <li><a href="#">Direct Seller Contract</a></li>
                                         <li><a href="#">Return And Refund Policy</a></li>
-                                        <li><a href="terms-and-conditions.html">Terms And Conditions</a></li>
-                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                        <li><a href="terms-and-conditions">Terms And Conditions</a></li>
+                                        <li><a href="privacy-policy">Privacy Policy</a></li>
                                         <li><a href="#">Unauthorized Distributor & False Information</a></li>
                                     </ul>
                                 </aside>
@@ -54,9 +54,9 @@
                                 <aside>
                                     <h4 class="widget-title">About us</h4>
                                     <ul class="menu">
-                                        <li><a href="blog.html">Blogs</a></li>
-                                        <li><a href="faq.html">Faq's</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
+                                        <li><a href="blog">Blogs</a></li>
+                                        <li><a href="faq">Faq's</a></li>
+                                        <li><a href="contact">Contact us</a></li>
                                         <li><a href="#">Testimonial</a></li>
                                         <li><a href="#">Newsletter</a></li>
                                     </ul>
@@ -114,5 +114,16 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="foot_btm">
+                <div class="container">
+                    <hr>
+                 
+
+                    <div class="row pt-2">
+                        <div class="col-md-6">
+                            <p class="mb-0">Copyright © 2025 VSIPL - All Right Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>

@@ -22,7 +22,7 @@
                         </div>
                         <h4 class="fw-light py-2">Your cart is currently empty.</h4>
                         <div class="shopbtn pt-3">
-                            <a href="shop.html" class="cusbtn btn btn-dark rounded-0 px-5 py-3">Return to Shop <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="shop" class="cusbtn btn btn-dark rounded-0 px-5 py-3">Return to Shop <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                                     </table>
 
                                     <div class="wc-proceed-to-checkout">
-                                        <a href="checkout.html" class="checkout-button btn btn-dark w-100 text-uppercase">Proceed to checkout</a>
+                                        <a href="checkout" class="checkout-button btn btn-dark w-100 text-uppercase">Proceed to checkout</a>
                                     </div>
 
                                 </div>
@@ -221,7 +221,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@thevsipl.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
                             </div>
                         </div>
                     </div>

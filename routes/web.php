@@ -51,6 +51,9 @@ Route::get('/terms', function () {
 Route::get('/privacy-policy', function () {
     return view('pages.frontend.privacy-policy');
 });
+Route::get('/terms-and-conditions', function () {
+    return view('pages.frontend.terms-and-conditions');
+});
 Route::get('/login', function () {
     return view('pages.frontend.login');
 });

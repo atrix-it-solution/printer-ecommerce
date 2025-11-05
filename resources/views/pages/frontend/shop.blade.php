@@ -8,7 +8,7 @@
                 <div class="container text-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center mb-1">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Shop</li>
                         </ol>
                     </nav>
@@ -29,8 +29,7 @@
                                 <div class="selected_items pt-1">
                                     <span class="badge fw-normal d-flex align-items-center rounded-pill text">In Stock <a href="javascript:void(0);" class="reset_filter"><i class="fa-solid fa-times"></i></a></span>
                                     <span class="badge fw-normal d-flex align-items-center rounded-pill text">&#8377;0.00 - &#8377;600 <a href="javascript:void(0);" class="reset_filter"><i class="fa-solid fa-times"></i></a></span>
-                                    <span class="badge fw-normal d-flex align-items-center rounded-pill text">S <a href="javascript:void(0);" class="reset_filter"><i class="fa-solid fa-times"></i></a></span>
-                                    <span class="badge fw-normal d-flex align-items-center rounded-pill text">XL <a href="javascript:void(0);" class="reset_filter"><i class="fa-solid fa-times"></i></a></span>
+                                    <span class="badge fw-normal d-flex align-items-center rounded-pill text">On Sale <a href="javascript:void(0);" class="reset_filter"><i class="fa-solid fa-times"></i></a></span>
                                 </div>
                             </div>
 
@@ -40,32 +39,55 @@
                                     <ul class="cuschecbox filter_list">
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat1" name="category" value="Garments" />
-                                                <label for="cat1">Garments <span>(06)</span></label>
+                                                <input type="checkbox" id="cat1" name="category" value="Deskjet Printers" />
+                                                <label for="cat1">Deskjet Printers <span>(06)</span></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat2" name="category" value="Grocery" />
-                                                <label for="cat2">Grocery <span>(10)</span></label>
+                                                <input type="checkbox" id="cat2" name="category" value="Envy Printers"  />
+                                                <label for="cat2">Envy Printers <span>(10)</span></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat3" name="category" value="Food Essentials" />
-                                                <label for="cat3">Food Essentials <span>(12)</span></label>
+                                                <input type="checkbox" id="cat3" name="category" value="Laserjet Printers" />
+                                                <label for="cat3">Laserjet Printers <span>(12)</span></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat4" name="category" value="Accessories" />
-                                                <label for="cat4">Accessories <span>(01)</span></label>
+                                                <input type="checkbox" id="cat4" name="category" value="Officejet Printers" />
+                                                <label for="cat4">Officejet Printers <span>(01)</span></label>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
 
                                 <div class="filter_box">
+                                    <h6 class="filter_name">Availability</h6>
+                                    <ul class="cuschecbox filter_list">
+                                        <li>
+                                            <div class="form-group">
+                                                <input type="checkbox" id="instock" name="availability" value="In stock" />
+                                                <label for="instock">On sale <span>(26)</span></label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-group">
+                                                <input type="checkbox" id="outstock" name="availability" value="Out of stock" />
+                                                <label for="outstock">In stock <span>(35)</span></label>
+                                        </li>
+                                        <li>
+                                            <div class="form-group">
+                                                <input type="checkbox" id="outstock" name="availability" value="Out of stock" />
+                                                <label for="outstock">Out of stock <span>(06)</span></label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                 <div class="filter_box">
                                     <h6 class="filter_name">Price</h6>
                                     <div class="price_filter d-flex align-items-end">
                                         <div class="form">
@@ -86,63 +108,17 @@
                                     </div>
                                 </div>
 
-                                <div class="filter_box">
-                                    <h6 class="filter_name">Availability</h6>
-                                    <ul class="cuschecbox filter_list">
-                                        <li>
-                                            <div class="form-group">
-                                                <input type="checkbox" id="instock" name="availability" value="In stock" />
-                                                <label for="instock">In stock <span>(26)</span></label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-group">
-                                                <input type="checkbox" id="outstock" name="availability" value="Out of stock" />
-                                                <label for="outstock">Out of stock <span>(06)</span></label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="filter_box">
-                                    <h6 class="filter_name">Size</h6>
-                                    <ul class="cuschecbox filter_list">
-                                        <li>
-                                            <div class="form-group">
-                                                <input type="checkbox" id="sizeS" name="size" value="S" />
-                                                <label for="sizeS">S <span>(06)</span></label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-group">
-                                                <input type="checkbox" id="sizeM" name="size" value="M" />
-                                                <label for="sizeM">M <span>(11)</span></label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-group">
-                                                <input type="checkbox" id="sizeL" name="size" value="L" />
-                                                <label for="sizeL">L <span>(16)</span></label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-group">
-                                                <input type="checkbox" id="sizeXL" name="size" value="XL" />
-                                                <label for="sizeXL">XL <span>(12)</span></label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
 
                         </div>
+
                         <div class="col-lg-9">
                             <h5 class="cat_name fw-normal pb-3">Products</h5>
                             <div class="catimg">
-                                <img src="{{ asset('assets/frontend/images/Banner-2.jpg') }}" alt="All Product" class="img-fluid w-100" />
+                                <img src="{{ asset('assets/frontend/images/product-banner.jpg') }}" alt="All Product" class="img-fluid w-100" />
                             </div>
                             <div class="cat_info py-3 opacity-75 fw-light">
-                                <p>Care for fiber: 30% more recycled polyester. We label garments manufactured using environmentally friendly technologies and raw materials with the Join Life label.</p>
+                                <p>These printers are designed for everyday home and office use, offering sharp prints, wireless connectivity, and reliable performance. Perfect for documents, photos, and creative projects.</p>
                             </div>
 
                             <div class="product_filter d-flex justify-content-between align-items-center gap-3 pb-3 border-bottom mb-3">
@@ -170,8 +146,8 @@
                                     <li>
                                         <div class="product_box">
                                             <a href="#" class="product_img">
-                                                <img src="{{ asset('assets/frontend/images/product_img11.jpg') }}" alt="Product Name" class="img-fluid" />
-                                                <img src="{{ asset('assets/frontend/images/product_img1.jpg') }}" alt="Product Name" class="img-fluid hover_img" />
+                                                <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                                 <div class="cart_btn">
                                                     <button class="cusbtn cartbtn">Add to cart</button>
                                                 </div>
@@ -183,10 +159,10 @@
                                                 </div>
                                             </div>
                                             <div class="product_content">
-                                                <h4><a href="#">Fall Cropped Knit</a></h4>
+                                                <h4><a href="#">(Renewed) HP DeskJet 4155e All-in-One Wireless Color Inkjet Printer</a></h4>
                                                 <div class="price">
-                                                    <del>$20.00</del>
-                                                    <ins>$10.00</ins>
+                                                    <del>$80.00</del>
+                                                    <ins>$39.00</ins>
                                                 </div>
                                                 <div class="rating">
                                                     <span class="fa-solid fa-star"></span>
@@ -201,7 +177,8 @@
                                     <li>
                                         <div class="product_box">
                                             <a href="#" class="product_img">
-                                                <img src="{{ asset('assets/frontend/images/product_img2.jpg') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                                 <div class="cart_btn">
                                                     <button class="cusbtn cartbtn">Add to cart</button>
                                                 </div>
@@ -213,10 +190,10 @@
                                                 </div>
                                             </div>
                                             <div class="product_content">
-                                                <h4><a href="#">Fave Zip Cardigan</a></h4>
+                                                <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
                                                 <div class="price">
-                                                    <del>$20.00</del>
-                                                    <ins>$10.00</ins>
+                                                    <del>$99.00</del>
+                                                    <ins>$89.00</ins>
                                                 </div>
                                                 <div class="rating">
                                                     <span class="fa-solid fa-star"></span>
@@ -231,7 +208,8 @@
                                     <li>
                                         <div class="product_box">
                                             <a href="#" class="product_img">
-                                                <img src="{{ asset('assets/frontend/images/product_img3.jpg') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product4.png') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                                 <div class="cart_btn">
                                                     <button class="cusbtn cartbtn">Add to cart</button>
                                                 </div>
@@ -243,10 +221,10 @@
                                                 </div>
                                             </div>
                                             <div class="product_content">
-                                                <h4><a href="#">Fave Zip Knit</a></h4>
+                                                <h4><a href="#">HP Color LaserJet Pro MFP 3301fdw Wireless Printer</a></h4>
                                                 <div class="price">
-                                                    <del>$20.00</del>
-                                                    <ins>$10.00</ins>
+                                                    <del>$70.00</del>
+                                                    <ins>$49.00</ins>
                                                 </div>
                                                 <div class="rating">
                                                     <span class="fa-solid fa-star"></span>
@@ -261,7 +239,8 @@
                                     <li>
                                         <div class="product_box">
                                             <a href="#" class="product_img">
-                                                <img src="{{ asset('assets/frontend/images/product_img3.jpg') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                                 <div class="cart_btn">
                                                     <button class="cusbtn cartbtn">Add to cart</button>
                                                 </div>
@@ -273,10 +252,10 @@
                                                 </div>
                                             </div>
                                             <div class="product_content">
-                                                <h4><a href="#">Fave Zip Knit</a></h4>
+                                                <h4><a href="#">HP OfficeJet Pro 8135e Wireless All-in-One Printer</a></h4>
                                                 <div class="price">
-                                                    <del>$20.00</del>
-                                                    <ins>$10.00</ins>
+                                                    <del>$149.00</del>
+                                                    <ins>$129.00</ins>
                                                 </div>
                                                 <div class="rating">
                                                     <span class="fa-solid fa-star"></span>
@@ -291,38 +270,8 @@
                                     <li>
                                         <div class="product_box">
                                             <a href="#" class="product_img">
-                                                <img src="{{ asset('assets/frontend/images/product_img11.jpg') }}" alt="Product Name" class="img-fluid" />
-                                                <img src="{{ asset('assets/frontend/images/product_img1.jpg') }}" alt="Product Name" class="img-fluid hover_img" />
-                                                <div class="cart_btn">
-                                                    <button class="cusbtn cartbtn">Add to cart</button>
-                                                </div>
-                                            </a>
-                                            <div class="product_meta">
-                                                <div class="discount_percent">-50%</div>
-                                                <div class="wishlist">
-                                                    <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                                </div>
-                                            </div>
-                                            <div class="product_content">
-                                                <h4><a href="#">Fall Cropped Knit</a></h4>
-                                                <div class="price">
-                                                    <del>$20.00</del>
-                                                    <ins>$10.00</ins>
-                                                </div>
-                                                <div class="rating">
-                                                    <span class="fa-solid fa-star"></span>
-                                                    <span class="fa-solid fa-star"></span>
-                                                    <span class="fa-solid fa-star"></span>
-                                                    <span class="fa-solid fa-star"></span>
-                                                    <span class="fa-regular fa-star"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="product_box">
-                                            <a href="#" class="product_img">
-                                                <img src="{{ asset('assets/frontend/images/product_img2.jpg') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                                 <div class="cart_btn">
                                                     <button class="cusbtn cartbtn">Add to cart</button>
                                                 </div>
@@ -334,10 +283,41 @@
                                                 </div>
                                             </div>
                                             <div class="product_content">
-                                                <h4><a href="#">Fave Zip Cardigan</a></h4>
+                                                <h4><a href="#">HP LaserJet Pro MFP 3101sdw Printer</a></h4>
                                                 <div class="price">
-                                                    <del>$20.00</del>
-                                                    <ins>$10.00</ins>
+                                                    <del>$77.00</del>
+                                                    <ins>$47.00</ins>
+                                                </div>
+                                                <div class="rating">
+                                                    <span class="fa-solid fa-star"></span>
+                                                    <span class="fa-solid fa-star"></span>
+                                                    <span class="fa-solid fa-star"></span>
+                                                    <span class="fa-solid fa-star"></span>
+                                                    <span class="fa-regular fa-star"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="product_box">
+                                            <a href="#" class="product_img">
+                                                <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid hover_img" />
+                                                <div class="cart_btn">
+                                                    <button class="cusbtn cartbtn">Add to cart</button>
+                                                </div>
+                                            </a>
+                                            <div class="product_meta">
+                                                <div class="discount_percent">-50%</div>
+                                                <div class="wishlist">
+                                                    <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="product_content">
+                                                <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
+                                                <div class="price">
+                                                    <del>$180.00</del>
+                                                    <ins>$109.00</ins>
                                                 </div>
                                                 <div class="rating">
                                                     <span class="fa-solid fa-star"></span>

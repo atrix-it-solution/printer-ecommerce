@@ -30,11 +30,11 @@
                                     </div>
                                 </div>
                                 <ul class="account-menu list-unstyled">
-                                    <li><a href="my-account.html" class="active"><i class="fa-solid fa-grip"></i> <span>Dashboard</span></a></li>
-                                    <li><a href="orders.html"><i class="fa-solid fa-bag-shopping"></i> <span>My Orders</span></a></li>
+                                    <li><a href="my-account" class="active"><i class="fa-solid fa-grip"></i> <span>Dashboard</span></a></li>
+                                    <li><a href="orders"><i class="fa-solid fa-bag-shopping"></i> <span>My Orders</span></a></li>
                                     <li><a href="#"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
-                                    <li><a href="edit-address.html"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
-                                    <li><a href="edit-account.html"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
+                                    <li><a href="edit-address"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
+                                    <li><a href="edit-account"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
                                     <li><a href="#"><i class="fa-solid fa-sign-out"></i> <span>Logout</span></a></li>
                                 </ul>
                             </div>
@@ -91,7 +91,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@thevsipl.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
                             </div>
                         </div>
                     </div>

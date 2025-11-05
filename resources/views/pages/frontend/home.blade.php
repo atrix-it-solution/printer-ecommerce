@@ -11,7 +11,7 @@
                         <div class="hero_slide_box">
                             <a href="javascript:void(0);" class="slide_link"></a>
                             <div class="slide_img">
-                                <img src="{{ asset('assets/frontend/images/printer-banner1.jpg') }}" alt="VSIPL" class="img-fluid w-100" />
+                                <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="VSIPL" class="img-fluid w-100" />
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                         <div class="hero_slide_box">
                             <a href="javascript:void(0);" class="slide_link"></a>
                             <div class="slide_img">
-                                <img src="{{ asset('assets/frontend/images/printer-banner1.jpg') }}" alt="VSIPL" class="img-fluid w-100" />
+                                <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="VSIPL" class="img-fluid w-100" />
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="hero_slide_box">
                             <a href="javascript:void(0);" class="slide_link"></a>
                             <div class="slide_img">
-                                <img src="{{ asset('assets/frontend/images/printer-banner1.jpg') }}" alt="VSIPL" class="img-fluid w-100" />
+                                <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="VSIPL" class="img-fluid w-100" />
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                 <div class="container">
                     <div class="cusheading_row pb-4">
                         <h2>Trending <b class="ffs">Products</b></h2>
-                        <p>Preorder now to receive exclusive deals & gifts</p>
+                        <p>Grab the latest trending printers — preorder today and unlock exclusive deals & bonus gifts!</p>
 
                     </div>
                     <div class="product_slider new_arrival_slider common_slider">
@@ -336,19 +336,19 @@
                 </div>
             </section>
 
-            <section class="py-5">
+            <section class="py-5 best-collections_sec">
                 <div class="container">
                     <div class="row gx-lg-0 mb-4 mb-lg-0">
                         <div class="col-lg-6">
                             <div class="img_box">
-                                <img src="{{ asset('assets/frontend/images/image-1.jpg') }}" alt="sustainability" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/product_21.png') }}" alt="sustainability" class="img-fluid w-100" />
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
                             <div class="contentbox px-0 px-lg-5 pt-4 pt-lg-5 pb-5 m-lg-4">
                                 <h5 class="subheading ffs text-theme">Sustainability</h5>
-                                <h2>Our move towards sustainability.</h2>
-                                <p>We have taken a big leap by changing our main processes and products. Here among an increase in the use of more sustainable fibres to using more eco-friendly printing methods and creating efficient waste management in our value chain.</p>
+                                <h2>Supporting eco-friendly printing choices.</h2>
+                                <p>As a trusted printer seller, we promote products that are energy-efficient, durable, and designed with lower environmental impact. By offering printers that use less power, support recycled cartridges, and reduce overall waste, we help customers choose smarter, more sustainable printing solutions.</p>
                                 <div class="cusbtn pt-3">
                                     <a href="#" class="btn btn-dark px-5 py-3">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
@@ -366,41 +366,41 @@
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                                     <div class="img_box">
-                                        <img src="{{ asset('assets/frontend/images/printer_type_1.jpg') }}" alt="Spring Summer 24" class="img-fluid w-100" />
+                                        <img src="{{ asset('assets/frontend/images/best_collection_1.png') }}" alt="Spring Summer 24" class="img-fluid w-100" />
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                                     <div class="img_box">
-                                        <img src="{{ asset('assets/frontend/images/printer_type_2.jpg') }}" alt="Essentials" class="img-fluid w-100" />
+                                        <img src="{{ asset('assets/frontend/images/best_collection_2.png') }}" alt="Essentials" class="img-fluid w-100" />
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
                                     <div class="img_box">
-                                        <img src="{{ asset('assets/frontend/images/printer_type_3.jpg') }}" alt="Lookbook" class="img-fluid w-100" />
+                                        <img src="{{ asset('assets/frontend/images/best_collection_3.png') }}" alt="Lookbook" class="img-fluid w-100" />
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
                                     <div class="img_box">
-                                        <img src="{{ asset('assets/frontend/images/printer_type_4.jpg') }}" alt="Perfect Office Style" class="img-fluid w-100" />
+                                        <img src="{{ asset('assets/frontend/images/best_collection_4.png') }}" alt="Perfect Office Style" class="img-fluid w-100" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
                             <div class="contentbox p-3 p-lg-5 ps-0 ps-lg-0 ms-0 ms-lg-0 m-3 m-lg-4">
-                                <h5 class="subheading fw-normal text-dark pb-lg-3 text-uppercase text-theme"><small>Type of Printers</small></h5>
+                                <h5 class="subheading fw-normal text-dark pb-lg-3 text-uppercase text-theme"><small>Best Collections</small></h5>
                                 <ul class="list-unstyled m-0" id="pills-tab" role="tablist">
-                                    <li class="nav-item pb-2 pb-lg-4" role="presentation">
-                                        <h2 class="nav-link ffs active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><a href="javascript:void(0);">OFFICEJET PRINTERS</a></h2>
+                                    <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
+                                        <h2 class="nav-link ffs active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><a href="javascript:void(0);">Officejet Printers</a></h2>
                                     </li>
-                                    <li class="nav-item pb-2 pb-lg-4" role="presentation">
-                                        <h2 class="nav-link ffs" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><a href="javascript:void(0);">ENVY PRINTERS</a></h2>
+                                    <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
+                                        <h2 class="nav-link ffs" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><a href="javascript:void(0);">Envy Printers</a></h2>
                                     </li>
-                                    <li class="nav-item pb-2 pb-lg-4" role="presentation">
-                                        <h2 class="nav-link ffs" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><a href="javascript:void(0);">DESKJET PRINTERS</a></h2>
+                                    <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
+                                        <h2 class="nav-link ffs" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><a href="javascript:void(0);">Deskjet Printers</a></h2>
                                     </li>
-                                    <li class="nav-item pb-2 pb-lg-4" role="presentation">
-                                        <h2 class="nav-link ffs" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" role="tab" aria-controls="pills-disabled" aria-selected="false"><a href="javascript:void(0);">LASERJET PRINTERS</a></h2>
+                                    <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
+                                        <h2 class="nav-link ffs" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" role="tab" aria-controls="pills-disabled" aria-selected="false"><a href="javascript:void(0);">Laserjet Printers</a></h2>
                                     </li>
                                 </ul>
                             </div>
@@ -413,15 +413,15 @@
                 <div class="container pb-lg-5">
                     <div class="cusheading_row pb-4">
                         <h2>Best <b class="ffs">Seller</b></h2>
-                        <p>Preorder now to receive exclusive deals & gifts</p>
+                        <p>Shop our best-selling printers and enjoy exclusive offers on top models.</p>
 
                     </div>
                     <div class="product_slider best_seller_slider common_slider">
                         <div>
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img11.jpg') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product_img1.jpg') }}" alt="Product Name" class="img-fluid hover_img" />
+                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
@@ -433,10 +433,10 @@
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <h4><a href="#">Fall Cropped Knit</a></h4>
+                                    <h4><a href="#">(Renewed) HP DeskJet 4155e All-in-One Wireless Color Inkjet Printer</a></h4>
                                     <div class="price">
-                                        <del>$20.00</del>
-                                        <ins>$10.00</ins>
+                                        <del>$80.00</del>
+                                        <ins>$39.00</ins>
                                     </div>
                                     <div class="rating">
                                         <span class="fa-solid fa-star"></span>
@@ -451,7 +451,8 @@
                         <div>
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img2.jpg') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
@@ -463,10 +464,10 @@
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <h4><a href="#">Fave Zip Cardigan</a></h4>
+                                    <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
                                     <div class="price">
-                                        <del>$20.00</del>
-                                        <ins>$10.00</ins>
+                                        <del>$99.00</del>
+                                        <ins>$89.00</ins>
                                     </div>
                                     <div class="rating">
                                         <span class="fa-solid fa-star"></span>
@@ -481,7 +482,8 @@
                         <div>
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img3.jpg') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product4.png') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
@@ -493,10 +495,10 @@
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <h4><a href="#">Fave Zip Knit</a></h4>
+                                    <h4><a href="#">HP Color LaserJet Pro MFP 3301fdw Wireless Printer</a></h4>
                                     <div class="price">
-                                        <del>$20.00</del>
-                                        <ins>$10.00</ins>
+                                        <del>$70.00</del>
+                                        <ins>$49.00</ins>
                                     </div>
                                     <div class="rating">
                                         <span class="fa-solid fa-star"></span>
@@ -511,8 +513,8 @@
                         <div>
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img11.jpg') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product_img1.jpg') }}" alt="Product Name" class="img-fluid hover_img" />
+                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
@@ -524,10 +526,10 @@
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <h4><a href="#">Fall Cropped Knit</a></h4>
+                                    <h4><a href="#">HP OfficeJet Pro 8135e Wireless All-in-One Printer</a></h4>
                                     <div class="price">
-                                        <del>$20.00</del>
-                                        <ins>$10.00</ins>
+                                        <del>$149.00</del>
+                                        <ins>$129.00</ins>
                                     </div>
                                     <div class="rating">
                                         <span class="fa-solid fa-star"></span>
@@ -542,7 +544,8 @@
                         <div>
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img2.jpg') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
@@ -554,10 +557,10 @@
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <h4><a href="#">Fave Zip Cardigan</a></h4>
+                                    <h4><a href="#">HP LaserJet Pro MFP 3101sdw Printer</a></h4>
                                     <div class="price">
-                                        <del>$20.00</del>
-                                        <ins>$10.00</ins>
+                                        <del>$77.00</del>
+                                        <ins>$47.00</ins>
                                     </div>
                                     <div class="rating">
                                         <span class="fa-solid fa-star"></span>
@@ -572,7 +575,8 @@
                         <div>
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img3.jpg') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
@@ -584,10 +588,10 @@
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <h4><a href="#">Fave Zip Knit</a></h4>
+                                    <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
                                     <div class="price">
-                                        <del>$20.00</del>
-                                        <ins>$10.00</ins>
+                                        <del>$180.00</del>
+                                        <ins>$109.00</ins>
                                     </div>
                                     <div class="rating">
                                         <span class="fa-solid fa-star"></span>
@@ -607,13 +611,14 @@
                 <div class="container py-lg-3">
                     <div class="row align-items-center">
                         <div class="col-lg-6 my-2">
-                            <h2 class="text-center ffs text-theme">Subscribe</h2>
+                              <h3>Subscribe and get $5 off your next order!</h3>
+                                <p>Get the latest deals, new printer launches, and exclusive promotions delivered to your inbox — plus enjoy savings on your next order.</p>
+                                <p>*Valid once per customer. Terms apply.</p>
+                            
                         </div>
                         <div class="col-lg-6 my-2">
                             <div class="subcribe_text">
-                                <h3>Subscribe and get $5 off your next order!</h3>
-                                <p>Simply subscribe to our newsletter to receive emails with the latest news and exclusive promotion details from Stella Beauty and get $5 off your next order.</p>
-                                <p>*One per customer, minimum spend $40 & excludes sale items</p>
+                              
                                 <form action="">
                                     <div class="form-group mb-3">
                                         <label for="name" class="d-none">Name</label>
@@ -647,7 +652,7 @@
                                 <h5 class="subheading ffs text-theme">Super offer</h5>
                                 <h2 class="text-uppercase py-2">Summer sale</h2>
                                 <h4 class="pb-3">Up to 50% off</h4>
-                                <p>Spend minimal $100 get 50% off voucher code for your next order.</p>
+                                <p>Spend just $100 and get a 50% off voucher for your next printer or accessory purchase.</p>
                                 <div class="cusbtn pt-4">
                                     <a href="#" class="btn btn-dark px-5 py-3">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
@@ -671,7 +676,7 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">I was sceptical at first, but wow! the material, the design, everything is amazing, I’ll definitely be ordering more!</p>
+                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
@@ -700,7 +705,7 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Absolutely love this denim jacket! the fit is perfect, and it goes with everything, a must-have staple for every wardrobe!</p>
+                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
@@ -729,7 +734,7 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">I was sceptical at first, but wow! the material, the design, everything is amazing, I’ll definitely be ordering more!</p>
+                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>

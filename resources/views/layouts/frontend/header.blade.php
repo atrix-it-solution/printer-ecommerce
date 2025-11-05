@@ -1,7 +1,12 @@
         <header>
             <div class="topbar bg-theme text-white py-2">
-                <div class="container">
+                <div class="container-fluid px-lg-4">
                     <div class="row justify-content-center">
+                        <div class="col-lg-3">
+                            <ul class="topbar_info_list d-flex align-items-center justify-content-center justify-content-lg-start gap-4 mb-0 list-unstyled">
+                                <li><a href="mailto:info@vsipl.com"><i class="fa-solid fa-envelope"></i> info@printer.com</a></li>
+                            </ul>
+                        </div>
                         <div class="col-lg-6">
                             <div class="offer_slider common_slider">
                                 <div class="offer_slide text-center">
@@ -15,10 +20,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <ul class="topbar_info_list d-flex align-items-center justify-content-center justify-content-lg-end gap-4 mb-0 list-unstyled">
                                 <li><a href="tel:+919410109369"><i class="fa-solid fa-phone"></i> +91 12345-67890</a></li>
-                                <li><a href="mailto:info@vsipl.com"><i class="fa-solid fa-envelope"></i> info@domain.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -62,16 +66,16 @@
                                     <a href="/shop" class="nav-link">Shop</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/category" class="nav-link">Grocery</a>
+                                    <a href="/category" class="nav-link">Deskjet Printers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="category" class="nav-link">Garments</a>
+                                    <a href="category" class="nav-link">Envy Printers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="category" class="nav-link">Food Essentials</a>
+                                    <a href="category" class="nav-link">Laserjet Printers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/category" class="nav-link">Accessories</a>
+                                    <a href="/category" class="nav-link">Officejet Printers</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/contact" class="nav-link">Contact Us</a>
@@ -80,15 +84,15 @@
                             <div class="mobile_info d-xl-none">
                                 <ul class="navbar-nav pt-4">
                                     <li><a href="tel:+919410109369"><i class="text-theme me-2 fa-solid fa-phone"></i> +91 94101-09369</a></li>
-                                    <li><a href="mailto:info@thevsipl.com"><i class="text-theme me-2 fa-regular fa-envelope"></i> info@thevsipl.com</a></li>
+                                    <li><a href="mailto:info@printer.com"><i class="text-theme me-2 fa-regular fa-envelope"></i> info@printer.com</a></li>
                                     <li><a href="javascript:void(0);"><i class="text-theme me-2 fa-solid fa-map-marker-alt"></i> Saharanpur, UP, India</a></li>
                                 </ul>
                             </div>
                         </div>
                         <ul class="navbar-nav flex-row d-flex gap-2 gap-xxl-4 header_right_area">
                             <li class="d-none d-xl-block"><a href="javascript:void(0);" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></li>
-                            <li><a href="my-account.html" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="My Account"><i class="fa-regular fa-user"></i></a></li>
-                            <li class="me-1"><a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist"><i class="fa-regular fa-heart"></i> <span class="count">2</span></a></li>
+                            <li><a href="my-account" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="My Account"><i class="fa-regular fa-user"></i></a></li>
+                            <li class="me-1"><a href="wishlist" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist"><i class="fa-regular fa-heart"></i> <span class="count">2</span></a></li>
                             <li><a href="cart" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Cart"><i class="fa fa-cart-shopping"></i> <span class="count">4</span></a></li>
                         </ul>
                     </div>
