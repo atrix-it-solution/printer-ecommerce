@@ -32,7 +32,7 @@
                                 <ul class="account-menu list-unstyled">
                                     <li><a href="my-account"><i class="fa-solid fa-grip"></i> <span>Dashboard</span></a></li>
                                     <li><a href="orders" class="active"><i class="fa-solid fa-bag-shopping"></i> <span>My Orders</span></a></li>
-                                    <li><a href="#"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
+                                    <li><a href="/wishlist"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
                                     <li><a href="edit-address"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
                                     <li><a href="edit-account"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
                                     <li><a href="#"><i class="fa-solid fa-sign-out"></i> <span>Logout</span></a></li>
@@ -46,7 +46,7 @@
                                         <div class="col-lg-6">
                                             <div class="heading_row d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0">Billing Address</h4>
-                                                <a href="#" class="fw-semibold text-decoration-underline">Edit</a>
+                                                <a href="billing-address" class="fw-semibold text-decoration-underline">Edit</a>
                                             </div>
                                             <div class="address_box mt-3 p-4 border">
                                                 <address class="mb-0">
@@ -57,7 +57,7 @@
                                         <div class="col-lg-6">
                                             <div class="heading_row d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0">Shipping Address</h4>
-                                                <a href="#" class="fw-semibold text-decoration-underline">Add</a>
+                                                <a href="shipping-address" class="fw-semibold text-decoration-underline">Add</a>
                                             </div>
                                             <div class="address_box mt-3 p-4 border">
                                                 <p class="fst-italic">You have not set up this type of address yet.</p>
@@ -111,7 +111,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
                             </div>
                         </div>
                     </div>

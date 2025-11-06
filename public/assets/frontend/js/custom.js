@@ -132,7 +132,9 @@ jQuery(document).ready(function() {
         });
     });
 
-    $("#search").click(function() {
+    
+
+    $(".search-trigger").click(function() {
         $('#searchbar').addClass("active");
     });
     $("#closeSearch").click(function() {

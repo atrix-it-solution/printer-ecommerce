@@ -26,21 +26,21 @@
                             <div class="cusfaq">
                                 <div class="accordion accordion-flush bg-transparent" id="accordionFlushExample">
                                     <div class="accordion-item">
-                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">How long will shipping take?</h5>
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Where do the printers you sell come from?</h5>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">All orders are shipped within 12-36 hours from our warehouse in Bellingham WA.  Delivery times will depend on your shipping option but all orders are tracked from our facility to your door. </div>
+                                            <div class="accordion-body">No — we are a reseller and retailer that sells printers from multiple trusted brands. We do not manufacture printers. Manufacturer warranties and service policies apply; we will assist you with warranty claims and returns according to our store policy.</div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">How do I know if my order is confirmed?</h5>
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">What warranty comes with a printer?</h5>
                                         <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall.</div>
+                                            <div class="accordion-body">Most new printers include a manufacturer warranty (commonly 1 year—check the product page for exact terms). For refurbished or open-box items, seller warranty details will be listed on the product page. Warranty repairs are generally handled by the manufacturer or their authorized service centers; we can help initiate claims.</div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Can I change my shipping address after my order is placed?</h5>
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">How do I request repairs or technical support for my printer?</h5>
                                         <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall.</div>
+                                            <div class="accordion-body">We provide pre-sales guidance, basic setup help and troubleshooting. For hardware repairs and advanced technical support, please contact the manufacturer's authorized service center. We can assist by providing contact details and helping coordinate the process.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -51,21 +51,21 @@
                             <div class="cusfaq">
                                 <div class="accordion accordion-flush bg-transparent" id="accordionFlushExample1">
                                     <div class="accordion-item">
-                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">How long will shipping take?</h5>
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">Are the printers new or refurbished?</h5>
                                         <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample1">
-                                            <div class="accordion-body">All orders are shipped within 12-36 hours from our warehouse in Bellingham WA.  Delivery times will depend on your shipping option but all orders are tracked from our facility to your door. </div>
+                                            <div class="accordion-body">Each product page clearly states whether a printer is new, open-box, or refurbished. Refurbished units are inspected and tested; the product listing will describe the condition and any included accessories. Please read the product description before purchasing.</div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">How do I know if my order is confirmed?</h5>
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">Do the printers use original cartridges/toner and are compatible supplies available?</h5>
                                         <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample1">
-                                            <div class="accordion-body">This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall.</div>
+                                            <div class="accordion-body">Most printers use brand-specific cartridges or toners. The product page lists compatible consumables and part numbers. We sell both original (OEM) and compatible third-party supplies—choose based on your quality and budget preferences. Using non-recommended supplies can affect print quality and warranty in some cases; see the product page for details.</div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">Can I change my shipping address after my order is placed?</h5>
+                                        <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">What are your shipping, returns and order change policies?</h5>
                                         <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample1">
-                                            <div class="accordion-body">This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall.</div>
+                                            <div class="accordion-body">Orders are confirmed by email once payment is processed and typically ship within the timeframe shown on the product page. You can change your shipping address only before the order is dispatched—contact support as soon as possible. Returns for unopened or unused items are accepted within the period stated in our Returns Policy; defective items are handled via warranty or replacement per the manufacturer's process. For any order or return help, contact support@printhelp.com and include your order number.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
                             </div>
                         </div>
                     </div>

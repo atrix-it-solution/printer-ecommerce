@@ -4,7 +4,7 @@
 
 @section('content')
         <div class="bodyWrapper flex-grow-1">
-            <section class="subheader py-5" style="background-image: url('images/cartbg.jpg');">
+            <section class="subheader py-5" style="background-image: url('assets/frontend/images/cartbg.jpg');">
                 <div class="container py-lg-5">
                     <div class="row">
                         <div class="col-md-6 text-white">
@@ -48,7 +48,8 @@
                                         <tr class="cart_item">
                                             <td class="product-thumbnail">
                                                 <a href="#">
-                                                    <img src="{{ asset('assets/frontend/images/product_img1.jpg" class="img-fluid') }}" alt="Product Title" />
+                                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" class="img-fluid" alt="Product Title">
+
                                                 </a>
                                             </td>
                                             <td class="product-name" data-title="Product">
@@ -91,7 +92,7 @@
                                         <tr class="cart_item">
                                             <td class="product-thumbnail">
                                                 <a href="#">
-                                                    <img src="{{ asset('assets/frontend/images/product_img2.jpg" class="img-fluid') }}" alt="Product Title" />
+                                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" class="img-fluid" alt="Product Title" />
                                                 </a>
                                             </td>
                                             <td class="product-name" data-title="Product">
@@ -221,7 +222,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
                             </div>
                         </div>
                     </div>

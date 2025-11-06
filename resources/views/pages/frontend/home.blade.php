@@ -93,6 +93,57 @@
                 </div>
             </section>
 
+            <section class="category_sec py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 my-3">
+                            <div class="cat_box">
+                                <a href="#" class="cat_img">
+                                    <img src="{{ asset('assets/frontend/images/cat_1.jpg') }}" alt="Grocery" class="img-fluid" />
+                                </a>
+                                <div class="cat_content">
+                                    <h4><a href="#">Deskjet Printers</a></h4>
+                                    <p>3 items</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 my-3">
+                            <div class="cat_box">
+                                <a href="#" class="cat_img">
+                                    <img src="{{ asset('assets/frontend/images/cat_2.jpg') }}" alt="Garments" class="img-fluid" />
+                                </a>
+                                <div class="cat_content">
+                                    <h4><a href="#">Envy Printers</a></h4>
+                                    <p>4 items</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 my-3">
+                            <div class="cat_box">
+                                <a href="#" class="cat_img">
+                                    <img src="{{ asset('assets/frontend/images/cat_3.jpg') }}" alt="Food Essentials" class="img-fluid" />
+                                </a>
+                                <div class="cat_content">
+                                    <h4><a href="#">Laserjet Printers</a></h4>
+                                    <p>2 items</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 my-3">
+                            <div class="cat_box">
+                                <a href="#" class="cat_img">
+                                    <img src="{{ asset('assets/frontend/images/cat_4.jpg') }}" alt="Accessories" class="img-fluid" />
+                                </a>
+                                <div class="cat_content">
+                                    <h4><a href="#">Officejet Printers</a></h4>
+                                    <p>5 items</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="features_sec py-5">
                 <div class="container">
                     <div class="row">
@@ -156,7 +207,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-20%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -187,7 +238,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-30%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -218,7 +269,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-20%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -249,7 +300,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-30%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -280,7 +331,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-20%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Go to Wishlist"><i class="fa-solid fa-heart"></i></span>
                                     </div>
@@ -311,7 +362,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-30%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -427,7 +478,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-20%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -458,7 +509,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-30%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -489,7 +540,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-20%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -520,7 +571,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-30%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -551,7 +602,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-20%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Go to Wishlist"><i class="fa-solid fa-heart"></i></span>
                                     </div>
@@ -582,7 +633,7 @@
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-30%</div>
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
@@ -650,9 +701,9 @@
                         <div class="col-lg-6 my-2">
                             <div class="sale_content text-center">
                                 <h5 class="subheading ffs text-theme">Super offer</h5>
-                                <h2 class="text-uppercase py-2">Summer sale</h2>
-                                <h4 class="pb-3">Up to 50% off</h4>
-                                <p>Spend just $100 and get a 50% off voucher for your next printer or accessory purchase.</p>
+                                <h2 class="text-uppercase py-2">Winter sale</h2>
+                                <h4 class="pb-3">Up to 20% off</h4>
+                                <p>Spend just $100 and get a 20% off voucher for your next printer or accessory purchase.</p>
                                 <div class="cusbtn pt-4">
                                     <a href="#" class="btn btn-dark px-5 py-3">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
@@ -676,12 +727,12 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
+                                        <p class="desc">I ordered an office printer for my small business — setup was straightforward and the prints look professional. Customer support helped with a quick toner recommendation. Very satisfied.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
-                                            <h6 class="author-title">Selina morgan</h6>
-                                            <p class="author-des">Interior designer</p>
+                                            <h6 class="author-title">Jessica Carter</h6>
+                                            <p class="author-des">Small Business Owner</p>
                                         </div>
                                         <div>
                                             <div class="rating">
@@ -689,9 +740,9 @@
                                                 <span class="fa-solid fa-star"></span>
                                                 <span class="fa-solid fa-star"></span>
                                                 <span class="fa-solid fa-star"></span>
-                                                <span class="fa-regular fa-star"></span>
+                                                <span class="fa-solid fa-star"></span>
                                             </div>
-                                            <div>(5 review)</div>
+                                            <div>(128 reviews)</div>
                                         </div>
                                     </div>
                                 </div>
@@ -705,12 +756,12 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
+                                        <p class="desc">Fast shipping and excellent packaging — the printer arrived in perfect condition. Ink efficiency has been much better than my previous model; we're saving on consumables.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
-                                            <h6 class="author-title">Mia thompson</h6>
-                                            <p class="author-des">Customer product</p>
+                                            <h6 class="author-title">Michael Johnson</h6>
+                                            <p class="author-des">Operations Manager</p>
                                         </div>
                                         <div>
                                             <div class="rating">
@@ -720,7 +771,7 @@
                                                 <span class="fa-solid fa-star"></span>
                                                 <span class="fa-regular fa-star"></span>
                                             </div>
-                                            <div>(5 review)</div>
+                                            <div>(64 reviews)</div>
                                         </div>
                                     </div>
                                 </div>
@@ -734,12 +785,12 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
+                                        <p class="desc">Bought a refurbished laser printer — it arrived like new and performs flawlessly. Support helped register the warranty quickly. Highly recommend for budget-conscious buyers.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
-                                            <h6 class="author-title">Selina morgan</h6>
-                                            <p class="author-des">Interior designer</p>
+                                            <h6 class="author-title">Emily Davis</h6>
+                                            <p class="author-des">Freelance Designer</p>
                                         </div>
                                         <div>
                                             <div class="rating">
@@ -749,7 +800,7 @@
                                                 <span class="fa-solid fa-star"></span>
                                                 <span class="fa-regular fa-star"></span>
                                             </div>
-                                            <div>(5 review)</div>
+                                            <div>(42 reviews)</div>
                                         </div>
                                     </div>
                                 </div>
@@ -759,39 +810,7 @@
                 </div>
             </section>
 
-            <section class="earn_sec py-4">
-                <div class="container pb-lg-5">
-                    <div class="cusheading_row text-center pb-4">
-                        <h2>Ways to earn with <b class="">VSIPL</b></h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon1.svg') }}" alt="Network and seller Partner" class="img-fluid" /></div>
-                                <h4>Network and seller Partner</h4>
-                            </a>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon2.svg') }}" alt="Brand & vendor partner" class="img-fluid" /></div>
-                                <h4>Brand & vendor partner</h4>
-                            </a>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon3.svg') }}" alt="Digital content creator" class="img-fluid" /></div>
-                                <h4>Digital content creator</h4>
-                            </a>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon4.svg') }}" alt="Experience host & trainer" class="img-fluid" /></div>
-                                <h4>Experience host & trainer</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
         </div>
 
 
