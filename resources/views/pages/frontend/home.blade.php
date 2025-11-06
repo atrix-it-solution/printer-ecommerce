@@ -509,8 +509,6 @@
                         <h2>Best <b class="ffs">Seller</b></h2>
                         <p>Shop our best-selling printers and enjoy exclusive offers on top models.</p>
                     </div>
-
-                    
                     @if($products->count() > 0)
                         <div class="product_slider best_seller_slider common_slider">
                             @foreach($products as $product)
@@ -563,190 +561,17 @@
                                                 <span class="fa-regular fa-star"></span>
                                             </div>
                                         </div>
-
-                    <div class="product_slider best_seller_slider common_slider">
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-20%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-
                     @else
                         <div class="text-center py-5">
                             <p class="text-muted">No best-selling products found.</p>
                         </div>
                     @endif
 
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-30%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
-                                    <div class="price">
-                                        <del>$99.00</del>
-                                        <ins>$89.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product4.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-20%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP Color LaserJet Pro MFP 3301fdw Wireless Printer</a></h4>
-                                    <div class="price">
-                                        <del>$70.00</del>
-                                        <ins>$49.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-30%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP OfficeJet Pro 8135e Wireless All-in-One Printer</a></h4>
-                                    <div class="price">
-                                        <del>$149.00</del>
-                                        <ins>$129.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-20%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Go to Wishlist"><i class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP LaserJet Pro MFP 3101sdw Printer</a></h4>
-                                    <div class="price">
-                                        <del>$77.00</del>
-                                        <ins>$47.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-30%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
-                                    <div class="price">
-                                        <del>$180.00</del>
-                                        <ins>$109.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
->>>>>>> c51cb92bbfa48d6028e29215f97b7fd8d5358a01
+                        
                 </div>
             </section>
 
