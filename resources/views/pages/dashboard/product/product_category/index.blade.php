@@ -40,12 +40,39 @@
                                value="{{ old('slug', $editCategory->slug ?? '') }}" required>
                     </div>
 
-                    
+                     <div class="mb-3">
+                    <label class="form-label">Category Image</label>
+                    <div>
+                        <button type="button" class="setMediaBtn" data-bs-toggle="modal" data-bs-target="#uploadImageModal" 
+                                onclick="setImageType('category_image')">
+                            Set Category Image
+                        </button>
+                    </div>
+                
+                    <div id="categoryimageContainer" style="{{ isset($editCategory) && $editCategory->categoryImage ? '' : 'display:none;' }} margin-top:10px;">
+                        <div class="frontend-item d-inline-block position-relative">
+                            <img id="categoryimageImage" src="{{ isset($editCategory) && $editCategory->categoryImage ? asset($editCategory->categoryImage->url) : '' }}" 
+                                class="img-fluid rounded border" style="max-height:100px;">
+                            <button type="button" class="btn btn-danger btn-sm btn-remove position-absolute top-0 end-0 m-1"
+                                    onclick="removeImage('category_image')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Store the MEDIA ID, not the URL -->
+                    <input type="hidden" name="category_image" id="categoryimageInput" 
+                           value="{{ old('category_image', $editCategory->category_image ?? '') }}">
+                </div>
+
+                     @include('pages.dashboard.common.media.index')
+                     
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <input type="text" name="description" class="form-control"
                                value="{{ old('description', $editCategory->description ?? '') }}">
                     </div>
+
+                    
 
                     
                     <div class="mb-3">
@@ -68,6 +95,7 @@
                         <table class="table">
                             <thead class="table-light">
                                 <tr>
+                                    <th>Image</th>
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th>Action</th>
@@ -76,6 +104,15 @@
                             <tbody>
                                 @forelse($categories as $category)
                                     <tr>
+                                        <td>
+                                            @if($category->categoryImage)
+                                                <img src="{{ asset($category->categoryImage->url) }}" 
+                                                     alt="{{ $category->title }}" 
+                                                     style="max-height: 50px; max-width: 50px; object-fit: cover;">
+                                            @else
+                                                <span class="text-muted">No Image</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $category->title }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>

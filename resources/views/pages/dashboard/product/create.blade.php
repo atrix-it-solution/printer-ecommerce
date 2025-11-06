@@ -76,14 +76,34 @@
                                 <div class="text-danger small">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="mb-3">
-                            <label for="stock_quantity" class="form-label">Stock Quantity</label>
-                            <input type="number" name="stock_quantity" id="stock_quantity" class="form-control" 
-                                   value="{{ old('stock_quantity', $product->stock_quantity ?? '') }}" placeholder="Stock Quantity">   
-                            @error('stock_quantity')
+                            <label for="sku" class="form-label">SKU</label>
+                            <input type="text" name="sku" id="sku" class="form-control" 
+                                value="{{ old('sku', $product->sku ?? '') }}" placeholder="Stock Keeping Unit">   
+                            @error('sku')
                                 <div class="text-danger small">{{ $message }}</div>
                             @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="manage_stock" id="manageStock" 
+                                    {{ old('manage_stock', isset($product) && !is_null($product->stock_quantity) ? 'checked' : '') }}>
+                                <label class="form-check-label" for="manageStock">
+                                    Manage stock quantity
+                                </label>
+                            </div>
+                            
+                            <div id="stockQuantityField" style="{{ old('manage_stock', isset($product) && !is_null($product->stock_quantity) ? '' : 'display:none;') }}">
+                                <label for="stock_quantity" class="form-label">Stock Quantity</label>
+                                <input type="number" name="stock_quantity" id="stock_quantity" class="form-control" 
+                                    value="{{ old('stock_quantity', $product->stock_quantity ?? '') }}" 
+                                    placeholder="Enter stock quantity" min="0">
+                                <small class="text-muted">Leave empty for unlimited stock</small>
+                                @error('stock_quantity')
+                                    <div class="text-danger small">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,9 +156,9 @@
                                 </button>
                             </div>
                          
-                            <div id="featuredimageContainer" style="{{ isset($product) && $product->featured_image ? '' : 'display:none;' }} margin-top:10px;">
+                            <div id="featuredimageContainer" style="{{ isset($product) && $product->featuredImage ? '' : 'display:none;' }} margin-top:10px;">
                                 <div class="frontend-item d-inline-block position-relative">
-                                    <img id="featuredimageImage" src="{{ isset($product) && $product->featured_image ? asset('storage/' . $product->featured_image) : '' }}" 
+                                    <img id="featuredimageImage" src="{{ isset($product) && $product->featuredImage->url ? asset($product->featuredImage->url) : '' }}" 
                                          class="img-fluid rounded border" style="max-height:100px;">
                                     <button type="button" class="btn btn-danger btn-sm btn-remove position-absolute top-0 end-0 m-1"
                                             onclick="removeImage('featured_image')">

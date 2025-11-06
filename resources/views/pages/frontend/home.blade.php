@@ -37,20 +37,22 @@
             <section class="category_sec py-5">
                 <div class="container">
                     <div class="row">
+                        @foreach($categories as $index => $category)
                         <div class="col-md-6 col-xl-3 my-3">
                             <div class="cat_box">
-                                <a href="#" class="cat_img">
-                                    <img src="{{ asset('assets/frontend/images/cat_1.jpg') }}" alt="Grocery" class="img-fluid" />
+                                 <a href="{{ route('category.show', $category->slug) }}" class="cat_img">
+                                    <img src="{{ asset($category->categoryImage->url) }}" alt="{{ $category->title }}" class="img-fluid" />
                                 </a>
                                 <div class="cat_content">
-                                    <h4><a href="#">Deskjet Printers</a></h4>
+                                    <h4><a href="{{ route('category.show', $category->slug) }}">{{ $category->title }}</a></h4>
                                     <div class="cusbtn">
-                                        <a href="#">View More <i class="fa-solid fa-arrow-right"></i></a>
+                                        <a href="{{ route('category.show', $category->slug) }}">View More <i class="fa-solid fa-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-3 my-3 pt-xl-5">
+                        @endforeach
+                        <!-- <div class="col-md-6 col-xl-3 my-3 pt-xl-5">
                             <div class="cat_box">
                                 <a href="#" class="cat_img">
                                     <img src="{{ asset('assets/frontend/images/cat_2.jpg') }}" alt="Garments" class="img-fluid" />
@@ -88,7 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>
@@ -145,27 +147,38 @@
                         <p>Grab the latest trending printers — preorder today and unlock exclusive deals & bonus gifts!</p>
 
                     </div>
+                    @if($products->count() > 0)
                     <div class="product_slider new_arrival_slider common_slider">
+                         @foreach($products as $product)
                         <div>
                             <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid hover_img" />
+                                <a href="{{ route('product.show', $product->slug) }}" class="product_img">
+                                    <img src="{{ asset($product->featuredImage->url) }}" alt="{{ $product->title }}" class="img-fluid" />
+                                    <img src="{{ asset($product->featuredImage->url) }}" alt="{{ $product->title }}" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    @if($product->sale_price && $product->regular_price)
+                                                @php
+                                                    $discount = (($product->regular_price - $product->sale_price) / $product->regular_price) * 100;
+                                                @endphp
+                                                <div class="discount_percent">-{{ round($discount) }}%</div>
+                                    @endif
                                     <div class="wishlist">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
+                                    <h4><a href="{{ route('product.show', $product->slug) }}">{{ $product->title }}</a></h4>
                                     <div class="price">
-                                        <del>$99.00</del>
-                                        <ins>$89.00</ins>
+                                        @if($product->sale_price && $product->regular_price)
+                                            <del>${{ number_format($product->regular_price, 2) }}</del>
+                                            <ins>${{ number_format($product->sale_price, 2) }}</ins>
+                                        @else
+                                            <ins>${{ number_format($product->regular_price, 2) }}</ins>
+                                        @endif
                                     </div>
                                     <div class="rating">
                                         <span class="fa-solid fa-star"></span>
@@ -177,7 +190,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        @endforeach
+                        <!-- <div>
                             <div class="product_box">
                                 <a href="#" class="product_img">
                                     <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid" />
@@ -331,8 +345,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
+                    @else
+                    <div class="text-center py-5">
+                        <p class="text-muted">No Trending products found.</p>
+                    </div>
+                    @endif
                 </div>
             </section>
 
@@ -364,12 +383,23 @@
                     <div class="row gx-lg-0">
                         <div class="col-lg-6 order-lg-1">
                             <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                @foreach($categories as $index => $category)
+                                <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" 
+                                    id="pills-category-{{ $category->id }}" 
+                                    role="tabpanel" 
+                                    aria-labelledby="pills-category-{{ $category->id }}-tab" 
+                                    tabindex="0">
                                     <div class="img_box">
-                                        <img src="{{ asset('assets/frontend/images/best_collection_1.png') }}" alt="Spring Summer 24" class="img-fluid w-100" />
+                                        @if($category->categoryImage)
+                                            <img src="{{ asset($category->categoryImage->url) }}" alt="{{ $category->title }}" class="img-fluid w-100" />
+                                        @else
+                                           
+                                            <img src="{{ asset('assets/frontend/images/best_collection_' . ($index + 1) . '.png') }}" alt="{{ $category->title }}" class="img-fluid w-100" />
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                                @endforeach
+                                <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                                     <div class="img_box">
                                         <img src="{{ asset('assets/frontend/images/best_collection_2.png') }}" alt="Essentials" class="img-fluid w-100" />
                                     </div>
@@ -383,17 +413,27 @@
                                     <div class="img_box">
                                         <img src="{{ asset('assets/frontend/images/best_collection_4.png') }}" alt="Perfect Office Style" class="img-fluid w-100" />
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
                             <div class="contentbox p-3 p-lg-5 ps-0 ps-lg-0 ms-0 ms-lg-0 m-3 m-lg-4">
                                 <h5 class="subheading fw-normal text-dark pb-lg-3 text-uppercase text-theme"><small>Best Collections</small></h5>
                                 <ul class="list-unstyled m-0" id="pills-tab" role="tablist">
+                                    @foreach($categories as $index => $category)
                                     <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
-                                        <h2 class="nav-link ffs active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><a href="javascript:void(0);">Officejet Printers</a></h2>
+                                        <h2 class="nav-link ffs {{ $index == 0 ? 'active' : '' }}" 
+                                            id="pills-category-{{ $category->id }}-tab" 
+                                            data-bs-toggle="pill" 
+                                            data-bs-target="#pills-category-{{ $category->id }}" 
+                                            role="tab" 
+                                            aria-controls="pills-category-{{ $category->id }}" 
+                                            aria-selected="{{ $index == 0 ? 'true' : 'false' }}">
+                                            <a href="javascript:void(0);">{{ $category->title }}</a>
+                                        </h2>
                                     </li>
-                                    <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
+                                    @endforeach
+                                    <!-- <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
                                         <h2 class="nav-link ffs" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><a href="javascript:void(0);">Envy Printers</a></h2>
                                     </li>
                                     <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
@@ -401,7 +441,7 @@
                                     </li>
                                     <li class="nav-item pb-2 pb-lg-4 mb-2" role="presentation">
                                         <h2 class="nav-link ffs" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" role="tab" aria-controls="pills-disabled" aria-selected="false"><a href="javascript:void(0);">Laserjet Printers</a></h2>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -414,196 +454,69 @@
                     <div class="cusheading_row pb-4">
                         <h2>Best <b class="ffs">Seller</b></h2>
                         <p>Shop our best-selling printers and enjoy exclusive offers on top models.</p>
-
                     </div>
-                    <div class="product_slider best_seller_slider common_slider">
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
+                    
+                    @if($products->count() > 0)
+                        <div class="product_slider best_seller_slider common_slider">
+                            @foreach($products as $product)
+                                <div>
+                                    <div class="product_box">
+                                        <a href="{{ route('product.show', $product->slug) }}" class="product_img">
+                                            @if($product->featuredImage)
+                                                <img src="{{ asset($product->featuredImage->url) }}" alt="{{ $product->title }}" class="img-fluid" />
+                                                <img src="{{ asset($product->featuredImage->url) }}" alt="{{ $product->title }}" class="img-fluid hover_img" />
+                                            @else
+                                                <img src="{{ asset('assets/frontend/images/placeholder.jpg') }}" alt="{{ $product->title }}" class="img-fluid" />
+                                                <img src="{{ asset('assets/frontend/images/placeholder.jpg') }}" alt="{{ $product->title }}" class="img-fluid hover_img" />
+                                            @endif
+                                            <div class="cart_btn">
+                                                <button class="cusbtn cartbtn">Add to cart</button>
+                                            </div>
+                                        </a>
+                                        <div class="product_meta">
+                                            @if($product->sale_price && $product->regular_price)
+                                                @php
+                                                    $discount = (($product->regular_price - $product->sale_price) / $product->regular_price) * 100;
+                                                @endphp
+                                                <div class="discount_percent">-{{ round($discount) }}%</div>
+                                            @endif
+                                            <div class="wishlist">
+                                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4>
+                                                <a href="{{ route('product.show', $product->slug) }}">
+                                                    {{ $product->title }}
+                                                </a>
+                                            </h4>
+                                            <div class="price">
+                                                @if($product->sale_price && $product->regular_price)
+                                                    <del>${{ number_format($product->regular_price, 2) }}</del>
+                                                    <ins>${{ number_format($product->sale_price, 2) }}</ins>
+                                                @else
+                                                    <ins>${{ number_format($product->regular_price, 2) }}</ins>
+                                                @endif
+                                            </div>
+                                            <div class="rating">
+                                                <span class="fa-solid fa-star"></span>
+                                                <span class="fa-solid fa-star"></span>
+                                                <span class="fa-solid fa-star"></span>
+                                                <span class="fa-solid fa-star"></span>
+                                                <span class="fa-regular fa-star"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="product_content">
-                                    <h4><a href="#">(Renewed) HP DeskJet 4155e All-in-One Wireless Color Inkjet Printer</a></h4>
-                                    <div class="price">
-                                        <del>$80.00</del>
-                                        <ins>$39.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
-                                    <div class="price">
-                                        <del>$99.00</del>
-                                        <ins>$89.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
+                    @else
+                        <div class="text-center py-5">
+                            <p class="text-muted">No best-selling products found.</p>
                         </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product4.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP Color LaserJet Pro MFP 3301fdw Wireless Printer</a></h4>
-                                    <div class="price">
-                                        <del>$70.00</del>
-                                        <ins>$49.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP OfficeJet Pro 8135e Wireless All-in-One Printer</a></h4>
-                                    <div class="price">
-                                        <del>$149.00</del>
-                                        <ins>$129.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product5.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Go to Wishlist"><i class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP LaserJet Pro MFP 3101sdw Printer</a></h4>
-                                    <div class="price">
-                                        <del>$77.00</del>
-                                        <ins>$47.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="product_box">
-                                <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="Product Name" class="img-fluid hover_img" />
-                                    <div class="cart_btn">
-                                        <button class="cusbtn cartbtn">Add to cart</button>
-                                    </div>
-                                </a>
-                                <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
-                                    <div class="wishlist">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist"><i class="fa-regular fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <h4><a href="#">HP OfficeJet Pro 9125e All-in-One Printer</a></h4>
-                                    <div class="price">
-                                        <del>$180.00</del>
-                                        <ins>$109.00</ins>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-solid fa-star"></span>
-                                        <span class="fa-regular fa-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </section>
 

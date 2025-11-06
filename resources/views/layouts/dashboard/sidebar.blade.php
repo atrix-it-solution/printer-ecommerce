@@ -55,36 +55,36 @@
                 </ul>
             </div>
         </li>
-        <!-- Products Collapse Menu -->
+        <!-- blogs Collapse Menu -->
         @php
-            $isBlogsActive = request()->routeIs('productcategories.*') || request()->routeIs('products.*') || request()->routeIs('product.*');
+            $isBlogsActive = request()->routeIs('blogcategories.*') || request()->routeIs('blogs.*') || request()->routeIs('blog.*');
         @endphp
         
         <li class="nav-item">
             <a class="nav-link d-flex align-items-center {{ $isBlogsActive ? 'active' : '' }}" 
                href="#" 
                data-bs-toggle="collapse" 
-               data-bs-target="#productsCollapse" 
+               data-bs-target="#blogsCollapse" 
                aria-expanded="{{ $isBlogsActive ? 'true' : 'false' }}"
-               aria-controls="productsCollapse">
+               aria-controls="blogsCollapse">
                 <i class="bi bi-box-seam me-2"></i>
                 <span class="">Blogs</span>
                 <i class="bi bi-chevron-down ms-auto collapse-icon"></i>
             </a>
-            <div class="collapse {{ $isBlogsActive ? 'show' : '' }}" id="productsCollapse">
+            <div class="collapse {{ $isBlogsActive ? 'show' : '' }}" id="blogsCollapse">
                 <ul class="nav flex-column ps-4">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('products.index') ? 'active' : '' }}" href="{{ route('products.index') }}">
+                        <a class="nav-link {{ request()->routeIs('blogs.index') ? 'active' : '' }}" href="{{ route('blogs.index') }}">
                             <i class="bi bi-grid me-2"></i>All Blogs
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('products.create') ? 'active' : '' }}" href="{{ route('products.create') }}">
+                        <a class="nav-link {{ request()->routeIs('blogs.create') ? 'active' : '' }}" href="{{ route('blogs.create') }}">
                             <i class="bi bi-plus-circle me-2"></i>Add new blogs
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('productcategories.index') ? 'active' : '' }}" href="{{ route('productcategories.index') }}">
+                        <a class="nav-link {{ request()->routeIs('blogcategories.index') ? 'active' : '' }}" href="{{ route('blogcategories.index') }}">
                             <i class="bi bi-tags me-2"></i>Blogs Categories
                         </a>
                     </li>

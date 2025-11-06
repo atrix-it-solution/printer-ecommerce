@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('category_image')->nullable();
             $table->timestamps();
+
+            $table->foreign('category_image')->references('id')->on('media')->onDelete('set null');
         });
     }
 

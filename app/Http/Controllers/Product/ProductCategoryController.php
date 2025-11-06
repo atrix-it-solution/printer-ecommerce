@@ -10,8 +10,8 @@ class ProductCategoryController extends Controller
 {
     public function index()
     {
-        $categories = ProductCategory::all();
-        $editCategory = null; // Make sure this is set
+        $categories = ProductCategory::with('categoryImage')->get(); // Load relationship
+        $editCategory = null;
         
         return view('pages.dashboard.product.product_category.index', compact('categories', 'editCategory'));
     }
@@ -21,22 +21,24 @@ class ProductCategoryController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:product_categories,slug',
+            'description' => 'nullable|string',
+            'category_image' => 'nullable|exists:media,id',
         ]);
 
         ProductCategory::create([
             'title' => $request->title,
             'slug' => $request->slug,
             'description' => $request->description,
+            'category_image' => $request->category_image,
         ]);
-        
-        // FIX: Use correct route name
+
         return redirect()->route('productcategories.index')->with('success', 'Product category created successfully!');
     }
 
     public function edit($id)
     {
-        $editCategory = ProductCategory::findOrFail($id);  
-        $categories = ProductCategory::all(); // Use all() instead of get()
+        $editCategory = ProductCategory::with('categoryImage')->findOrFail($id); // Load relationship
+        $categories = ProductCategory::with('categoryImage')->get(); // Load relationship
 
         return view('pages.dashboard.product.product_category.index', compact('editCategory', 'categories'));
     }
@@ -49,15 +51,16 @@ class ProductCategoryController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:product_categories,slug,' . $id,
             'description' => 'nullable|string',
+            'category_image' => 'nullable|exists:media,id',
         ]);
 
         $category->update([
             'title' => $request->title,
             'slug' => $request->slug,
             'description' => $request->description,
+            'category_image' => $request->category_image,
         ]);
 
-        // FIX: Use correct route name
         return redirect()->route('productcategories.index')->with('success', 'Category updated successfully!');
     }
 
@@ -66,7 +69,6 @@ class ProductCategoryController extends Controller
         $productCategory = ProductCategory::findOrFail($id);
         $productCategory->delete();
 
-        // FIX: Use correct route name
         return redirect()
             ->route('productcategories.index')
             ->with('success', 'Category deleted successfully.');

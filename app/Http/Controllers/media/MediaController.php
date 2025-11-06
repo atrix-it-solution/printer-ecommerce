@@ -45,43 +45,71 @@ class MediaController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:4096'
+   /**
+ * Store a newly created resource in storage.
+ */
+public function store(Request $request)
+{
+    $request->validate([
+        'image' => [
+            'required',
+            'file',
+            'mimes:jpeg,png,jpg,gif,webp,avif', // Explicitly list all allowed types
+            'max:4096'
+        ]
+    ]);
+
+    try {
+        \Log::info('Upload attempt started', ['file' => $request->file('image')?->getClientOriginalName()]);
+
+        $file = $request->file('image');
+        
+        // Check if file was uploaded successfully
+        if (!$file->isValid()) {
+            return response()->json([
+                'error' => 'File upload failed'
+            ], 422);
+        }
+
+        // Additional manual validation for image types
+        $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif'];
+        if (!in_array($file->getMimeType(), $allowedMimes)) {
+            return response()->json([
+                'error' => 'Invalid file type. Allowed: JPEG, PNG, GIF, WEBP, AVIF'
+            ], 422);
+        }
+
+        $path = $file->store('media', 'public');
+
+        $media = Media::create([
+            'file_name' => basename($path),
+            'file_path' => $path,
+            'original_name' => $file->getClientOriginalName(),
+            'mime_type' => $file->getMimeType(),
+            'size' => $file->getSize(),
         ]);
 
-        try {
-            $file = $request->file('image');
-            $path = $file->store('media', 'public');
+        \Log::info('Media created successfully', ['media_id' => $media->id]);
 
-            $media = Media::create([
-                'file_name' => basename($path),
-                'file_path' => $path,
-                'original_name' => $file->getClientOriginalName(),
-                'mime_type' => $file->getMimeType(),
-                'size' => $file->getSize(),
-            ]);
+        return response()->json([
+            'id' => $media->id,
+            'url' => asset('storage/' . $path),
+            'file_path' => $path,
+            'file_name' => $media->file_name,
+            'original_name' => $media->original_name,
+            'size' => $media->size,
+            'message' => 'Image uploaded successfully'
+        ], 201);
 
-            return response()->json([
-                'id' => $media->id,
-                'url' => asset('storage/' . $path),
-                'file_path' => $path,
-                'file_name' => $media->file_name,
-                'original_name' => $media->original_name,
-                'message' => 'Image uploaded successfully'
-            ], 201);
-
-        } catch (\Exception $e) {
-            \Log::error('MediaController store error: ' . $e->getMessage());
-            return response()->json([
-                'error' => 'Upload failed: ' . $e->getMessage()
-            ], 500);
-        }
+    } catch (\Exception $e) {
+        \Log::error('MediaController store error: ' . $e->getMessage());
+        \Log::error('Stack trace: ' . $e->getTraceAsString());
+        
+        return response()->json([
+            'error' => 'Upload failed: ' . $e->getMessage()
+        ], 500);
     }
+}
 
     /**
      * Remove the specified resource from storage.

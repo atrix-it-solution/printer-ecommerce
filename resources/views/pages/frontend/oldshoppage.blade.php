@@ -1,6 +1,6 @@
 @extends('layouts.frontend.master')
 
-@section('title', 'Category')
+@section('title', 'Shop')
 
 @section('content')
         <div class="bodyWrapper flex-grow-1">
@@ -9,10 +9,10 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center mb-1">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $category->title }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 text-white">{{ $category->title }}</h1>
+                    <h1 class="mb-0 text-white">Our Products</h1>
                 </div>
             </section>
             
@@ -20,8 +20,7 @@
                 <div class="container py-lg-3">
                     <div class="row gx-lg-5">
                         <div class="col-lg-3">
-                             @include('partials.filters' )
-                            <!-- <div class="filter pb-4">
+                            <div class="filter pb-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h5 class="fw-normal">Filter</h5>
                                     <a href="javascript:void(0);" class="clearAll small text-decoration-underline">Clear all</a>
@@ -40,25 +39,25 @@
                                     <ul class="cuschecbox filter_list">
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat1" name="category" value="Garments" />
+                                                <input type="checkbox" id="cat1" name="category" value="Deskjet Printers" />
                                                 <label for="cat1">Deskjet Printers <span>(06)</span></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat2" name="category" value="Grocery" checked />
+                                                <input type="checkbox" id="cat2" name="category" value="Envy Printers"  />
                                                 <label for="cat2">Envy Printers <span>(10)</span></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat3" name="category" value="Food Essentials" />
+                                                <input type="checkbox" id="cat3" name="category" value="Laserjet Printers" />
                                                 <label for="cat3">Laserjet Printers <span>(12)</span></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-group">
-                                                <input type="checkbox" id="cat4" name="category" value="Accessories" />
+                                                <input type="checkbox" id="cat4" name="category" value="Officejet Printers" />
                                                 <label for="cat4">Officejet Printers <span>(01)</span></label>
                                             </div>
                                         </li>
@@ -109,16 +108,16 @@
                                     </div>
                                 </div>
 
-                            </div> -->
+                            </div>
 
                         </div>
 
                         <div class="col-lg-9">
-                            <h5 class="cat_name fw-normal pb-3">{{ $category->title }}</h5>
-                            
+                            <h5 class="cat_name fw-normal pb-3">Products</h5>
+
 
                             <div class="product_filter d-flex justify-content-between align-items-center gap-3 pb-3 border-bottom mb-3">
-                                <span class="total_products">{{ $products->total() }} Products</span>
+                                <span class="total_products">29 Products</span>
                                 <div class="sorting">
                                     <form action="">
                                         <div class="form-group d-flex align-items-center">

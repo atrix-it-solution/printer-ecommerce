@@ -6,11 +6,19 @@ use App\Http\Controllers\dashboardSettings\SettingsController;
 use App\Http\Controllers\media\MediaController;
 use App\Http\Controllers\Product\ProductCategoryController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Blog\BlogCategoryController;
+use App\Http\Controllers\Blog\BlogController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\CategoryController;
 
 
-Route::get('/', function () {
-    return view('pages.frontend.home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
+
+// Category routes
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::get('/about', function () {
     return view('pages.frontend.about');
@@ -61,9 +69,8 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('pages.frontend.register');
 });
-Route::get('/shop', function () {
-    return view('pages.frontend.shop');
-});
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+
 Route::get('/category', function () {
     return view('pages.frontend.category');
 });
@@ -75,6 +82,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/productcategories', ProductCategoryController::class);
     Route::resource('/products', ProductController::class);
+    Route::resource('/blogcategories', BlogCategoryController::class);
+    Route::resource('/blogs', BlogController::class);
     Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
     
     // Settings Routes with more descriptive names

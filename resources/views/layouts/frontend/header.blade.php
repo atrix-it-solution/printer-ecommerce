@@ -44,39 +44,26 @@
                             <a class="navbar-brand d-block pt-0 d-xl-none text-center me-0 mb-3" href="/">
                                 <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="VSIPL Logo" class="img-fluid" />
                             </a>
+                            
                             <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 ps-xl-3 ps-xxl-4">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}"  aria-current="page" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/about">About Us</a>
+                                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}"  href="/about">About Us</a>
                                 </li>
-                                <!-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropdown
+                                <li class="nav-item ">
+                                    <a href="/shop" class="nav-link {{ request()->is('shop') ? 'active' : '' }}">Shop</a>
+                                </li>
+                                @foreach($categories as $category)
+                                <li class="nav-item">
+                                    <a href="{{ route('category.show', $category->slug) }}" 
+                                    class="nav-link {{ request()->is('category/' . $category->slug) ? 'active' : '' }}">
+                                        {{ $category->title }}
                                     </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </li> -->
-                                <li class="nav-item">
-                                    <a href="/shop" class="nav-link">Shop</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/category" class="nav-link">Deskjet Printers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="category" class="nav-link">Envy Printers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="category" class="nav-link">Laserjet Printers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/category" class="nav-link">Officejet Printers</a>
-                                </li>
+                                @endforeach
+                                 
                                 <li class="nav-item">
                                     <a href="/contact" class="nav-link">Contact Us</a>
                                 </li>

@@ -33,8 +33,8 @@
                   @endif
                 </td>
                 <td>
-                  @if($product->featured_image)
-                    <img src="{{ asset('storage/' . $product->featured_image) }}" 
+                  @if($product->featuredImage) 
+                    <img src="{{ $product->featuredImage->url }}" 
                          width="60" 
                          height="50" 
                          style="object-fit: cover; border-radius: 5px;"

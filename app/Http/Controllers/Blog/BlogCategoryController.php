@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Blog\BlogCategory;
 
 
 class BlogCategoryController extends Controller
@@ -11,16 +12,16 @@ class BlogCategoryController extends Controller
      public function index()
     {
         $categories = BlogCategory::all();
-        $editCategory = null; // Make sure this is set
+        $editCategory = null; 
         
-        return view('pages.dashboard.product.product_category.index', compact('categories', 'editCategory'));
+        return view('pages.dashboard.blog.blog_category.index', compact('categories', 'editCategory'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:product_categories,slug',
+            'slug' => 'required|string|max:255|unique:blog_categories,slug',
         ]);
 
         BlogCategory::create([
@@ -30,7 +31,7 @@ class BlogCategoryController extends Controller
         ]);
         
         // FIX: Use correct route name
-        return redirect()->route('productcategories.index')->with('success', 'Product category created successfully!');
+        return redirect()->route('blogcategories.index')->with('success', 'blog category created successfully!');
     }
 
     public function edit($id)
@@ -38,7 +39,7 @@ class BlogCategoryController extends Controller
         $editCategory = BlogCategory::findOrFail($id);  
         $categories = BlogCategory::all(); // Use all() instead of get()
 
-        return view('pages.dashboard.product.product_category.index', compact('editCategory', 'categories'));
+        return view('pages.dashboard.blog.blog_category.index', compact('editCategory', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -47,7 +48,7 @@ class BlogCategoryController extends Controller
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:product_categories,slug,' . $id,
+            'slug' => 'required|string|max:255|unique:blog_categories,slug,' . $id,
             'description' => 'nullable|string',
         ]);
 
@@ -58,7 +59,7 @@ class BlogCategoryController extends Controller
         ]);
 
         // FIX: Use correct route name
-        return redirect()->route('productcategories.index')->with('success', 'Category updated successfully!');
+        return redirect()->route('blogcategories.index')->with('success', 'Category updated successfully!');
     }
 
     public function destroy($id)
@@ -68,7 +69,7 @@ class BlogCategoryController extends Controller
 
         // FIX: Use correct route name
         return redirect()
-            ->route('productcategories.index')
+            ->route('blogcategories.index')
             ->with('success', 'Category deleted successfully.');
     }
 }

@@ -24,6 +24,8 @@ window.setAsMediaImage = function() {
         return;
     }
 
+       const mediaId = window.selectedImageElement.getAttribute('data-id');
+    const imageUrl = window.selectedImagePath;
     const selectedPath = window.selectedImagePath;
 
     switch(window.currentImageType) {
@@ -31,22 +33,28 @@ window.setAsMediaImage = function() {
             document.getElementById('siteIconImage').src = selectedPath;
             document.getElementById('siteIconContainer').style.display = 'block';
             document.getElementById('siteIconInput').value = selectedPath;
-            break;
+        break;
         case 'site_logo':
             document.getElementById('siteLogoImage').src = selectedPath;
             document.getElementById('siteLogoContainer').style.display = 'block';
             document.getElementById('siteLogoInput').value = selectedPath;
-            break;
+        break;
         case 'site_footer_logo':
             document.getElementById('footerLogoImage').src = selectedPath;
             document.getElementById('footerLogoContainer').style.display = 'block';
             document.getElementById('footerLogoInput').value = selectedPath;
-            break;
+        break;
         case 'featured_image':
             document.getElementById('featuredimageImage').src = selectedPath;
             document.getElementById('featuredimageContainer').style.display = 'block';
-            document.getElementById('featuredimageInput').value = selectedPath;
-            break;
+            document.getElementById('featuredimageInput').value = mediaId;
+        break;
+        case 'category_image':
+            document.getElementById('categoryimageImage').src = selectedPath;
+            document.getElementById('categoryimageContainer').style.display = 'block';
+            document.getElementById('categoryimageInput').value = mediaId;
+        break;
+        
     }
 
     // Close modal
@@ -63,22 +71,27 @@ window.removeImage = function(type) {
             document.getElementById('siteIconContainer').style.display = 'none';
             document.getElementById('siteIconImage').src = '';
             document.getElementById('siteIconInput').value = '';
-            break;
+        break;
         case 'site_logo':
             document.getElementById('siteLogoContainer').style.display = 'none';
             document.getElementById('siteLogoImage').src = '';
             document.getElementById('siteLogoInput').value = '';
-            break;
+        break;
         case 'site_footer_logo':
             document.getElementById('footerLogoContainer').style.display = 'none';
             document.getElementById('footerLogoImage').src = '';
             document.getElementById('footerLogoInput').value = '';
-            break;
+            reak;
         case 'featured_image':
             document.getElementById('featuredimageContainer').style.display = 'none';
             document.getElementById('featuredimageImage').src = '';
             document.getElementById('featuredimageInput').value = '';
-            break;
+        break;
+        case 'category_image':
+            document.getElementById('categoryimageContainer').style.display = 'none';
+            document.getElementById('categoryimageImage').src = '';
+            document.getElementById('categoryimageInput').value = '';
+        break;
     }
 };
 
@@ -131,7 +144,7 @@ function handleImageUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
     
-    const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif'];
     const maxSize = 4 * 1024 * 1024;
 
     if (!validTypes.includes(file.type)) {
@@ -211,16 +224,35 @@ function uploadImage(file) {
         method: 'POST',
         body: formData,
         headers: {
-            'X-CSRF-TOKEN': getCsrfToken()
+            'X-CSRF-TOKEN': getCsrfToken(),
+            'Accept': 'application/json'
         }
     })
-    .then(response => {
+    .then(async response => {
+        const responseText = await response.text();
+        
         if (!response.ok) {
-            return response.json().then(err => {
-                throw new Error(err.error || 'Upload failed');
-            });
+            console.error('Server response:', responseText);
+            
+            let errorMessage = 'Upload failed';
+            try {
+                const errorData = JSON.parse(responseText);
+                // Handle Laravel validation errors
+                if (errorData.errors && errorData.errors.image) {
+                    errorMessage = errorData.errors.image[0];
+                } else if (errorData.error) {
+                    errorMessage = errorData.error;
+                } else if (errorData.message) {
+                    errorMessage = errorData.message;
+                }
+            } catch (e) {
+                errorMessage = 'Server error: ' + response.status;
+            }
+            
+            throw new Error(errorMessage);
         }
-        return response.json();
+        
+        return JSON.parse(responseText);
     })
     .then(data => {
         window.images.push(data);
@@ -242,7 +274,7 @@ function uploadImage(file) {
             <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
             <h5>Click to upload an image</h5>
             <p class="text-muted">or drag and drop your file here</p>
-            <small class="text-muted">(JPEG, PNG, GIF, WEBP - Max 4MB)</small>
+            <small class="text-muted">(JPEG, PNG, GIF, WEBP, AVIF - Max 4MB)</small>
         `;
         
         initDragAndDrop();
@@ -255,7 +287,7 @@ function uploadImage(file) {
             <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
             <h5>Click to upload an image</h5>
             <p class="text-muted">or drag and drop your file here</p>
-            <small class="text-muted">(JPEG, PNG, GIF, WEBP - Max 4MB)</small>
+            <small class="text-muted">(JPEG, PNG, GIF, WEBP, AVIF - Max 4MB)</small>
         `;
         
         initDragAndDrop();
@@ -270,6 +302,10 @@ function selectImage(element, imageUrl, imageName) {
     element.classList.add('selected');
     window.selectedImagePath = imageUrl;
     window.selectedImageElement = element;
+
+    // Debug log
+    console.log('Selected image ID:', element.getAttribute('data-id'));
+    console.log('Selected image URL:', imageUrl);
 }
 
 function renderImageGallery() {
@@ -305,12 +341,12 @@ function renderImageGallery() {
                     </button>
                 </div>
             </div>
-            <small class="text-muted d-block text-center mt-1">${image.original_name}</small>
         `;
         
         gallery.appendChild(col);
     });
 }
+            // <small class="text-muted d-block text-center mt-1">${image.original_name}</small>
 
 function deleteImage(id, button) {
     if (!confirm('Are you sure you want to delete this image permanently?')) return;

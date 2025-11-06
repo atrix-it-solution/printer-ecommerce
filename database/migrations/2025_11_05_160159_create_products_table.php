@@ -16,11 +16,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->string('featured_image')->nullable();
+            $table->unsignedBigInteger('featured_image')->nullable();
             $table->decimal('regular_price')->nullable();
             $table->decimal('sale_price')->nullable();
-            $table->integer('stock_quantity')->default(0);
+            $table->string('sku', 100)->unique()->nullable();
+            $table->integer('stock_quantity')->nullable()->default(null); 
+
             $table->timestamps();
+
+            $table->foreign('featured_image')->references('id')->on('media')->onDelete('set null');
         });
     }
 
