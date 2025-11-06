@@ -23,13 +23,6 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/about', function () {
     return view('pages.frontend.about');
 });
-
-Route::get('/contact', function () {
-    return view('pages.frontend.contact');
-});
-Route::get('/services', function () {
-    return view('pages.frontend.services');
-});
 Route::get('/blog', function () {
     return view('pages.frontend.blog');
 });
@@ -71,10 +64,65 @@ Route::get('/register', function () {
 });
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
+
+Route::get('/cart', function () {
+    return view('pages.frontend.cart');
+});
+
 Route::get('/category', function () {
     return view('pages.frontend.category');
 });
-
+Route::get('/checkout', function () {
+    return view('pages.frontend.checkout');
+});
+Route::get('/contact', function () {
+    return view('pages.frontend.contact');
+});
+Route::get('/edit-account', function () {
+    return view('pages.frontend.edit-account');
+});
+Route::get('/edit-address', function () {
+    return view('pages.frontend.edit-address');
+});
+Route::get('/faq', function () {
+    return view('pages.frontend.faq');
+});
+Route::get('/forgot-password', function () {
+    return view('pages.frontend.forgot-password');
+});
+Route::get('/login-register', function () {
+    return view('pages.frontend.login-register');
+});
+Route::get('/my-account', function () {
+    return view('pages.frontend.my-account');
+});
+Route::get('/orders', function () {
+    return view('pages.frontend.orders');
+});
+Route::get('/privacy-policy', function () {
+    return view('pages.frontend.privacy-policy');
+});
+Route::get('/shop', function () {
+    return view('pages.frontend.shop');
+});
+Route::get('/single-blog', function () {
+    return view('pages.frontend.single-blog');
+});
+Route::get('/terms-and-conditions', function () {
+    return view('pages.frontend.terms-and-conditions');
+});
+Route::get('/view-order', function () {
+    return view('pages.frontend.view-order');
+});
+Route::get('/wishlist', function () {
+    return view('pages.frontend.wishlist');
+});
+Route::get('/billing-address', function () {
+    return view('pages.frontend.billing-address');
+});
+Route::get('/shipping-address', function () {
+    return view('pages.frontend.shipping-address');
+});
 
 
 // Dashboard Routes

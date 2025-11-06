@@ -214,11 +214,9 @@ header nav ul>li.nav-item .nav-link.active {
 }
 .cat_box .cat_content {
     position: absolute;
-    bottom: 30px;
     left: 30px;
+    top: 30px;
     z-index: 3;
-    background-color: #fff;
-    padding: 15px 25px 18px;
     line-height: normal;
     border-radius: inherit;
 }
@@ -227,21 +225,17 @@ header nav ul>li.nav-item .nav-link.active {
     font-size: 18px;
     margin-bottom: 5px;
 }
+.cat_box .cat_content p{
+    font-size: 15px;
+    opacity: .7;
+}
 .cat_box .cat_content .cusbtn a {
     font-size: 15px;
     color: var(--theme);
     text-decoration: underline !important;
 }
-.cat_box .cat_img:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(0deg, #0000008c, transparent);
+.cat_box .cat_img {
+    background: #F3f3f3;
 }
 .cat_box:hover .cat_img img{
     transform: scale(1.2);
@@ -737,6 +731,7 @@ footer aside .menu li.time_icon::before{
     content: "\f017";
     font-weight: normal;
 }
+
 .search_sec {
     position: fixed;
     top: 0;
@@ -1857,4 +1852,29 @@ table.shop_table tfoot td{
 /* my custom css */
 .best-collections_sec .img_box , .mission-vision_sec .img_box {
     background-color: #F3F3F3;
+}
+
+/* login register page css  */
+.login-register-border{
+    border-right: 1px solid #e5e5e5;
+}
+.login-register-page .subheader {
+    background-image: url('/assets/frontend/images/account_bg.jpg');
+    background-position: center;
+    background-size: cover;
+}
+/* account details page css  */
+.account_form .form-group label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    opacity: .8;
+    font-weight: 500;
+    padding-bottom: 3px;
+}
+.account_form .form-group .form-control {
+    min-height: 50px;
+    padding: 10px 17px;
+    appearance: auto;
+    transition: all .3s ease;
 }

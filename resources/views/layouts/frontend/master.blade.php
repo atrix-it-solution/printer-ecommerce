@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title') - VSIPL</title>
+    <title>@yield('title') - Print Help</title>
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome-all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}" />
@@ -35,13 +35,13 @@
             <div class="search_head">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span>WHAT ARE YOU LOOKING FOR?</span>
-                    <a href="javascript:void(0);" id="closeSearch" class="close_icon"><i class="fa-solid fa-times"></i></a>
+                    <a href="javascript:void(0);" id="closeSearch" class="close_icon"><svg class="svg-inline--fa fa-xmark" data-prefix="fas" data-icon="xmark" role="img" viewBox="0 0 384 512" aria-hidden="true" data-fa-i2svg=""><path fill="currentColor" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"></path></svg><!-- <i class="fa-solid fa-times"></i> Font Awesome fontawesome.com --></a>
                 </div>
                 <div class="search_bar">
                     <form action="">
                         <div class="form-group position-relative">
-                            <input type="text" placeholder="Search Products..." name="search" id="search" />
-                            <button type="submit" class="searchbtn"><i class="fa-solid fa-search"></i></button>
+                            <input type="text" placeholder="Search Products..." name="search" id="search">
+                            <button type="submit" class="searchbtn"><svg class="svg-inline--fa fa-magnifying-glass" data-prefix="fas" data-icon="magnifying-glass" role="img" viewBox="0 0 512 512" aria-hidden="true" data-fa-i2svg=""><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg><!-- <i class="fa-solid fa-search"></i> Font Awesome fontawesome.com --></button>
                         </div>
                     </form>
                 </div>
@@ -52,7 +52,7 @@
                     <li>
                         <a href="#" class="sproduct_box d-flex gap-3 gap-md-4">
                             <div class="product_img">
-                                <img src="images/product_img1.jpg" alt="product title" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="product title" class="img-fluid">
                             </div>
                             <div class="product_content flex-grow-1">
                                 <h4>Alicia Dress</h4>
@@ -66,7 +66,7 @@
                     <li>
                         <a href="#" class="sproduct_box d-flex gap-3 gap-md-4">
                             <div class="product_img">
-                                <img src="images/product_img2.jpg" alt="product title" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="product title" class="img-fluid">
                             </div>
                             <div class="product_content flex-grow-1">
                                 <h4>Alicia Dress</h4>
@@ -80,7 +80,7 @@
                     <li>
                         <a href="#" class="sproduct_box d-flex gap-3 gap-md-4">
                             <div class="product_img">
-                                <img src="images/product_img3.jpg" alt="product title" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/product3.png') }}" alt="product title" class="img-fluid">
                             </div>
                             <div class="product_content flex-grow-1">
                                 <h4>Alicia Dress</h4>
@@ -94,7 +94,7 @@
                     <li>
                         <a href="#" class="sproduct_box d-flex gap-3 gap-md-4">
                             <div class="product_img">
-                                <img src="images/product_img11.jpg" alt="product title" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/product4.png') }}" alt="product title" class="img-fluid">
                             </div>
                             <div class="product_content flex-grow-1">
                                 <h4>Alicia Dress</h4>
@@ -108,7 +108,7 @@
                     <li>
                         <a href="#" class="sproduct_box d-flex gap-3 gap-md-4">
                             <div class="product_img">
-                                <img src="images/product_img2.jpg" alt="product title" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/product2.png') }}" alt="product title" class="img-fluid">
                             </div>
                             <div class="product_content flex-grow-1">
                                 <h4>Alicia Dress</h4>
@@ -123,7 +123,7 @@
 
                 <div class="searched_box d-flex align-items-center justify-content-between gap-4 py-3 px-4 bg-light rounded-3">
                     <div>Search for "<span class="text-underline">d</span>"</div>
-                    <span class="fa-solid fa-arrow-right"></span>
+                    <svg class="svg-inline--fa fa-arrow-right" data-prefix="fas" data-icon="arrow-right" role="img" viewBox="0 0 512 512" aria-hidden="true" data-fa-i2svg=""><path fill="currentColor" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg><!-- <span class="fa-solid fa-arrow-right"></span> Font Awesome fontawesome.com -->
                 </div>
             </div>
         </div>

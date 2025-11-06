@@ -82,141 +82,7 @@
                 </video>
             </section> -->
 
-            <section class="teamsec py-5">
-                <div class="container py-lg-5">
-
-                    <div class="cusheading_row text-center pb-4">
-                        <h5 class="subheading mb-1 ffs text-theme">Who we are</h5>
-                        <h2 class="">Meet our team</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 my-15">
-                            <div class="team_box">
-                                <a href="javascript:void(0);" class="team_img">
-                                    <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="Team" class="img-fluid" />
-                                </a>
-                                <div class="team_content">
-                                    <h4><a href="javascript:void(0);">Member Name</a></h4>
-                                    <div class="designation mb-1 pb-2">Founder</div>
-                                    <ul class="user_social list-unstyled gap-2 d-flex">
-                                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 my-15">
-                            <div class="team_box">
-                                <a href="javascript:void(0);" class="team_img">
-                                    <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="Team" class="img-fluid" />
-                                </a>
-                                <div class="team_content">
-                                    <h4><a href="javascript:void(0);">Member Name</a></h4>
-                                    <div class="designation mb-1 pb-2">Co-Founder</div>
-                                    <ul class="user_social list-unstyled gap-2 d-flex">
-                                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 my-15">
-                            <div class="team_box">
-                                <a href="javascript:void(0);" class="team_img">
-                                    <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="Team" class="img-fluid" />
-                                </a>
-                                <div class="team_content">
-                                    <h4><a href="javascript:void(0);">Member Name</a></h4>
-                                    <div class="designation mb-1 pb-2">Chairman</div>
-                                    <ul class="user_social list-unstyled gap-2 d-flex">
-                                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="col-lg-3 my-2">
-                            <ul class="nav nav-pills sticky-top" id="aboutsec" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="founder-tab" data-bs-toggle="pill" data-bs-target="#founder" type="button" role="tab" aria-controls="founder" aria-selected="true">Founder</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="cofounder-tab" data-bs-toggle="pill" data-bs-target="#cofounder" type="button" role="tab" aria-controls="cofounder" aria-selected="false">Co-Founder</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="Chairman-tab" data-bs-toggle="pill" data-bs-target="#Chairman" type="button" role="tab" aria-controls="Chairman" aria-selected="false">Chairman</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="president-tab" data-bs-toggle="pill" data-bs-target="#president" type="button" role="tab" aria-controls="president" aria-selected="false">President</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-9 my-2">
-                            <div class="tab-content" id="aboutsecContent">
-                                <div class="tab-pane fade show active" id="founder" role="tabpanel" aria-labelledby="founder-tab" tabindex="0">
-                                    <div class="team_content">
-                                        <div class="team_img rounded-3 overflow-hidden position-relative">
-                                            <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="Founder" class="img-fluid" />
-                                            <h3>Member Name</h3>
-                                        </div>
-                                        <div class="team_desc">
-                                            <h4>Founder</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="cofounder" role="tabpanel" aria-labelledby="cofounder-tab" tabindex="0">
-                                    <div class="team_content">
-                                        <div class="team_img rounded-3 overflow-hidden position-relative">
-                                            <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="Founder" class="img-fluid" />
-                                            <h3>Member Name</h3>
-                                        </div>
-                                        <div class="team_desc">
-                                            <h4>Co-Founder</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="Chairman" role="tabpanel" aria-labelledby="Chairman-tab" tabindex="0">
-                                    <div class="team_content">
-                                        <div class="team_img rounded-3 overflow-hidden position-relative">
-                                            <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="Chairman" class="img-fluid" />
-                                            <h3>Member Name</h3>
-                                        </div>
-                                        <div class="team_desc">
-                                            <h4>Chairman</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="president" role="tabpanel" aria-labelledby="president-tab" tabindex="0">
-                                    <div class="team_content">
-                                        <div class="team_img rounded-3 overflow-hidden position-relative">
-                                            <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="president" class="img-fluid" />
-                                            <h3>Member Name</h3>
-                                        </div>
-                                        <div class="team_desc">
-                                            <h4>President</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima libero ab laboriosam, possimus quo facere rerum nesciunt id. Est quo illo earum quidem dignissimos ipsam cumque fuga. Unde, esse odit!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </section>
+           
 
             <section class="subscribe_sec bg-light py-5">
                 <div class="container py-lg-3">
@@ -261,8 +127,8 @@
                         <div class="col-lg-6 my-2">
                             <div class="sale_content text-center">
                                 <h5 class="subheading ffs text-theme">Super offer</h5>
-                                <h2 class="text-uppercase py-2">Summer sale</h2>
-                                <h4 class="pb-3">Up to 50% off</h4>
+                                <h2 class="text-uppercase py-2">Winter sale</h2>
+                                <h4 class="pb-3">Up to 20% off</h4>
                                 <p>Spend just $100 and get a 50% off voucher for your next printer or accessory purchase.</p>
                                 <div class="cusbtn pt-4">
                                     <a href="#" class="btn btn-dark px-5 py-3">Discover More <i class="fa-solid fa-arrow-right"></i></a>
@@ -287,12 +153,12 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
+                                        <p class="desc">Excellent warranty support — I had a small hardware issue and the manufacturer handled the repair quickly after we contacted support. Smooth experience from purchase to fix.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
-                                            <h6 class="author-title">Selina morgan</h6>
-                                            <p class="author-des">Interior designer</p>
+                                            <h6 class="author-title">Robert Smith</h6>
+                                            <p class="author-des">IT Administrator</p>
                                         </div>
                                         <div>
                                             <div class="rating">
@@ -302,7 +168,7 @@
                                                 <span class="fa-solid fa-star"></span>
                                                 <span class="fa-regular fa-star"></span>
                                             </div>
-                                            <div>(5 review)</div>
+                                            <div>(76 reviews)</div>
                                         </div>
                                     </div>
                                 </div>
@@ -316,12 +182,12 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
+                                        <p class="desc">The consumables selection was clear and ordering replacement cartridges is simple. Print quality has been consistently sharp for our photos and proposals.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
-                                            <h6 class="author-title">Mia thompson</h6>
-                                            <p class="author-des">Customer product</p>
+                                            <h6 class="author-title">Sarah Miller</h6>
+                                            <p class="author-des">Marketing Manager</p>
                                         </div>
                                         <div>
                                             <div class="rating">
@@ -331,7 +197,7 @@
                                                 <span class="fa-solid fa-star"></span>
                                                 <span class="fa-regular fa-star"></span>
                                             </div>
-                                            <div>(5 review)</div>
+                                            <div>(54 reviews)</div>
                                         </div>
                                     </div>
                                 </div>
@@ -345,12 +211,12 @@
                                 <div class="review_content">
                                     <div class="review_content_inner">
                                         <span><i class="fa-solid fa-quote-left"></i></span>
-                                        <p class="desc">Great experience! The printer works perfectly and the prices are unbeatable. Highly satisfied with my purchase.</p>
+                                        <p class="desc">Setting up network printing for our office was straightforward following the guide. The printer is stable on Wi‑Fi and shared with the whole team without issues.</p>
                                     </div>
                                     <div class="review_foot">
                                         <div>
-                                            <h6 class="author-title">Selina morgan</h6>
-                                            <p class="author-des">Interior designer</p>
+                                            <h6 class="author-title">Daniel Brown</h6>
+                                            <p class="author-des">Office Manager</p>
                                         </div>
                                         <div>
                                             <div class="rating">
@@ -360,7 +226,7 @@
                                                 <span class="fa-solid fa-star"></span>
                                                 <span class="fa-regular fa-star"></span>
                                             </div>
-                                            <div>(5 review)</div>
+                                            <div>(33 reviews)</div>
                                         </div>
                                     </div>
                                 </div>
@@ -370,39 +236,7 @@
                 </div>
             </section>
 
-            <section class="earn_sec py-4">
-                <div class="container pb-lg-5">
-                    <div class="cusheading_row text-center pb-4">
-                        <h2>Ways to earn with <b class="ffs">vsipl</b></h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon1.svg') }}" alt="Network and seller Partner" class="img-fluid" /></div>
-                                <h4>Network and seller Partner</h4>
-                            </a>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon2.svg') }}" alt="Brand & vendor partner" class="img-fluid" /></div>
-                                <h4>Brand & vendor partner</h4>
-                            </a>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon3.svg') }}" alt="Digital content creator" class="img-fluid" /></div>
-                                <h4>Digital content creator</h4>
-                            </a>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <a href="javascript:void(0);" class="earn_box">
-                                <div class="icon"><img src="{{ asset('assets/frontend/images/earn_icon4.svg') }}" alt="Experience host & trainer" class="img-fluid" /></div>
-                                <h4>Experience host & trainer</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
 
             <section class="email_sec bg-theme py-5">
                 <div class="container py-lg-4">
@@ -489,7 +323,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
                             </div>
                         </div>
                     </div>

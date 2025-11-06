@@ -4,19 +4,19 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-3">
                             <ul class="topbar_info_list d-flex align-items-center justify-content-center justify-content-lg-start gap-4 mb-0 list-unstyled">
-                                <li><a href="mailto:info@vsipl.com"><i class="fa-solid fa-envelope"></i> info@printer.com</a></li>
+                                <li><a href="mailto:info@printhelp.com"><i class="fa-solid fa-envelope"></i> info@printhelp.com</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <div class="offer_slider common_slider">
                                 <div class="offer_slide text-center">
-                                    <p class="mb-0">Summer sale discount off 30%! <a href="#">Shop now</a></p>
+                                    <p class="mb-0">Winter sale discount off 30%! <a href="#">Shop now</a></p>
                                 </div>
                                 <div class="offer_slide text-center">
-                                    <p class="mb-0">Summer sale discount off 10%! <a href="#">Shop now</a></p>
+                                    <p class="mb-0">Winter sale discount off 10%! <a href="#">Shop now</a></p>
                                 </div>
                                 <div class="offer_slide text-center">
-                                    <p class="mb-0">Summer sale discount off 50%! <a href="#">Shop now</a></p>
+                                    <p class="mb-0">Winter sale discount off 50%! <a href="#">Shop now</a></p>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 200 200"><g stroke-width="6.5" stroke-linecap="round"><path d="M72 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)"/><path d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554" fill="none" stroke="var(--theme)" /><path d="M72 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)"/><path d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554" fill="none" stroke="var(--theme)" /><path d="M100.75 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" /><path d="M100.75 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" /></g></svg>
                         </button>
-                        <div class="d-xl-none pt-1"><a href="javascript:void(0);" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></div>
+                        <div class="d-xl-none pt-1"><a href="javascript:void(0);" class="search-trigger" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></div>
                     </div>
                     <a class="navbar-brand" href="/">
                         <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="VSIPL Logo" class="img-fluid" />
@@ -71,13 +71,13 @@
                             <div class="mobile_info d-xl-none">
                                 <ul class="navbar-nav pt-4">
                                     <li><a href="tel:+919410109369"><i class="text-theme me-2 fa-solid fa-phone"></i> +91 94101-09369</a></li>
-                                    <li><a href="mailto:info@printer.com"><i class="text-theme me-2 fa-regular fa-envelope"></i> info@printer.com</a></li>
+                                    <li><a href="mailto:info@printhelp.com"><i class="text-theme me-2 fa-regular fa-envelope"></i> info@printhelp.com</a></li>
                                     <li><a href="javascript:void(0);"><i class="text-theme me-2 fa-solid fa-map-marker-alt"></i> Saharanpur, UP, India</a></li>
                                 </ul>
                             </div>
                         </div>
                         <ul class="navbar-nav flex-row d-flex gap-2 gap-xxl-4 header_right_area">
-                            <li class="d-none d-xl-block"><a href="javascript:void(0);" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></li>
+                            <li class="d-none d-xl-block"><a href="javascript:void(0);" class="search-trigger" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></li>
                             <li><a href="my-account" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="My Account"><i class="fa-regular fa-user"></i></a></li>
                             <li class="me-1"><a href="wishlist" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist"><i class="fa-regular fa-heart"></i> <span class="count">2</span></a></li>
                             <li><a href="cart" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Cart"><i class="fa fa-cart-shopping"></i> <span class="count">4</span></a></li>

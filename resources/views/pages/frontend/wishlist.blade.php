@@ -21,14 +21,14 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3 my-15">
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img11.jpg') }}" alt="Product Name" class="img-fluid" />
-                                    <img src="{{ asset('assets/frontend/images/product_img1.jpg') }}" alt="Product Name" class="img-fluid hover_img" />
+                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product6.png') }}" alt="Product Name" class="img-fluid hover_img" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-20%</div>
                                     <div class="wishlist active">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Remove From Wishlist"><i class="fa-solid fa-trash"></i></span>
                                     </div>
@@ -52,13 +52,13 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3 my-15">
                             <div class="product_box">
                                 <a href="#" class="product_img">
-                                    <img src="{{ asset('assets/frontend/images/product_img2.jpg') }}" alt="Product Name" class="img-fluid" />
+                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" alt="Product Name" class="img-fluid" />
                                     <div class="cart_btn">
                                         <button class="cusbtn cartbtn">Add to cart</button>
                                     </div>
                                 </a>
                                 <div class="product_meta">
-                                    <div class="discount_percent">-50%</div>
+                                    <div class="discount_percent">-30%</div>
                                     <div class="wishlist active">
                                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Remove From Wishlist"><i class="fa-solid fa-trash"></i></span>
                                     </div>
@@ -121,7 +121,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
                             </div>
                         </div>
                     </div>

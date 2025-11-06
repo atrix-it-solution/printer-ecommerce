@@ -32,7 +32,7 @@
                                 <ul class="account-menu list-unstyled">
                                     <li><a href="my-account"><i class="fa-solid fa-grip"></i> <span>Dashboard</span></a></li>
                                     <li><a href="orders" class="active"><i class="fa-solid fa-bag-shopping"></i> <span>My Orders</span></a></li>
-                                    <li><a href="#"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
+                                    <li><a href="/wishlist"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
                                     <li><a href="edit-address"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
                                     <li><a href="edit-account"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
                                     <li><a href="#"><i class="fa-solid fa-sign-out"></i> <span>Logout</span></a></li>
@@ -41,54 +41,78 @@
                         </div>
                         <div class="col-lg-9 my-2">
                             <div class="account_right_side">
-                                <div class="order_page">
-                                    <h2 class="acc_heading pb-3">Orders Details</h2>
-                                    <p>Order <mark class="rounded-pill px-2">#6876</mark> was placed on <mark class="rounded-pill px-2">October 14, 2025</mark> and is currently <span class="badge bg-secondary fw-normal rounded-pill fs-14">Processing</span>.</p>
-                                    <div class="view_order_table table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <td>Product</td>
-                                                    <td class="text-end">Total</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#">Product Name</a> <strong>× <span class="total_item">1</span></strong>
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <div class="price">$149..99</div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td>Subtotal:</td>
-                                                    <td class="text-end fs-5 fw-semibold">$149.99</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total:</td>
-                                                    <td class="text-end fs-5 fw-semibold">$149.99</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Payment method:</td>
-                                                    <td class="text-end">Cash on delivery</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Actions:</td>
-                                                    <td class="text-end">
-                                                        <a href="#" class="btn btn-dark px-4 text-uppercase fs-7 py-2">Invoice</a>
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <div class="billing_address shadow p-4 border border-light mt-4 rounded-3">
-                                        <h4 class="pb-2">Billing address</h4>
-                                        <address class="mb-0">
-                                            testing <br> test test <br>7467 <br>tesat <br>testing 140307 <br>Chandigarh, India <br>978675432 <br>atrixitsolution2025@gmail.com
-                                        </address>
+                                <div class="profile_page">
+                                    <h2 class="acc_heading pb-3">Edit Profile</h2>
+                                    <div class="account_form">
+                                        <form action="">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 mb-3">
+                                                    <label for="fname">First Name</label>
+                                                    <input type="text" class="form-control" name="fname" id="fname" placeholder="" value="Rajat">
+                                                </div>
+                                                <div class="form-group col-lg-6 mb-3">
+                                                    <label for="lname">Last Name</label>
+                                                    <input type="text" class="form-control" name="lname" id="lname" placeholder="" value="Bansal">
+                                                </div>
+                                                <div class="form-group col-lg-12 mb-3">
+                                                    <label for="displayname">Display Name</label>
+                                                    <input type="text" class="form-control" name="displayname" id="displayname" placeholder="" value="Rajat">
+                                                </div>
+                                                <div class="form-group col-lg-6 mb-3">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" class="form-control" name="email" id="email" placeholder="" value="rk891811@gmail.com" readonly="">
+                                                </div>
+                                                <div class="form-group col-lg-6 mb-3">
+                                                    <label for="phonenumber">Phone Number</label>
+                                                    <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="" value="+91-98765-43210">
+                                                </div>
+                                                <div class="form-group col-lg-6 mb-3">
+                                                    <label for="dob">DOB</label>
+                                                    <input type="date" class="form-control" name="dob" id="dob" placeholder="" value="">
+                                                </div>
+                                                <div class="form-group col-lg-6 mb-3 pb-2">
+                                                    <label for="gender">Gender</label>
+                                                    <select name="gender" id="gender" class="form-control">
+                                                        <option value="">Select Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+
+                                                <legend class="fs-6 col-lg-12 text-uppercase opacity-75">Password Change</legend>
+                                                <div class="form-group col-lg-12 mb-3">
+                                                    <label for="cpassword">Current Password (Leace blank to leave unchanged)</label>
+                                                    <input type="password" class="form-control" name="current_password" id="cpassword" placeholder="" value="">
+                                                </div>
+                                                <div class="form-group col-lg-12 mb-3">
+                                                    <label for="new_password">New Password (Leace blank to leave unchanged)</label>
+                                                    <input type="password" class="form-control" name="new_password" id="new_password" placeholder="" value="">
+                                                </div>
+                                                <div class="form-group col-lg-12 mb-3">
+                                                    <label for="confirm_new_password">Confirm New Password</label>
+                                                    <input type="password" class="form-control" name="confirm_new_password" id="confirm_new_password" placeholder="" value="">
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="radio" value="Subscribe to our Newsletter" id="newsletter" name="newsletter" required="">
+                                                        <label class="form-check-label" for="newsletter">Subscribe to our Newsletter</label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="radio" value="Unsubscribe from our Newsletter" id="unsub_newsletter" name="newsletter" required="">
+                                                        <label class="form-check-label" for="unsub_newsletter">Unsubscribe from our Newsletter</label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="radio" value="Receive Order Updates" id="receive_order" name="newsletter" required="">
+                                                        <label class="form-check-label" for="receive_order">Receive Order Updates</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="submit_btn pt-4">
+                                                <button type="submit" class="btn btn-dark py-3 text-uppercase px-5">Save Changes</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +161,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printer.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
                             </div>
                         </div>
                     </div>
