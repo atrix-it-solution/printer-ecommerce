@@ -117,7 +117,33 @@
                     </button>
                 </div>
 
-                <!-- Categories -->
+                <!-- Featured Image -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label class="form-label">Featured Image</label>
+                            <div>
+                                <button type="button" class="setMediaBtn" data-bs-toggle="modal" data-bs-target="#uploadImageModal" 
+                                        onclick="setImageType('featured_image')">
+                                    Set Featured Image
+                                </button>
+                            </div>
+                         
+                            <div id="featuredimageContainer" style="{{ isset($product) && $product->featuredImage ? '' : 'display:none;' }} margin-top:10px;">
+                                <div class="frontend-item d-inline-block position-relative">
+                                    <img id="featuredimageImage" src="{{ isset($product) && $product->featuredImage->url ? asset($product->featuredImage->url) : '' }}" 
+                                         class="img-fluid rounded border" style="max-height:100px;">
+                                    <button type="button" class="btn btn-danger btn-sm btn-remove position-absolute top-0 end-0 m-1"
+                                            onclick="removeImage('featured_image')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="featured_image" id="featuredimageInput" value="{{ old('featured_image', $product->featured_image ?? '') }}">
+                        
+                    </div>
+                </div>
+
+                  <!-- Categories -->
                 <div class="card mb-3">
                     <div class="card-body">
                         <label class="form-label">Categories</label>
@@ -145,31 +171,40 @@
                     </div>
                 </div>
 
-                <!-- Featured Image -->
+               <!-- Gallery Images -->
                 <div class="card mb-3">
                     <div class="card-body">
-                        <label class="form-label">Featured Image</label>
-                            <div>
-                                <button type="button" class="setMediaBtn" data-bs-toggle="modal" data-bs-target="#uploadImageModal" 
-                                        onclick="setImageType('featured_image')">
-                                    Set Featured Image
-                                </button>
-                            </div>
-                         
-                            <div id="featuredimageContainer" style="{{ isset($product) && $product->featuredImage ? '' : 'display:none;' }} margin-top:10px;">
-                                <div class="frontend-item d-inline-block position-relative">
-                                    <img id="featuredimageImage" src="{{ isset($product) && $product->featuredImage->url ? asset($product->featuredImage->url) : '' }}" 
-                                         class="img-fluid rounded border" style="max-height:100px;">
-                                    <button type="button" class="btn btn-danger btn-sm btn-remove position-absolute top-0 end-0 m-1"
-                                            onclick="removeImage('featured_image')">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <input type="hidden" name="featured_image" id="featuredimageInput" value="{{ old('featured_image', $product->featured_image ?? '') }}">
+                        <label class="form-label">Gallery Images</label>
+                        <div>
+                            <button type="button" class="setMediaBtn" data-bs-toggle="modal" data-bs-target="#uploadImageModal" 
+                                    onclick="setImageType('gallery_images')">
+                                Add Gallery Images
+                            </button>
+                        </div>
                         
+                        <!-- Gallery Images Container -->
+                        <div id="galleryImagesContainer" class="mt-3">
+                            @if(isset($product) && $product->galleryImages->count() > 0)
+                                @foreach($product->galleryImages as $galleryImage)
+                                    <div class="gallery-item d-inline-block position-relative me-2 mb-2" data-media-id="{{ $galleryImage->id }}">
+                                        <img src="{{ asset($galleryImage->url) }}" 
+                                            class="img-fluid rounded border" style="max-height:100px;">
+                                        <button type="button" class="btn btn-danger btn-sm btn-remove position-absolute top-0 end-0 m-1"
+                                                onclick="removeGalleryImage({{ $galleryImage->id }})">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                        
+                        <!-- Hidden input to store gallery image IDs -->
+                        <input type="hidden" name="gallery_images" id="galleryImagesInput" 
+                            value="{{ old('gallery_images', isset($product) ? $product->galleryImages->pluck('id')->implode(',') : '') }}">
                     </div>
                 </div>
+
+
             </div>
         </div>
     </form>

@@ -11,8 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-         $products = Product::with(['categories', 'featuredImage'])->get();
-          $categories = ProductCategory::with('categoryImage')->get();
+        $products = Product::with(['categories', 'featuredImage'])->get();
+        $categories = ProductCategory::with('categoryImage') ->withCount('products')->get();
         return view('pages.frontend.home', compact('products', 'categories'));
     }
    

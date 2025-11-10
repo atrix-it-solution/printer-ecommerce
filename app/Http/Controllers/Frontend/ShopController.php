@@ -11,97 +11,143 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
-        $products = $this->getFilteredProducts($request);
-        $categories = $this->getCategoriesWithCounts();
+        \Log::info('ShopController accessed', ['request' => $request->all()]);
 
-        // Get counts for availability filters
-        $counts = $this->getProductCounts();
+        try {
+            // Get filtered products
+            $products = $this->getFilteredProducts($request);
 
-        if ($request->ajax()) {
-            // Return JSON for AJAX requests
-            return response()->json([
-                'products' => $this->formatProducts($products->items()),
-                'pagination' => $this->formatPagination($products),
-                'total_products' => $products->total(),
-                'filters' => $this->getActiveFilters($request)
+            // Get counts for availability filters
+            $counts = $this->getProductCounts();
+
+            \Log::info('Products loaded', [
+                'total' => $products->total(),
+                'count' => $products->count(),
+                'current_page' => $products->currentPage()
+            ]);
+
+            // For AJAX requests (filtering/sorting)
+            if ($request->ajax()) {
+                return response()->json([
+                    'products' => $this->formatProducts($products->items()),
+                    'pagination' => $this->formatPagination($products),
+                    'total_products' => $products->total(),
+                    'success' => true
+                ]);
+            }
+
+            // For normal page loads
+            return view('pages.frontend.shop', array_merge(
+                compact('products'),
+                $counts
+            ));
+
+        } catch (\Exception $e) {
+            \Log::error('ShopController error: ' . $e->getMessage());
+
+            // Return error response for AJAX
+            if ($request->ajax()) {
+                return response()->json([
+                    'error' => 'Failed to load products: ' . $e->getMessage(),
+                    'success' => false
+                ], 500);
+            }
+
+            // Return error view for normal requests
+            return view('pages.frontend.shop', [
+                'products' => Product::paginate(6), // Fallback to basic pagination
+                'saleProductsCount' => 0,
+                'inStockCount' => 0,
+                'outOfStockCount' => 0,
             ]);
         }
-
-        return view('pages.frontend.shop', array_merge(
-            compact('products', 'categories'),
-            $counts
-        ));
     }
 
     private function getFilteredProducts(Request $request)
     {
+        // Start with base query - SIMPLIFIED VERSION
         $query = Product::with(['categories', 'featuredImage']);
 
-        // Category filter
+        \Log::info('Base query products count: ' . $query->count());
+
+        // === CATEGORY FILTER ===
         if ($request->has('category') && !empty($request->category)) {
             $query->whereHas('categories', function($q) use ($request) {
                 $q->whereIn('product_categories.id', $request->category);
             });
+            \Log::info('Applied category filter', ['categories' => $request->category]);
         }
 
-        // Availability filter
+        // === AVAILABILITY FILTER - SIMPLIFIED ===
         if ($request->has('availability') && !empty($request->availability)) {
             if (in_array('sale', $request->availability)) {
                 $query->whereNotNull('sale_price')->where('sale_price', '>', 0);
             }
+            
             if (in_array('instock', $request->availability)) {
                 $query->where(function($q) {
-                    $q->where('stock_quantity', '>', 0)
-                      ->orWhereNull('stock_quantity');
+                    $q->where('stock_quantity', '>', 0)->orWhereNull('stock_quantity');
                 });
             }
+            
             if (in_array('outstock', $request->availability)) {
                 $query->where('stock_quantity', 0);
             }
+            \Log::info('Applied availability filter', ['availability' => $request->availability]);
         }
 
-        // Price filter
+        // === PRICE FILTER - SIMPLIFIED ===
         $minPrice = $request->get('min_price', 0);
         $maxPrice = $request->get('max_price', 10000);
         
-        $query->where(function($q) use ($minPrice, $maxPrice) {
-            $q->whereBetween('regular_price', [$minPrice, $maxPrice])
-              ->orWhereBetween('sale_price', [$minPrice, $maxPrice]);
-        });
-
-        // Sorting
-        $sortBy = $request->get('sort_by', 'created_at');
-        $sortOptions = [
-            'created_at' => ['field' => 'created_at', 'direction' => 'desc'],
-            'name_asc' => ['field' => 'title', 'direction' => 'asc'],
-            'name_desc' => ['field' => 'title', 'direction' => 'desc'],
-            'price_asc' => ['field' => 'sale_price', 'direction' => 'asc'],
-            'price_desc' => ['field' => 'sale_price', 'direction' => 'desc'],
-        ];
-
-        $sortConfig = $sortOptions[$sortBy] ?? $sortOptions['created_at'];
-        
-        return $query->orderBy($sortConfig['field'], $sortConfig['direction'])
-                    ->paginate(6)
-                    ->withQueryString(); // This preserves all query parameters
-    }
-
-    private function getCategoriesWithCounts()
-    {
-        return ProductCategory::withCount(['products' => function($query) {
-            $query->where(function($q) {
-                $q->where('stock_quantity', '>', 0)->orWhereNull('stock_quantity');
+        if ($minPrice > 0 || $maxPrice < 10000) {
+            $query->where(function($q) use ($minPrice, $maxPrice) {
+                $q->whereBetween('regular_price', [$minPrice, $maxPrice])
+                  ->orWhere(function($q2) use ($minPrice, $maxPrice) {
+                      $q2->whereNotNull('sale_price')
+                         ->where('sale_price', '>', 0)
+                         ->whereBetween('sale_price', [$minPrice, $maxPrice]);
+                  });
             });
-        }])->get();
+            \Log::info('Applied price filter', ['min' => $minPrice, 'max' => $maxPrice]);
+        }
+
+        // === SORTING ===
+        $sortBy = $request->get('sort_by', 'created_at');
+        
+        switch ($sortBy) {
+            case 'name_asc':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'name_desc':
+                $query->orderBy('title', 'desc');
+                break;
+            case 'price_asc':
+                $query->orderBy('regular_price', 'asc');
+                break;
+            case 'price_desc':
+                $query->orderBy('regular_price', 'desc');
+                break;
+            default:
+                $query->orderBy('created_at', 'desc');
+                break;
+        }
+
+        \Log::info('Final query before pagination', ['sort' => $sortBy]);
+
+        // Return paginated results
+        return $query->paginate(6)->withQueryString();
     }
 
     private function getProductCounts()
     {
         return [
-            'totalProducts' => Product::count(),
-            'saleProductsCount' => Product::whereNotNull('sale_price')->where('sale_price', '>', 0)->count(),
+            'saleProductsCount' => Product::whereNotNull('sale_price')
+                                         ->where('sale_price', '>', 0)
+                                         ->count(),
             'inStockCount' => Product::where(function($q) {
-                $q->where('stock_quantity', '>', 0)->orWhereNull('stock_quantity');
+                $q->where('stock_quantity', '>', 0)
+                  ->orWhereNull('stock_quantity');
             })->count(),
             'outOfStockCount' => Product::where('stock_quantity', 0)->count(),
         ];
@@ -110,10 +156,18 @@ class ShopController extends Controller
     private function formatProducts($products)
     {
         return collect($products)->map(function($product) {
+            // Calculate discount percentage
             $discount = null;
-            if ($product->sale_price && $product->regular_price) {
+            if ($product->sale_price && 
+                $product->regular_price && 
+                $product->sale_price < $product->regular_price) {
                 $discount = round((($product->regular_price - $product->sale_price) / $product->regular_price) * 100);
             }
+
+            // Get image URL with fallback
+            $imageUrl = $product->featuredImage 
+                ? asset($product->featuredImage->url)
+                : asset('assets/frontend/images/placeholder.jpg');
 
             return [
                 'id' => $product->id,
@@ -121,9 +175,10 @@ class ShopController extends Controller
                 'slug' => $product->slug,
                 'regular_price' => number_format($product->regular_price, 2),
                 'sale_price' => $product->sale_price ? number_format($product->sale_price, 2) : null,
-                'image' => $product->featuredImage ? asset($product->featuredImage->url) : null ,
+                'image' => $imageUrl,
                 'discount' => $discount,
-                'url' => route('product.show', $product->slug)
+                'url' => route('product.show', $product->slug),
+                'in_stock' => $product->stock_quantity > 0 || is_null($product->stock_quantity)
             ];
         })->toArray();
     }
@@ -139,27 +194,5 @@ class ShopController extends Controller
             'next_url' => $products->nextPageUrl(),
             'pages' => $products->getUrlRange(1, $products->lastPage())
         ];
-    }
-
-    private function getActiveFilters($request)
-    {
-        $filters = [];
-        
-        if ($request->has('category') && !empty($request->category)) {
-            $filters['categories'] = $request->category;
-        }
-        
-        if ($request->has('availability') && !empty($request->availability)) {
-            $filters['availability'] = $request->availability;
-        }
-        
-        if ($request->has('min_price') || $request->has('max_price')) {
-            $filters['price'] = [
-                'min' => $request->get('min_price', 0),
-                'max' => $request->get('max_price', 10000)
-            ];
-        }
-
-        return $filters;
     }
 }

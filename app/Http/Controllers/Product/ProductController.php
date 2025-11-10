@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-         $products = Product::with(['categories', 'featuredImage'])->get();
+         $products = Product::with(['categories', 'featuredImage','galleryImages'])->get();
         return view('pages.dashboard.product.index', compact('products'));
     }
 
@@ -42,6 +42,7 @@ class ProductController extends Controller
             'slug' => 'required|string|max:255|unique:products,slug',
             'description' => 'nullable|string',
             'featured_image' => 'nullable|exists:media,id',
+            'gallery_images' => 'nullable|string',
             'categories' => 'required|array|min:1',
             'categories.*' => 'exists:product_categories,id',
             'regular_price' => 'required|numeric|min:0',
@@ -51,10 +52,35 @@ class ProductController extends Controller
         ]);
 
         // Create product
-        $product = Product::create($data);
+        // Create product
+        $product = Product::create([
+            'title' => $data['title'],
+            'slug' => $data['slug'],
+            'description' => $data['description'],
+            'featured_image' => $data['featured_image'],
+            'regular_price' => $data['regular_price'],
+            'sale_price' => $data['sale_price'],
+            'sku' => $data['sku'],
+            'stock_quantity' => $data['stock_quantity'],
+        ]);
 
         // Attach categories
         $product->categories()->attach($data['categories']);
+
+        // Attach gallery images
+        if (!empty($data['gallery_images'])) {
+            $galleryImageIds = explode(',', $data['gallery_images']);
+            $galleryImageIds = array_filter($galleryImageIds); // Remove empty values
+            
+            // Attach gallery images with sort order
+            $syncData = [];
+            foreach ($galleryImageIds as $index => $mediaId) {
+                $syncData[$mediaId] = ['sort_order' => $index];
+            }
+            
+            $product->galleryImages()->sync($syncData);
+        }
+;
 
         return redirect()->route('products.index')->with('success', 'Product created successfully!');
     }
@@ -66,7 +92,7 @@ class ProductController extends Controller
     {
         $categories = ProductCategory::all();
         // Load categories relationship
-        $product->load('categories');
+        $product->load('categories', 'galleryImages');
         return view('pages.dashboard.product.create', compact('product', 'categories'));
     }
 
@@ -81,6 +107,7 @@ class ProductController extends Controller
             'slug' => 'required|string|max:255|unique:products,slug,' . $product->id,
             'description' => 'nullable|string',
             'featured_image' => 'nullable|exists:media,id', 
+            'gallery_images' => 'nullable|string', 
             'categories' => 'required|array|min:1',
             'categories.*' => 'exists:product_categories,id',
             'regular_price' => 'required|numeric|min:0',
@@ -91,10 +118,35 @@ class ProductController extends Controller
 
 
         // Update product
-        $product->update($data);
+        $product->update([
+            'title' => $data['title'],
+            'slug' => $data['slug'],
+            'description' => $data['description'],
+            'featured_image' => $data['featured_image'],
+            'regular_price' => $data['regular_price'],
+            'sale_price' => $data['sale_price'],
+            'sku' => $data['sku'],
+            'stock_quantity' => $data['stock_quantity'],
+        ]);
 
         // Sync categories
         $product->categories()->sync($data['categories']);
+
+        // Sync gallery images
+        if (isset($data['gallery_images'])) {
+            $galleryImageIds = explode(',', $data['gallery_images']);
+            $galleryImageIds = array_filter($galleryImageIds);
+            
+            $syncData = [];
+            foreach ($galleryImageIds as $index => $mediaId) {
+                $syncData[$mediaId] = ['sort_order' => $index];
+            }
+            
+            $product->galleryImages()->sync($syncData);
+        } else {
+            // If no gallery images provided, remove all
+            $product->galleryImages()->sync([]);
+        }
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }

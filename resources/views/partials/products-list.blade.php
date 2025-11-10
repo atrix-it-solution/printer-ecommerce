@@ -1,10 +1,10 @@
     <!-- Products will be loaded here via AJAX -->
-@if($products->count() > 0)
+
     <ul class="productlist column-3">
         @foreach($products as $product)
         <li>
             <div class="product_box">
-                <a href="{{ route('product.show', $product->slug) }}" class="product_img">
+                <a href="/product/{{ $product->slug }}" class="product_img">
                     @if($product->featuredImage)
                         <img src="{{ asset($product->featuredImage->url) }}" alt="{{ $product->title }}" class="img-fluid" />
                         <img src="{{ asset($product->featuredImage->url) }}" alt="{{ $product->title }}" class="img-fluid hover_img" />
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="product_content">
-                    <h4><a href="{{ route('product.show', $product->slug) }}">{{ $product->title }}</a></h4>
+                    <h4><a href="/product/{{ $product->slug }}">{{ $product->title }}</a></h4>
                     <div class="price">
                         @if($product->sale_price && $product->regular_price)
                             <del>₹{{ number_format($product->regular_price, 2) }}</del>
@@ -81,9 +81,3 @@
         </ul>
     </div>
     @endif
-@else
-    <div class="text-center py-5">
-        <p class="text-muted">No products found matching your criteria.</p>
-        <a href="{{ route('shop') }}" class="btn btn-primary">Clear Filters</a>
-    </div>
-@endif

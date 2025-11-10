@@ -21,12 +21,22 @@
                             <div class="account_sidebar">
                                 <div class="user_info mb-3 d-flex gap-2">
                                     <div class="user_img">
-                                        <span>RB</span>
+                                         @php
+                                            // Get initials from name
+                                            $names = explode(' ', $user->name);
+                                            $initials = '';
+                                            if(count($names) >= 2) {
+                                                $initials = strtoupper(substr($names[0], 0, 1) . substr($names[count($names)-1], 0, 1));
+                                            } else {
+                                                $initials = strtoupper(substr($user->name, 0, 2));
+                                            }
+                                        @endphp
+                                        <span>{{ $initials }}</span>
                                         <!-- <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="User Name" class="img-fluid"/> -->
                                     </div>
                                     <div class="user_info_r">
-                                        <h4>Rajat Bansal</h4>
-                                        <div class="email">rajatatrix@gmail.com</div>
+                                        <h4>{{ ucwords(strtolower($user->name)) }}</h4>
+                                        <div class="email">{{ $user->email }}</div>
                                     </div>
                                 </div>
                                 <ul class="account-menu list-unstyled">
@@ -35,14 +45,21 @@
                                     <li><a href="/wishlist"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
                                     <li><a href="/edit-address"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
                                     <li><a href="/edit-account"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
-                                    <li><a href="#"><i class="fa-solid fa-sign-out"></i> <span>Logout</span></a></li>
+                                    
+                                    <li><a href="#"><i class="fa-solid fa-sign-out"></i> 
+                                        <span>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </span></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-9 my-2">
                             <div class="account_right_side">
                                 <div class="dashboard_page">
-                                    <p>Hello <strong class="username">rajatbansal</strong> (not <strong class="username">rajatbansal</strong>? <a href="#" class="text-decoration-underline">Log out</a>)</p>
+                                    <p>Hello <strong class="username">{{ $user->name }}</strong> (not <strong class="username">{{ $user->name }}</strong>? <a href="#" class="text-decoration-underline">Log out</a>)</p>
                                     <p>From your account dashboard you can view your <a href="#" class="text-decoration-underline">recent orders</a>, manage your <a href="#" class="text-decoration-underline">shipping and billing addresses</a>, and <a href="#" class="text-decoration-underline">edit your password and account details.</a></p>
                                 </div>
                             </div>

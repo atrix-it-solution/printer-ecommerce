@@ -55,17 +55,17 @@
                                 <li class="nav-item ">
                                     <a href="/shop" class="nav-link {{ request()->is('shop') ? 'active' : '' }}">Shop</a>
                                 </li>
-                                {{-- @foreach($categories as $category)
+                 @foreach($categories as $category)
                                 <li class="nav-item">
                                     <a href="{{ route('category.show', $category->slug) }}" 
                                     class="nav-link {{ request()->is('category/' . $category->slug) ? 'active' : '' }}">
                                         {{ $category->title }}
                                     </a>
                                 </li>
-                                @endforeach --}}
+                                @endforeach 
                                  
                                 <li class="nav-item">
-                                    <a href="/contact" class="nav-link">Contact Us</a>
+                                    <a href="/contact" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact Us</a>
                                 </li>
                             </ul>
                             <div class="mobile_info d-xl-none">
@@ -78,7 +78,15 @@
                         </div>
                         <ul class="navbar-nav flex-row d-flex gap-2 gap-xxl-4 header_right_area">
                             <li class="d-none d-xl-block"><a href="javascript:void(0);" class="search-trigger" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></li>
-                            <li><a href="my-account" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="My Account"><i class="fa-regular fa-user"></i></a></li>
+                            @auth
+                            <li><a href="/my-account" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="My Account"><i class="fa-regular fa-user"></i></a></li>
+                            @else
+                            <li>
+                                <a href="{{ route('login.register') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Login/Register">
+                                    <i class="fa-regular fa-user"></i>
+                                </a>
+                            </li>
+                            @endauth
                             <li class="me-1"><a href="wishlist" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist"><i class="fa-regular fa-heart"></i> <span class="count">2</span></a></li>
                             <li><a href="cart" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Cart"><i class="fa fa-cart-shopping"></i> <span class="count">4</span></a></li>
                         </ul>

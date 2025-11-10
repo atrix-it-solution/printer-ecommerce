@@ -158,4 +158,31 @@ jQuery(document).ready(function() {
 
 
 
-/* ]]&gt; */
+
+// Clear localStorage on frontend logout
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is logged out using data attribute
+    const isAuthenticated = document.documentElement.getAttribute('data-is-authenticated') === 'true';
+    
+    if (!isAuthenticated) {
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('token_expires_at');
+    }
+    
+    // Add logout confirmation
+    const logoutForms = document.querySelectorAll('form[action*="logout"]');
+    logoutForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                // Clear localStorage
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('user');
+                localStorage.removeItem('token_expires_at');
+                // Submit the form
+                this.submit();
+            }
+        });
+    });
+});
