@@ -32,7 +32,16 @@
                 <div class="container-fluid px-lg-4">
                     <div class="menubtn d-flex align-items-center d-xl-none">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 200 200"><g stroke-width="6.5" stroke-linecap="round"><path d="M72 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)"/><path d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554" fill="none" stroke="var(--theme)" /><path d="M72 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)"/><path d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554" fill="none" stroke="var(--theme)" /><path d="M100.75 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" /><path d="M100.75 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" /></g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 200 200">
+                                <g stroke-width="6.5" stroke-linecap="round">
+                                    <path d="M72 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" />
+                                    <path d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554" fill="none" stroke="var(--theme)" />
+                                    <path d="M72 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" />
+                                    <path d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554" fill="none" stroke="var(--theme)" />
+                                    <path d="M100.75 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" />
+                                    <path d="M100.75 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="var(--theme)" />
+                                </g>
+                            </svg>
                         </button>
                         <div class="d-xl-none pt-1"><a href="javascript:void(0);" class="search-trigger" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></div>
                     </div>
@@ -44,26 +53,26 @@
                             <a class="navbar-brand d-block pt-0 d-xl-none text-center me-0 mb-3" href="/">
                                 <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="PrintHelp Logo" class="img-fluid" />
                             </a>
-                            
+
                             <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 ps-xl-3 ps-xxl-4">
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}"  aria-current="page" href="/">Home</a>
+                                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}"  href="/about">About Us</a>
+                                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="/about">About Us</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a href="/shop" class="nav-link {{ request()->is('shop') ? 'active' : '' }}">Shop</a>
                                 </li>
                                 {{-- @foreach($categories as $category)
                                 <li class="nav-item">
-                                    <a href="{{ route('category.show', $category->slug) }}" 
-                                    class="nav-link {{ request()->is('category/' . $category->slug) ? 'active' : '' }}">
+                                    <a href="{{ route('category.show', $category->slug) }}"
+                                        class="nav-link {{ request()->is('category/' . $category->slug) ? 'active' : '' }}">
                                         {{ $category->title }}
                                     </a>
                                 </li>
                                 @endforeach --}}
-                                 
+
                                 <li class="nav-item">
                                     <a href="/contact" class="nav-link">Contact Us</a>
                                 </li>

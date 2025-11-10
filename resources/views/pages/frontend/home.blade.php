@@ -34,66 +34,6 @@
         </div>
     </section>
 
-    <section class="category_sec py-5">
-        <div class="container">
-            <div class="row">
-                <!-- @foreach($categories as $index => $category)
-                        <div class="col-md-6 col-xl-3 my-3">
-                            <div class="cat_box">
-                                 <a href="{{ route('category.show', $category->slug) }}" class="cat_img">
-                                    <img src="{{ asset($category->categoryImage->url) }}" alt="{{ $category->title }}" class="img-fluid" />
-                                </a>
-                                <div class="cat_content">
-                                    <h4><a href="{{ route('category.show', $category->slug) }}">{{ $category->title }}</a></h4>
-                                    <div class="cusbtn">
-                                        <a href="{{ route('category.show', $category->slug) }}">View More <i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach -->
-                <!-- <div class="col-md-6 col-xl-3 my-3 pt-xl-5">
-                            <div class="cat_box">
-                                <a href="#" class="cat_img">
-                                    <img src="{{ asset('assets/frontend/images/cat_2.jpg') }}" alt="Garments" class="img-fluid" />
-                                </a>
-                                <div class="cat_content">
-                                    <h4><a href="#">Envy Printers</a></h4>
-                                    <div class="cusbtn">
-                                        <a href="#">View More <i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 my-3">
-                            <div class="cat_box">
-                                <a href="#" class="cat_img">
-                                    <img src="{{ asset('assets/frontend/images/cat_3.jpg') }}" alt="Food Essentials" class="img-fluid" />
-                                </a>
-                                <div class="cat_content">
-                                    <h4><a href="#">Laserjet Printers</a></h4>
-                                    <div class="cusbtn">
-                                        <a href="#">View More <i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 my-3 pt-xl-5">
-                            <div class="cat_box">
-                                <a href="#" class="cat_img">
-                                    <img src="{{ asset('assets/frontend/images/cat_4.jpg') }}" alt="Accessories" class="img-fluid" />
-                                </a>
-                                <div class="cat_content">
-                                    <h4><a href="#">Officejet Printers</a></h4>
-                                    <div class="cusbtn">
-                                        <a href="#">View More <i class="fa-solid fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-            </div>
-        </div>
-    </section>
 
     <section class="category_sec py-5">
         <div class="container">

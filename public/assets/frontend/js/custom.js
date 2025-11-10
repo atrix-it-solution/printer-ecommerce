@@ -157,5 +157,44 @@ jQuery(document).ready(function() {
 
 
 
-
 /* ]]&gt; */
+
+
+// single product page js code
+var swiper = new Swiper(".mySwiper", {
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+  direction: "vertical",
+
+  // ✅ Responsive breakpoints
+  breakpoints: {
+    0: {
+      direction: "horizontal", // 992px se niche
+      slidesPerView: 4
+    },
+    992: {
+      direction: "vertical",   // 992px se upar
+      slidesPerView: 4
+    }
+  }
+});
+
+var swiper2 = new Swiper(".mySwiper2", {
+  spaceBetween: 10,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  thumbs: {
+    swiper: swiper,
+  },
+});
+
+
+
+// zoom effect 
+// $("#zoomImage").ezPlus();
+
+
