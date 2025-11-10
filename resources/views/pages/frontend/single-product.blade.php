@@ -7,7 +7,7 @@
     <!-- ========== Start Product overview ========== -->
     <section class="product-overview my-5">
         <div class="container">
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-12">
                     <div class="product-breadcumb">
                         <a href="#">Home</a> <span><i class="fa-solid fa-angle-right"></i></span>
@@ -16,9 +16,47 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row gx-5 gy-5">
                 <div class="col-lg-6">
-                    <div class="product-img-sec">
+                    <div class="product-img-sec position-relative">
+
+                        <div class="row gx-4">
+                            <div class="col-2 order-2 order-lg-1">
+                                <div thumbsSlider="" class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 order-1 order-lg-2">
+                                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; position:relative; overflow:hidden;" class="swiper mySwiper2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="zoomImage" src="https://swiperjs.com/demos/images/nature-1.jpg" id="zoomImage"  data-zoom-image="https://swiperjs.com/demos/images/nature-1.jpg" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="zoomImage" src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="zoomImage" src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="swiper-button-next"><i class="fa-solid fa-angle-right"></i></div>
+                                    <div class="swiper-button-prev"><i class="fa-solid fa-angle-left"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Swiper -->
+
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -108,36 +146,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                        <!-- Tabs -->
-                        <ul class="nav  nav-underline  px-3">
-                            <li class="nav-item">
-                                <a class="nav-link py-3 active" data-bs-toggle="tab" href="#description">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link py-3" data-bs-toggle="tab" href="#reviews">
-                                    Reviews (0)
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- Tab Content -->
-                        <div class="tab-content p-4">
-                            <!-- Description Tab -->
-                            <div class="tab-pane fade show active" id="description">
-                                <h4>Description</h4>
-                                <p>product description...</p>
+                    <!-- Tabs -->
+                    <ul class="nav  nav-underline  px-3">
+                        <li class="nav-item">
+                            <a class="nav-link py-3 active" data-bs-toggle="tab" href="#description">Description</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-3" data-bs-toggle="tab" href="#reviews">
+                                Reviews (0)
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab Content -->
+                    <div class="tab-content p-4">
+                        <!-- Description Tab -->
+                        <div class="tab-pane fade show active" id="description">
+                            <h4>Description</h4>
+                            <p>product description...</p>
+                        </div>
+                        <!-- Reviews Tab -->
+                        <div class="tab-pane fade" id="reviews">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>Customer Reviews</h4>
+                                <button class="btn btn-outline-dark rounded-pill px-4">
+                                    Write a review
+                                </button>
                             </div>
-                            <!-- Reviews Tab -->
-                            <div class="tab-pane fade" id="reviews">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4>Customer Reviews</h4>
-                                    <button class="btn btn-outline-dark rounded-pill px-4">
-                                        Write a review
-                                    </button>
-                                </div>
-                                <p class="text-muted">No reviews yet.</p>
-                            </div>
+                            <p class="text-muted">No reviews yet.</p>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
