@@ -33,7 +33,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'role' => 'admin', 
+            'role' => 'customer', 
         ]);
 
         Auth::login($user);
