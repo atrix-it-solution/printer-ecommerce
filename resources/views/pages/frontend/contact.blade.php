@@ -8,7 +8,7 @@
                 <div class="row gx-0">
                     <div class="col-lg-6">
                         <div class="contactimg h-100">
-                            <img src="{{ asset('assets/frontend/images/contactimg.jpg') }}" alt="Contact vsipl" class="img-fluid h-100 w-100 object-fit-cover" />
+                            <img src="{{ asset('assets/frontend/images/contactimg.jpg') }}" alt="Contact printhelp" class="img-fluid h-100 w-100 object-fit-cover" />
                         </div>
                     </div>
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">

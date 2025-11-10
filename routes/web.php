@@ -14,114 +14,117 @@ use App\Http\Controllers\Frontend\CategoryController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
+Route::get('product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
 // Category routes
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
-Route::get('/about', function () {
+Route::get('about', function () {
     return view('pages.frontend.about');
 });
-Route::get('/blog', function () {
+Route::get('blog', function () {
     return view('pages.frontend.blog');
 });
-Route::get('/blog-details', function () {
+Route::get('blog-details', function () {
     return view('pages.frontend.blog-details');
 });
-Route::get('/portfolio', function () {
+Route::get('portfolio', function () {
     return view('pages.frontend.portfolio');
 });
-Route::get('/portfolio-details', function () {
+Route::get('portfolio-details', function () {
     return view('pages.frontend.portfolio-details');
 });
-Route::get('/team', function () {
+Route::get('team', function () {
     return view('pages.frontend.team');
 });
-Route::get('/faq', function () {
+Route::get('faq', function () {
     return view('pages.frontend.faq');
 });
-Route::get('/pricing', function () {
+Route::get('pricing', function () {
     return view('pages.frontend.pricing');
 });
-Route::get('/testimonials', function () {
+Route::get('testimonials', function () {
     return view('pages.frontend.testimonials');
 });
-Route::get('/terms', function () {
+Route::get('terms', function () {
     return view('pages.frontend.terms');
 });
-Route::get('/privacy-policy', function () {
+Route::get('privacy-policy', function () {
     return view('pages.frontend.privacy-policy');
 });
-Route::get('/terms-and-conditions', function () {
+Route::get('terms-and-conditions', function () {
     return view('pages.frontend.terms-and-conditions');
 });
-Route::get('/login', function () {
+Route::get('login', function () {
     return view('pages.frontend.login');
 });
-Route::get('/register', function () {
+Route::get('register', function () {
     return view('pages.frontend.register');
 });
-Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('shop', [ShopController::class, 'index'])->name('shop');
 
 
-Route::get('/cart', function () {
+Route::get('cart', function () {
     return view('pages.frontend.cart');
 });
 
-Route::get('/category', function () {
+Route::get('category', function () {
     return view('pages.frontend.category');
 });
-Route::get('/checkout', function () {
+Route::get('checkout', function () {
     return view('pages.frontend.checkout');
 });
-Route::get('/contact', function () {
+Route::get('contact', function () {
     return view('pages.frontend.contact');
 });
-Route::get('/edit-account', function () {
+Route::get('edit-account', function () {
     return view('pages.frontend.edit-account');
 });
-Route::get('/edit-address', function () {
+Route::get('edit-address', function () {
     return view('pages.frontend.edit-address');
 });
-Route::get('/faq', function () {
+Route::get('faq', function () {
     return view('pages.frontend.faq');
 });
-Route::get('/forgot-password', function () {
+Route::get('forgot-password', function () {
     return view('pages.frontend.forgot-password');
 });
-Route::get('/login-register', function () {
+Route::get('login-register', function () {
     return view('pages.frontend.login-register');
 });
-Route::get('/my-account', function () {
+Route::get('my-account', function () {
     return view('pages.frontend.my-account');
 });
-Route::get('/orders', function () {
+Route::get('orders', function () {
     return view('pages.frontend.orders');
 });
-Route::get('/privacy-policy', function () {
+Route::get('privacy-policy', function () {
     return view('pages.frontend.privacy-policy');
 });
-Route::get('/shop', function () {
+Route::get('shop', function () {
     return view('pages.frontend.shop');
 });
-Route::get('/single-blog', function () {
+Route::get('single-blog', function () {
     return view('pages.frontend.single-blog');
 });
-Route::get('/terms-and-conditions', function () {
+Route::get('terms-and-conditions', function () {
     return view('pages.frontend.terms-and-conditions');
 });
-Route::get('/view-order', function () {
+Route::get('view-order', function () {
     return view('pages.frontend.view-order');
 });
-Route::get('/wishlist', function () {
+Route::get('wishlist', function () {
     return view('pages.frontend.wishlist');
 });
-Route::get('/billing-address', function () {
+Route::get('billing-address', function () {
     return view('pages.frontend.billing-address');
 });
-Route::get('/shipping-address', function () {
+Route::get('shipping-address', function () {
     return view('pages.frontend.shipping-address');
+});
+Route::get('single-product', function () {
+    return view('pages.frontend.single-product');
 });
 
 
