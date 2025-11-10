@@ -110,10 +110,13 @@
 
         <!-- Logout -->
         <li class="nav-item mt-3">
-            <a class="nav-link text-danger" href="#">
-                <i class="bi bi-box-arrow-right me-2"></i>
-                Logout
-            </a>
+            <form method="POST" class="nav-link" action="{{ route('logout') }}" class="w-100">
+                @csrf
+                <button type="submit" class=" border-0 bg-transparent   ">
+                    <i class="bi bi-box-arrow-right me-2"></i>
+                    Logout
+                </button>
+            </form>
         </li>
     </ul>
 </div>

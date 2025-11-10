@@ -1,20 +1,32 @@
-// media.js - Complete file
+// media.js - Updated for multiple gallery images
 
 // Global variables
 window.selectedImagePath = null;
 window.selectedImageElement = null;
 window.images = [];
-window.currentImageType = null; // Add this
+window.currentImageType = null;
+window.selectedGalleryImages = new Set(); // Store multiple selected images for gallery
 
-// Set image type function - make it globally available
+// Set image type function
 window.setImageType = function(type) {
     window.currentImageType = type;
-    console.log('Setting image type to:', type);
+    window.selectedGalleryImages.clear(); // Clear previous selections
+    
+    if (type === 'gallery_images') {
+        // Show multiple selection mode
+        document.querySelectorAll('.image-container').forEach(container => {
+            container.classList.remove('selected');
+        });
+        console.log('Gallery image mode activated - multiple selection enabled');
+    } else {
+        // Single selection mode for other image types
+        console.log('Single image mode activated for:', type);
+    }
 };
 
-// Set as media image function - make it globally available
+// Set as media image function
 window.setAsMediaImage = function() {
-    if (!window.selectedImagePath) {
+    if (!window.selectedImagePath && window.currentImageType !== 'gallery_images') {
         alert('Please select an image first!');
         return;
     }
@@ -24,7 +36,7 @@ window.setAsMediaImage = function() {
         return;
     }
 
-       const mediaId = window.selectedImageElement.getAttribute('data-id');
+    const mediaId = window.selectedImageElement ? window.selectedImageElement.getAttribute('data-id') : null;
     const imageUrl = window.selectedImagePath;
     const selectedPath = window.selectedImagePath;
 
@@ -33,75 +45,224 @@ window.setAsMediaImage = function() {
             document.getElementById('siteIconImage').src = selectedPath;
             document.getElementById('siteIconContainer').style.display = 'block';
             document.getElementById('siteIconInput').value = selectedPath;
-        break;
+            break;
         case 'site_logo':
             document.getElementById('siteLogoImage').src = selectedPath;
             document.getElementById('siteLogoContainer').style.display = 'block';
             document.getElementById('siteLogoInput').value = selectedPath;
-        break;
+            break;
         case 'site_footer_logo':
             document.getElementById('footerLogoImage').src = selectedPath;
             document.getElementById('footerLogoContainer').style.display = 'block';
             document.getElementById('footerLogoInput').value = selectedPath;
-        break;
+            break;
         case 'featured_image':
             document.getElementById('featuredimageImage').src = selectedPath;
             document.getElementById('featuredimageContainer').style.display = 'block';
             document.getElementById('featuredimageInput').value = mediaId;
-        break;
+            break;
         case 'category_image':
             document.getElementById('categoryimageImage').src = selectedPath;
             document.getElementById('categoryimageContainer').style.display = 'block';
             document.getElementById('categoryimageInput').value = mediaId;
-        break;
-        
+            break;
+        case 'gallery_images':
+            // Handle multiple gallery images
+            this.addGalleryImages();
+            return; // Don't close modal for gallery images
+            break;
     }
 
-    // Close modal
+    // Close modal for single image selections
+    this.closeMediaModal();
+};
+
+// Add multiple gallery images
+window.addGalleryImages = function() {
+    if (window.selectedGalleryImages.size === 0) {
+        alert('Please select at least one image for the gallery!');
+        return;
+    }
+
+    const galleryContainer = document.getElementById('galleryImagesContainer');
+    const galleryInput = document.getElementById('galleryImagesInput');
+    
+    // Get current gallery image IDs
+    let currentGalleryIds = galleryInput.value ? galleryInput.value.split(',').map(id => id.trim()) : [];
+    
+    // Add new images
+    window.selectedGalleryImages.forEach(imageData => {
+        // Check if image already exists in gallery
+        if (!currentGalleryIds.includes(imageData.id.toString())) {
+            // Create gallery item
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item d-inline-block position-relative me-2 mb-2';
+            galleryItem.setAttribute('data-media-id', imageData.id);
+            galleryItem.innerHTML = `
+                <img src="${imageData.url}" 
+                     class="img-fluid rounded border" style="max-height:100px;">
+                <button type="button" class="btn btn-danger btn-sm btn-remove position-absolute top-0 end-0 m-1"
+                        onclick="removeGalleryImage(${imageData.id})">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            galleryContainer.appendChild(galleryItem);
+            
+            // Add to current IDs
+            currentGalleryIds.push(imageData.id.toString());
+        }
+    });
+    
+    // Update hidden input
+    galleryInput.value = currentGalleryIds.join(',');
+    
+    // Clear selections and close modal
+    window.selectedGalleryImages.clear();
+    this.closeMediaModal();
+    
+    console.log('Gallery images updated:', galleryInput.value);
+};
+
+// Remove single gallery image
+window.removeGalleryImage = function(mediaId) {
+    const galleryContainer = document.getElementById('galleryImagesContainer');
+    const galleryInput = document.getElementById('galleryImagesInput');
+    
+    // Remove from DOM
+    const galleryItem = document.querySelector(`.gallery-item[data-media-id="${mediaId}"]`);
+    if (galleryItem) {
+        galleryItem.remove();
+    }
+    
+    // Update hidden input
+    let currentGalleryIds = galleryInput.value ? galleryInput.value.split(',').map(id => id.trim()) : [];
+    currentGalleryIds = currentGalleryIds.filter(id => id !== mediaId.toString());
+    galleryInput.value = currentGalleryIds.join(',');
+    
+    console.log('Removed gallery image:', mediaId, 'Current:', galleryInput.value);
+};
+
+// Close media modal
+window.closeMediaModal = function() {
     const modal = bootstrap.Modal.getInstance(document.getElementById('uploadImageModal'));
     if (modal) {
         modal.hide();
     }
 };
 
-// Remove image function - make it globally available
+// Remove image function for single images
 window.removeImage = function(type) {
     switch(type) {
         case 'site_icon':
             document.getElementById('siteIconContainer').style.display = 'none';
             document.getElementById('siteIconImage').src = '';
             document.getElementById('siteIconInput').value = '';
-        break;
+            break;
         case 'site_logo':
             document.getElementById('siteLogoContainer').style.display = 'none';
             document.getElementById('siteLogoImage').src = '';
             document.getElementById('siteLogoInput').value = '';
-        break;
+            break;
         case 'site_footer_logo':
             document.getElementById('footerLogoContainer').style.display = 'none';
             document.getElementById('footerLogoImage').src = '';
             document.getElementById('footerLogoInput').value = '';
-            reak;
+            break;
         case 'featured_image':
             document.getElementById('featuredimageContainer').style.display = 'none';
             document.getElementById('featuredimageImage').src = '';
             document.getElementById('featuredimageInput').value = '';
-        break;
+            break;
         case 'category_image':
             document.getElementById('categoryimageContainer').style.display = 'none';
             document.getElementById('categoryimageImage').src = '';
             document.getElementById('categoryimageInput').value = '';
-        break;
+            break;
+        case 'gallery_images':
+            // Clear all gallery images
+            document.getElementById('galleryImagesContainer').innerHTML = '';
+            document.getElementById('galleryImagesInput').value = '';
+            break;
     }
 };
 
-// The rest of your existing media.js code remains the same...
+// Select image function (updated for multiple selection)
+function selectImage(element, imageUrl, imageName, imageId) {
+    if (window.currentImageType === 'gallery_images') {
+        // Multiple selection mode for gallery images
+        const imageData = {
+            id: imageId,
+            url: imageUrl,
+            name: imageName
+        };
+        
+        if (element.classList.contains('selected')) {
+            // Deselect image
+            element.classList.remove('selected');
+            window.selectedGalleryImages.delete(imageData.id);
+            console.log('Deselected gallery image:', imageData.id);
+        } else {
+            // Select image
+            element.classList.add('selected');
+            window.selectedGalleryImages.add(imageData);
+            console.log('Selected gallery image:', imageData.id);
+        }
+        
+        // Update selection count display
+        this.updateSelectionCount();
+        
+    } else {
+        // Single selection mode for other image types
+        document.querySelectorAll('.image-container').forEach(img => {
+            img.classList.remove('selected');
+        });
+        
+        element.classList.add('selected');
+        window.selectedImagePath = imageUrl;
+        window.selectedImageElement = element;
+
+        console.log('Selected single image ID:', element.getAttribute('data-id'));
+        console.log('Selected single image URL:', imageUrl);
+    }
+}
+
+// Update selection count display
+window.updateSelectionCount = function() {
+    let selectionInfo = document.getElementById('selectionInfo');
+    if (!selectionInfo) {
+        // Create selection info element if it doesn't exist
+        selectionInfo = document.createElement('div');
+        selectionInfo.id = 'selectionInfo';
+        selectionInfo.className = 'alert alert-info mt-3';
+        document.querySelector('.modal-body').prepend(selectionInfo);
+    }
+    
+    // if (window.currentImageType === 'gallery_images') {
+    //     selectionInfo.innerHTML = `
+    //         <strong>Gallery Mode:</strong> ${window.selectedGalleryImages.size} image(s) selected.
+    //         <br><small>Click images to select/deselect multiple images for gallery.</small>
+    //     `;
+    //     selectionInfo.style.display = 'block';
+    // } else {
+    //     selectionInfo.style.display = 'none';
+    // }
+};
+
+// The rest of your existing media.js code with updated selectImage calls
 document.addEventListener('DOMContentLoaded', function () {
     // Modal
     const modal = document.getElementById('uploadImageModal');
     if (modal) {
         modal.addEventListener('shown.bs.modal', function () {
             loadImages();
+        });
+        
+        modal.addEventListener('hidden.bs.modal', function () {
+            // Reset selections when modal closes
+            window.selectedGalleryImages.clear();
+            document.querySelectorAll('.image-container').forEach(img => {
+                img.classList.remove('selected');
+            });
         });
     }
 
@@ -188,6 +349,8 @@ function loadImages() {
         .then(data => {
             window.images = data;
             renderImageGallery();
+            // Update selection count display
+            window.updateSelectionCount();
         })
         .catch(error => {
             console.error('Error loading images:', error);
@@ -237,7 +400,6 @@ function uploadImage(file) {
             let errorMessage = 'Upload failed';
             try {
                 const errorData = JSON.parse(responseText);
-                // Handle Laravel validation errors
                 if (errorData.errors && errorData.errors.image) {
                     errorMessage = errorData.errors.image[0];
                 } else if (errorData.error) {
@@ -263,12 +425,15 @@ function uploadImage(file) {
         
         renderImageGallery();
         
-        setTimeout(() => {
-            const newImageElement = document.querySelector(`.image-container[data-id="${data.id}"]`);
-            if (newImageElement) {
-                selectImage(newImageElement, data.url, data.original_name);
-            }
-        }, 100);
+        // Auto-select the newly uploaded image in gallery mode
+        if (window.currentImageType === 'gallery_images') {
+            setTimeout(() => {
+                const newImageElement = document.querySelector(`.image-container[data-id="${data.id}"]`);
+                if (newImageElement) {
+                    selectImage(newImageElement, data.url, data.original_name, data.id);
+                }
+            }, 100);
+        }
         
         uploadArea.innerHTML = `
             <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
@@ -294,20 +459,6 @@ function uploadImage(file) {
     });
 }
 
-function selectImage(element, imageUrl, imageName) {
-    document.querySelectorAll('.image-container').forEach(img => {
-        img.classList.remove('selected');
-    });
-    
-    element.classList.add('selected');
-    window.selectedImagePath = imageUrl;
-    window.selectedImageElement = element;
-
-    // Debug log
-    console.log('Selected image ID:', element.getAttribute('data-id'));
-    console.log('Selected image URL:', imageUrl);
-}
-
 function renderImageGallery() {
     const gallery = document.getElementById('imageGallery');
     
@@ -328,7 +479,8 @@ function renderImageGallery() {
         col.classList.add('col-md-3', 'mb-3');
         
         col.innerHTML = `
-            <div class="image-container" data-id="${image.id}" onclick="selectImage(this, '${image.url}', '${image.original_name}')">
+            <div class="image-container" data-id="${image.id}" 
+                 onclick="selectImage(this, '${image.url}', '${image.original_name}', ${image.id})">
                 <img src="${image.url}" 
                     alt="${image.original_name}"
                     class="img-fluid">
@@ -346,7 +498,6 @@ function renderImageGallery() {
         gallery.appendChild(col);
     });
 }
-            // <small class="text-muted d-block text-center mt-1">${image.original_name}</small>
 
 function deleteImage(id, button) {
     if (!confirm('Are you sure you want to delete this image permanently?')) return;
@@ -375,10 +526,13 @@ function deleteImage(id, button) {
         window.images = window.images.filter(img => img.id !== id);
         renderImageGallery();
         
-        if (window.selectedImageElement && window.selectedImageElement.getAttribute('data-id') == id) {
-            window.selectedImagePath = null;
-            window.selectedImageElement = null;
+        // Remove from gallery selections if selected
+        if (window.selectedGalleryImages.has(id)) {
+            window.selectedGalleryImages.delete(id);
         }
+        
+        // Remove from gallery display if exists
+        window.removeGalleryImage(id);
         
         alert('Image deleted successfully!');
     })

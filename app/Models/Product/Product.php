@@ -29,6 +29,15 @@ class Product extends Model
         return $this->belongsTo(Media::class, 'featured_image');
     }
 
+     // Add multiple gallery images relationship
+    public function galleryImages()
+    {
+        return $this->belongsToMany(Media::class, 'product_gallery_images', 'product_id', 'media_id')
+                    ->withPivot('sort_order')
+                    ->withTimestamps()
+                    ->orderBy('sort_order');
+    }
+
     // Helper method to get image URL
     public function getFeaturedImageUrlAttribute()
     {
@@ -36,6 +45,14 @@ class Product extends Model
             return Storage::url($this->featuredImage->url);
         }
         return null;
+    }
+
+     // Helper method to get gallery images URLs
+    public function getGalleryImageUrlsAttribute()
+    {
+        return $this->galleryImages->map(function ($image) {
+            return Storage::url($image->url);
+        });
     }
 
 }
