@@ -71,6 +71,7 @@
                                         {{ $category->title }}
                                     </a>
                                 </li>
+                                @endforeach
 
                                 <li class="nav-item">
                                     <a href="/contact" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact Us</a>
@@ -95,6 +96,7 @@
                                 </a>
                             </li>
                             @endauth
+                            
                             <li class="me-1"><a href="wishlist" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist"><i class="fa-regular fa-heart"></i> <span class="count">2</span></a></li>
                             <li><a href="cart" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Cart"><i class="fa fa-cart-shopping"></i> <span class="count">4</span></a></li>
                         </ul>
