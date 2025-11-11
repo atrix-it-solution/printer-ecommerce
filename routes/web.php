@@ -140,7 +140,7 @@ Route::get('shipping-address', function () {
     return view('pages.frontend.shipping-address');
 });
 Route::get('single-product', function () {
-    return view('pages.frontend.single-product');
+    return view('pages.frontend.singleproduct');
 });
 
 Route::get('/login', function () {
