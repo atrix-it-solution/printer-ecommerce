@@ -48,10 +48,16 @@ class ProductController extends Controller
             'regular_price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0|lt:regular_price',
             'sku' => 'required|string|max:100|unique:products,sku',
+            'manage_stock' => 'nullable|boolean',
             'stock_quantity' => 'nullable|integer|min:0',
         ]);
 
-        // Create product
+        // Handle stock quantity based on manage_stock checkbox
+        $stockQuantity = null;
+        if ($request->has('manage_stock') && $request->manage_stock) {
+            $stockQuantity = $data['stock_quantity'] ?? 0;
+        }
+
         // Create product
         $product = Product::create([
             'title' => $data['title'],
@@ -61,7 +67,7 @@ class ProductController extends Controller
             'regular_price' => $data['regular_price'],
             'sale_price' => $data['sale_price'],
             'sku' => $data['sku'],
-            'stock_quantity' => $data['stock_quantity'],
+            'stock_quantity' => $stockQuantity,
         ]);
 
         // Attach categories
@@ -113,10 +119,15 @@ class ProductController extends Controller
             'regular_price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0|lt:regular_price',
             'sku' => 'required|string|max:100|unique:products,sku,' . $product->id,
+            'manage_stock' => 'nullable|boolean',
             'stock_quantity' => 'nullable|integer|min:0',
         ]);
 
-
+        // Handle stock quantity based on manage_stock checkbox
+        $stockQuantity = null;
+        if ($request->has('manage_stock') && $request->manage_stock) {
+            $stockQuantity = $data['stock_quantity'] ?? 0;
+        }
         // Update product
         $product->update([
             'title' => $data['title'],
@@ -126,7 +137,7 @@ class ProductController extends Controller
             'regular_price' => $data['regular_price'],
             'sale_price' => $data['sale_price'],
             'sku' => $data['sku'],
-            'stock_quantity' => $data['stock_quantity'],
+            'stock_quantity' => $stockQuantity,
         ]);
 
         // Sync categories
@@ -149,6 +160,28 @@ class ProductController extends Controller
         }
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
+    }
+
+
+      /**
+     * Display the specified resource.
+     */
+    public function show($slug)
+    {
+        $product = Product::with(['categories', 'featuredImage', 'galleryImages'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        // Get related products (products from same categories)
+        $relatedProducts = Product::whereHas('categories', function($query) use ($product) {
+            $query->whereIn('product_categories.id', $product->categories->pluck('id'));
+        })
+        ->where('id', '!=', $product->id)
+        ->with('featuredImage')
+        ->limit(4)
+        ->get();
+
+        return view('pages.frontend.singleproduct', compact('product', 'relatedProducts'));
     }
 
     /**

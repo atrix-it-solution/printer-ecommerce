@@ -72,7 +72,6 @@
                                     </a>
                                 </li>
                                 @endforeach
-
                                 <li class="nav-item">
                                     <a href="/contact" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact Us</a>
                                 </li>
@@ -96,9 +95,25 @@
                                 </a>
                             </li>
                             @endauth
-                            
-                            <li class="me-1"><a href="wishlist" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist"><i class="fa-regular fa-heart"></i> <span class="count">2</span></a></li>
-                            <li><a href="cart" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Cart"><i class="fa fa-cart-shopping"></i> <span class="count">4</span></a></li>
+
+                            <li class="me-1">
+                                <a href="{{ route('wishlist.view') }}" class="position-relative header-wishlist" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Wishlist">
+                                    <i class="fa-regular fa-heart"></i> 
+                                    <span class="count wishlist-count badge  position-absolute top-0 start-100 translate-middle" style="display: none; font-size: 0.7rem;">
+                                        0
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                 <a href="{{ route('cart.view') }}"   data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Cart">
+                                    <i class="fa fa-cart-shopping"></i> 
+                                     @php
+                                        $cartCount = session()->get('cart') ? array_sum(array_column(session()->get('cart'), 'quantity')) : 0;
+                                    @endphp
+                                    <span class="count cart-count-badge badge  " >{{ $cartCount }}</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

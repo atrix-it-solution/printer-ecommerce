@@ -281,64 +281,84 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateProducts(products) {
-        const container = document.getElementById('productsContainer');
-        if (!container) return;
-        
-        if (products.length === 0) {
-            container.innerHTML = `
-                <div class="text-center py-5">
-                    <p class="text-muted">No products found matching your criteria.</p>
-                    <a href="/category/${currentCategorySlug}" class="btn btn-primary">Clear Filters</a>
-                </div>
-            `;
-            return;
-        }
+    const container = document.getElementById('productsContainer');
+    
+    if (products.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-5">
+                <p class="text-muted">No products found matching your criteria.</p>
+                <a href="/shop" class="btn btn-primary">Clear Filters</a>
+            </div>
+        `;
+        return;
+    }
 
-        let productsHTML = '<ul class="productlist column-3">';
+    let productsHTML = '<ul class="productlist column-3">';
+    
+    products.forEach(product => {
+        // Calculate discount percentage if sale price exists
+        const discount = product.sale_price && product.regular_price ? 
+            Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) : 0;
         
-        products.forEach(product => {
-            productsHTML += `
-                <li>
-                    <div class="product_box">
-                        <a href="${product.url}" class="product_img">
+        productsHTML += `
+            <li>
+                <div class="product_box">
+                    <div class="product_img">
+                        <a href="${product.url}">
                             <img src="${product.image}" alt="${product.title}" class="img-fluid" />
                             <img src="${product.image}" alt="${product.title}" class="img-fluid hover_img" />
-                            <div class="cart_btn">
-                                <button class="cusbtn cartbtn">Add to cart</button>
-                            </div>
                         </a>
-                        <div class="product_meta">
-                            ${product.discount ? `<div class="discount_percent">-${product.discount}%</div>` : ''}
-                            <div class="wishlist">
-                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add to Wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="product_content">
-                            <h4><a href="${product.url}">${product.title}</a></h4>
-                            <div class="price">
-                                ${product.sale_price ? 
-                                    `<del>₹${product.regular_price}</del><ins>₹${product.sale_price}</ins>` : 
-                                    `<ins>₹${product.regular_price}</ins>`
-                                }
-                            </div>
-                            <div class="rating">
-                                <span class="fa-solid fa-star"></span>
-                                <span class="fa-solid fa-star"></span>
-                                <span class="fa-solid fa-star"></span>
-                                <span class="fa-solid fa-star"></span>
-                                <span class="fa-regular fa-star"></span>
-                            </div>
+                        <button class="cusbtn cartbtn add-to-cart" 
+                            data-product-id="${product.id}"
+                            data-product-title="${product.title}"
+                            data-product-price="${product.sale_price || product.regular_price}"
+                            data-product-image="${product.image}"
+                            data-product-slug="${product.slug}">
+                            Add to cart
+                        </button>
+                    </div>
+                    <div class="product_meta">
+                        ${discount > 0 ? `<div class="discount_percent">-${discount}%</div>` : ''}
+                        <div class="wishlist">
+                            <span class="wishlist-toggle wishlist-btn" 
+                                data-bs-toggle="tooltip" 
+                                data-bs-placement="top" 
+                                data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Add to Wishlist"
+                                data-product-id="${product.id}"
+                                data-product-title="${product.title}">
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
                         </div>
                     </div>
-                </li>
-            `;
-        });
-        
-        productsHTML += '</ul>';
-        container.innerHTML = productsHTML;
-    }
+                    <div class="product_content">
+                        <h4><a href="${product.url}">${product.title}</a></h4>
+                        <div class="price">
+                            ${product.sale_price ? 
+                                `<del>₹${product.regular_price}</del><ins>₹${product.sale_price}</ins>` : 
+                                `<ins>₹${product.regular_price}</ins>`
+                            }
+                        </div>
+                        <div class="rating">
+                            <span class="fa-solid fa-star"></span>
+                            <span class="fa-solid fa-star"></span>
+                            <span class="fa-solid fa-star"></span>
+                            <span class="fa-solid fa-star"></span>
+                            <span class="fa-regular fa-star"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        `;
+    });
+    
+    productsHTML += '</ul>';
+    container.innerHTML = productsHTML;
+    
+    // Re-initialize wishlist functionality for new products
+    initializeWishlist();
+    initializeAddToCartButtons();
+}
 
     function updatePagination(pagination) {
         const container = document.getElementById('productsContainer');
