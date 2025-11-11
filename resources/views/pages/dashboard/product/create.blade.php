@@ -86,25 +86,25 @@
                         </div>
 
                         <div class="mb-3">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="manage_stock" id="manageStock" 
-                                    {{ old('manage_stock', isset($product) && !is_null($product->stock_quantity) ? 'checked' : '') }}>
-                                <label class="form-check-label" for="manageStock">
-                                    Manage stock quantity
-                                </label>
-                            </div>
-                            
-                            <div id="stockQuantityField" style="{{ old('manage_stock', isset($product) && !is_null($product->stock_quantity) ? '' : 'display:none;') }}">
-                                <label for="stock_quantity" class="form-label">Stock Quantity</label>
-                                <input type="number" name="stock_quantity" id="stock_quantity" class="form-control" 
-                                    value="{{ old('stock_quantity', $product->stock_quantity ?? '') }}" 
-                                    placeholder="Enter stock quantity" min="0">
-                                <small class="text-muted">Leave empty for unlimited stock</small>
-                                @error('stock_quantity')
-                                    <div class="text-danger small">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+    <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" name="manage_stock" id="manageStock" value="1"
+            {{ old('manage_stock', isset($product) && !is_null($product->stock_quantity) ? 'checked' : '') }}>
+        <label class="form-check-label" for="manageStock">
+            Manage stock quantity
+        </label>
+    </div>
+    
+    <div id="stockQuantityField" style="{{ old('manage_stock', isset($product) && !is_null($product->stock_quantity) ? '' : 'display:none;') }}">
+        <label for="stock_quantity" class="form-label">Stock Quantity</label>
+        <input type="number" name="stock_quantity" id="stock_quantity" class="form-control" 
+            value="{{ old('stock_quantity', isset($product) && !is_null($product->stock_quantity) ? $product->stock_quantity : '') }}" 
+            placeholder="Enter stock quantity" min="0">
+        <small class="text-muted">Leave empty for unlimited stock</small>
+        @error('stock_quantity')
+            <div class="text-danger small">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
                     </div>
                 </div>
             </div>

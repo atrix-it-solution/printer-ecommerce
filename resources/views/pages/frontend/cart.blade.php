@@ -1,6 +1,6 @@
 @extends('layouts.frontend.master')
 
-@section('title', 'Home')
+@section('title', 'Shopping Cart ')
 
 @section('content')
         <div class="bodyWrapper flex-grow-1">
@@ -14,7 +14,8 @@
                 </div>
             </section>
 
-            <section class="cart_empty py-5" style="display: none;">
+            @if(count($cart) == 0)
+            <section class="cart_empty py-5" >
                 <div class="container py-lg-5">
                     <div class="cart_empty_inner text-center">
                         <div class="empty_img mb-4">
@@ -22,18 +23,19 @@
                         </div>
                         <h4 class="fw-light py-2">Your cart is currently empty.</h4>
                         <div class="shopbtn pt-3">
-                            <a href="shop" class="cusbtn btn btn-dark rounded-0 px-5 py-3">Return to Shop <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="{{ route('shop') }}" class="cusbtn btn btn-dark rounded-0 px-5 py-3">Return to Shop <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </section>
-
+            @else
             <section class="cart_sec py-5">
                 <div class="container py-lg-5">
                     <div class="notices-wrapper"></div>
                     <div class="row gx-lg-5">
                         <div class="col-lg-8 my-3">
-                            <form action="" class="cart-form">
+                            <form action="{{ route('cart.update') }}" class="cart-form" id="cartForm">
+                                @csrf
                                 <table class="shop_table shop_table_responsive cart">
                                     <thead class="hidden-xs">
                                         <tr>
@@ -45,88 +47,73 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="cart_item">
+                                        @foreach($cart as $item)
+                                        <tr class="cart_item" id="cart-item-{{ $item['product_id'] }}">
                                             <td class="product-thumbnail">
-                                                <a href="#">
-                                                    <img src="{{ asset('assets/frontend/images/product1.png') }}" class="img-fluid" alt="Product Title">
+                                                <a href="{{ route('product.show', $item['slug']) }}">
+                                                    <img src="{{ $item['image'] }}" class="img-fluid" alt="{{ $item['title'] }}">
 
                                                 </a>
                                             </td>
                                             <td class="product-name" data-title="Product">
-                                                <a href="#">Product Title</a>
+                                                <a href="{{ route('product.show', $item['slug']) }}">{{ $item['title'] }}</a>
                                                 <div class="product-remove">
-                                                    <a href="#" class="remove">Remove</a>
+                                                    <a href="#" class="remove" onclick="removeFromCart({{ $item['product_id'] }})">Remove</a>
                                                 </div>
                                             </td>
                                             <td class="product-price" data-title="Price">
                                                 <span class="amount">
+                                                    @if($item['sale_price'] && $item['sale_price'] < $item['regular_price'])
                                                     <del aria-hidden="true">
-                                                        <span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>109.99</bdi></span>
+                                                        <span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>{{ number_format($item['regular_price'], 2) }}</bdi></span>
                                                     </del>
                                                     <ins aria-hidden="true">
-                                                        <span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>69.99</bdi></span>
+                                                        <span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>{{ number_format($item['sale_price'], 2) }}</bdi></span>
                                                     </ins>
+                                                    @else
+                                                    <span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>{{ number_format($item['regular_price'], 2) }}</bdi></span>
+                                                    @endif
                                                 </span>
                                             </td>
                                             <td class="product-quantity" data-title="Quantity">
                                                 <div class="quantity ">
-                                                    <span class="svg-icon--minus qty-button">
+                                                      <span class="svg-icon--minus qty-button" onclick="updateQuantity({{ $item['product_id'] }}, -1)">
                                                         <svg aria-hidden="true" role="img" focusable="false" width="12" height="2" viewBox="0 0 12 2" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.998 1.85689H6.85519H5.1409H-0.00195312V0.142604H5.1409L6.85519 0.142578L11.998 0.142604V1.85689Z"></path></svg>
                                                     </span>
-                                                    <input type="number" id="quantity_68ee6a75925df" class="input-text qty text" name="cart[qty]" value="1" aria-label="Product quantity" min="0" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off">
-                                                    <span class="svg-icon--plus qty-button">
+                                                     <input type="number" 
+                                                            id="quantity-{{ $item['product_id'] }}" 
+                                                            class="input-text qty text cart-quantity" 
+                                                            name="quantities[{{ $item['product_id'] }}]" 
+                                                            value="{{ $item['quantity'] }}" 
+                                                            aria-label="Product quantity" 
+                                                            min="1" 
+                                                            max="{{ $item['stock_quantity'] ?? '' }}" 
+                                                            step="1" 
+                                                            placeholder="" 
+                                                            inputmode="numeric" 
+                                                            autocomplete="off"
+                                                            onchange="updateQuantityInput({{ $item['product_id'] }}, this.value)">
+                                                    <span class="svg-icon--plus qty-button" onclick="updateQuantity({{ $item['product_id'] }}, 1)">
                                                         <svg aria-hidden="true" role="img" focusable="false" width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.998 6.85714H6.85519V12H5.1409V6.85714H-0.00195312V5.14286H5.1409V0H6.85519V5.14286H11.998V6.85714Z"></path></svg>
                                                     </span>
                                                 </div>
                                             </td>
                                             <td class="product-subtotal text-end" data-title="Total">
-							                    <span class="price-amount amount">
-                                                    <bdi><span class="price-currencySymbol">$</span>69.99</bdi>
+							                     <span class="price-amount amount item-total" id="item-total-{{ $item['product_id'] }}">
+                                                    <bdi><span class="price-currencySymbol">$</span>{{ number_format($item['price'] * $item['quantity'], 2) }}</bdi>
                                                 </span>
                                                 <br>
-                                                <span class="price-saved">Save: <span class="price-amount amount">
-                                                    <bdi><span class="price-currencySymbol">$</span>40.00</bdi></span>
+                                                 @if($item['sale_price'] && $item['sale_price'] < $item['regular_price'])
+                                                <span class="price-saved">
+                                                    Save: <span class="price-amount amount">
+                                                        <bdi><span class="price-currencySymbol">$</span>{{ number_format(($item['regular_price'] - $item['sale_price']) * $item['quantity'], 2) }}</bdi>
+                                                    </span>
                                                 </span>
+                                                @endif
                                             </td>
                                         </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-thumbnail">
-                                                <a href="#">
-                                                    <img src="{{ asset('assets/frontend/images/product2.png') }}" class="img-fluid" alt="Product Title" />
-                                                </a>
-                                            </td>
-                                            <td class="product-name" data-title="Product">
-                                                <a href="#">Product Title</a>
-                                                <div class="product-remove">
-                                                    <a href="#" class="remove">Remove</a>
-                                                </div>
-                                            </td>
-                                            <td class="product-price" data-title="Price">
-                                                <span class="amount">
-                                                    <bdi><span class="price-currencySymbol">$</span>579.00</bdi>
-                                                </span>
-                                            </td>
-                                            <td class="product-quantity" data-title="Quantity">
-                                                <div class="quantity ">
-                                                    <span class="svg-icon--minus qty-button">
-                                                        <svg aria-hidden="true" role="img" focusable="false" width="12" height="2" viewBox="0 0 12 2" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.998 1.85689H6.85519H5.1409H-0.00195312V0.142604H5.1409L6.85519 0.142578L11.998 0.142604V1.85689Z"></path></svg>
-                                                    </span>
-                                                    <input type="number" id="quantity_68ee6a75925df" class="input-text qty text" name="cart[qty]" value="1" aria-label="Product quantity" min="0" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off">
-                                                    <span class="svg-icon--plus qty-button">
-                                                        <svg aria-hidden="true" role="img" focusable="false" width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.998 6.85714H6.85519V12H5.1409V6.85714H-0.00195312V5.14286H5.1409V0H6.85519V5.14286H11.998V6.85714Z"></path></svg>
-                                                    </span>
-                                                </div>
-                                            </td>
-                                            <td class="product-subtotal text-end" data-title="Total">
-							                    <span class="price-amount amount">
-                                                    <bdi><span class="price-currencySymbol">$</span>69.99</bdi>
-                                                </span>
-                                                <br>
-                                                <span class="price-saved">Save: <span class="price-amount amount">
-                                                    <bdi><span class="price-currencySymbol">$</span>40.00</bdi></span>
-                                                </span>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+                                        
                                         <tr>
 				                            <td colspan="6" class="actions">
                                                 <div class="actions_inner">
@@ -157,17 +144,21 @@
                                                 <th>Subtotal</th>
                                                 <td data-title="Subtotal" class="product-subtotal text-end">
                                                     <span class="price">
-                                                        <span class="price-amount amount">
-                                                            <bdi><span class="price-currencySymbol">$</span>1,558.98</bdi>
+                                                        <span class="price-amount amount" id="cart-subtotal">
+                                                            <bdi><span class="price-currencySymbol">$</span>{{ number_format($subtotal, 2) }}</bdi>
                                                         </span> 
+                                                        @if($totalSavings > 0)
                                                         <br>
-                                                        <span class="price-saved">Save: <span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>49.00</bdi></span></span>
+                                                        <span class="price-saved">Save: <span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>{{ number_format($totalSavings, 2) }}</bdi></span></span>
+                                                        @endif
                                                     </span>
                                                 </td>
                                             </tr>
                                             <tr class="order-total">
                                                 <th>Total</th>
-                                                <td class="text-end" data-title="Total"><strong><span class="price-amount amount"><bdi><span class="price-currencySymbol">$</span>1,558.98</bdi></span></strong> </td>
+                                                <td class="text-end" data-title="Total"><strong><span class="price-amount amount" id="cart-total">
+                                                    <bdi><span class="price-currencySymbol">$</span>{{ number_format($total, 2) }}</bdi>
+                                                </span></strong> </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -182,7 +173,7 @@
                     </div>
                 </div>
             </section>
-
+             @endif
 
             <hr style="opacity: .1;">
 
@@ -229,4 +220,156 @@
                 </div>
             </section>
         </div>
+
+
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize quantity buttons
+    initializeCartQuantityButtons();
+});
+
+function initializeCartQuantityButtons() {
+    // Add event listeners to all quantity inputs
+    document.querySelectorAll('.cart-quantity').forEach(input => {
+        input.addEventListener('change', function() {
+            const productId = this.name.match(/\[(\d+)\]/)[1];
+            updateQuantityInput(productId, this.value);
+        });
+    });
+}
+
+function updateQuantity(productId, change) {
+    const input = document.getElementById(`quantity-${productId}`);
+    let newQuantity = parseInt(input.value) + change;
+    
+    // Ensure quantity doesn't go below 1
+    if (newQuantity < 1) newQuantity = 1;
+    
+    // Check stock limit if available
+    const max = parseInt(input.max);
+    if (max && newQuantity > max) {
+        newQuantity = max;
+        alert(`Only ${max} items available in stock.`);
+    }
+    
+    input.value = newQuantity;
+    updateCartItem(productId, newQuantity);
+}
+
+function updateQuantityInput(productId, quantity) {
+    let newQuantity = parseInt(quantity);
+    
+    // Ensure quantity doesn't go below 1
+    if (newQuantity < 1 || isNaN(newQuantity)) newQuantity = 1;
+    
+    // Check stock limit if available
+    const input = document.getElementById(`quantity-${productId}`);
+    const max = parseInt(input.max);
+    if (max && newQuantity > max) {
+        newQuantity = max;
+        alert(`Only ${max} items available in stock.`);
+        input.value = newQuantity;
+    }
+    
+    updateCartItem(productId, newQuantity);
+}
+
+function updateCartItem(productId, quantity) {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{ csrf_token() }}';
+    
+    fetch('{{ route("cart.update") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            product_id: productId,
+            quantity: quantity
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update item total
+            document.getElementById(`item-total-${productId}`).innerHTML = 
+                `<bdi><span class="price-currencySymbol">$</span>${data.item_total}</bdi>`;
+            
+            // Update cart totals
+            document.getElementById('cart-subtotal').innerHTML = 
+                `<bdi><span class="price-currencySymbol">$</span>${data.cart_total}</bdi>`;
+            document.getElementById('cart-total').innerHTML = 
+                `<bdi><span class="price-currencySymbol">$</span>${data.cart_total}</bdi>`;
+            
+            // Update cart count in header
+            updateCartCount(data.cart_count);
+        } else {
+            alert(data.message);
+            // Reset input to previous value
+            location.reload();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+        location.reload();
+    });
+}
+
+function removeFromCart(productId) {
+    if (!confirm('Are you sure you want to remove this item from your cart?')) {
+        return;
+    }
+    
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{ csrf_token() }}';
+    
+    fetch('{{ route("cart.remove") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            product_id: productId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Remove item from DOM
+            document.getElementById(`cart-item-${productId}`).remove();
+            
+            // Update cart totals
+            document.getElementById('cart-subtotal').innerHTML = 
+                `<bdi><span class="price-currencySymbol">$</span>${data.cart_total}</bdi>`;
+            document.getElementById('cart-total').innerHTML = 
+                `<bdi><span class="price-currencySymbol">$</span>${data.cart_total}</bdi>`;
+            
+            // Update cart count in header
+            updateCartCount(data.cart_count);
+            
+            // If cart is empty, show empty cart message
+            if (data.cart_count === 0) {
+                location.reload();
+            }
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+    });
+}
+
+function updateCartCount(count) {
+    const cartCountElements = document.querySelectorAll('.cart-count, .cart-count-badge');
+    cartCountElements.forEach(element => {
+        element.textContent = count;
+        element.style.display = count > 0 ? 'inline' : 'none';
+    });
+}
+</script>
         @endsection

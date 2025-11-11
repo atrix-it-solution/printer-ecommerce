@@ -13,7 +13,7 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
      <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}" />
 
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
 
@@ -23,6 +23,14 @@
  </head>
 
  <body>
+     <div id="app-routes" 
+            data-wishlist-toggle="{{ route('wishlist.toggle') }}"
+            data-wishlist-check="{{ route('wishlist.check') }}"
+            data-wishlist-data="{{ route('wishlist.data') }}"
+            data-cart-add="{{ route('cart.add') }}"
+            data-cart-data="{{ route('cart.data') }}"
+            style="display: none;">
+        </div>
      <main class="min-vh-100 d-flex flex-column">
          {{-- Header --}}
          @include('layouts.frontend.header')
@@ -33,10 +41,10 @@
          {{-- Footer --}}
          @include('layouts.frontend.footer')
 
-
+       
      </main>
 
-
+       
      <div class="search_sec p-4" id="searchbar">
          <div class="search_sec_inner p-4">
              <div class="search_head">
@@ -149,6 +157,96 @@
      <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
      <script src="{{ asset('assets/frontend/js/custom.js') }}"></script>
+
+    
+    <script>
+        // Global functions for cart and wishlist
+        function updateCartCount(count) {
+            const cartCountElements = document.querySelectorAll('.cart-count-badge');
+            cartCountElements.forEach(element => {
+                if (element) {
+                    element.textContent = count;
+                    if (count > 0) {
+                        element.style.display = 'inline';
+                    } else {
+                        element.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        function updateWishlistCount(count) {
+            const wishlistCountElements = document.querySelectorAll('.wishlist-count');
+            wishlistCountElements.forEach(element => {
+                if (element) {
+                    element.textContent = count;
+                    if (count > 0) {
+                        element.style.display = 'inline';
+                    } else {
+                        element.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Function to fetch cart count from server
+        function fetchCartCount() {
+            fetch('{{ route("cart.data") }}', {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                updateCartCount(data.cart_count);
+            })
+            .catch(error => {
+                console.error('Error loading cart count:', error);
+            });
+        }
+
+        // Function to fetch wishlist count from server
+        function fetchWishlistCount() {
+            fetch('{{ route("wishlist.data") }}', {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                updateWishlistCount(data.wishlist_count);
+            })
+            .catch(error => {
+                console.error('Error loading wishlist count:', error);
+            });
+        }
+
+        // Load both counts on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchCartCount();
+            fetchWishlistCount();
+        });
+
+        // Make functions globally available
+        window.updateCartCount = updateCartCount;
+        window.updateWishlistCount = updateWishlistCount;
+        window.fetchCartCount = fetchCartCount;
+        window.fetchWishlistCount = fetchWishlistCount;
+    </script>
+
+
  </body>
 
  </html>
