@@ -14,6 +14,9 @@ class ShopController extends Controller
         \Log::info('ShopController accessed', ['request' => $request->all()]);
 
         try {
+            // Get categories for filter sidebar - REMOVED STATUS CHECK
+            $categories = ProductCategory::withCount(['products'])->get();
+
             // Get filtered products
             $products = $this->getFilteredProducts($request);
 
@@ -38,7 +41,7 @@ class ShopController extends Controller
 
             // For normal page loads
             return view('pages.frontend.shop', array_merge(
-                compact('products'),
+                compact('products', 'categories'),
                 $counts
             ));
 
@@ -53,9 +56,10 @@ class ShopController extends Controller
                 ], 500);
             }
 
-            // Return error view for normal requests
+            // Return error view for normal requests - REMOVED STATUS CHECK
             return view('pages.frontend.shop', [
-                'products' => Product::paginate(6), // Fallback to basic pagination
+                'products' => Product::paginate(6),
+                'categories' => ProductCategory::all(), // Removed status filter
                 'saleProductsCount' => 0,
                 'inStockCount' => 0,
                 'outOfStockCount' => 0,
@@ -65,7 +69,7 @@ class ShopController extends Controller
 
     private function getFilteredProducts(Request $request)
     {
-        // Start with base query - SIMPLIFIED VERSION
+        // Start with base query
         $query = Product::with(['categories', 'featuredImage']);
 
         \Log::info('Base query products count: ' . $query->count());
@@ -78,7 +82,7 @@ class ShopController extends Controller
             \Log::info('Applied category filter', ['categories' => $request->category]);
         }
 
-        // === AVAILABILITY FILTER - SIMPLIFIED ===
+        // === AVAILABILITY FILTER ===
         if ($request->has('availability') && !empty($request->availability)) {
             if (in_array('sale', $request->availability)) {
                 $query->whereNotNull('sale_price')->where('sale_price', '>', 0);
@@ -96,7 +100,7 @@ class ShopController extends Controller
             \Log::info('Applied availability filter', ['availability' => $request->availability]);
         }
 
-        // === PRICE FILTER - SIMPLIFIED ===
+        // === PRICE FILTER ===
         $minPrice = $request->get('min_price', 0);
         $maxPrice = $request->get('max_price', 10000);
         
@@ -135,8 +139,21 @@ class ShopController extends Controller
 
         \Log::info('Final query before pagination', ['sort' => $sortBy]);
 
-        // Return paginated results
-        return $query->paginate(6)->withQueryString();
+        // Get user's wishlist product IDs
+        $wishlistProductIds = [];
+        if (auth()->check()) {
+            $wishlistProductIds = auth()->user()->wishlist()->pluck('product_id')->toArray();
+        }
+
+        // Transform products to include wishlist status
+        $products = $query->paginate(6)->withQueryString();
+        
+        $products->getCollection()->transform(function ($product) use ($wishlistProductIds) {
+            $product->in_wishlist = in_array($product->id, $wishlistProductIds);
+            return $product;
+        });
+
+        return $products;
     }
 
     private function getProductCounts()
@@ -154,34 +171,55 @@ class ShopController extends Controller
     }
 
     private function formatProducts($products)
-    {
-        return collect($products)->map(function($product) {
-            // Calculate discount percentage
-            $discount = null;
-            if ($product->sale_price && 
-                $product->regular_price && 
-                $product->sale_price < $product->regular_price) {
-                $discount = round((($product->regular_price - $product->sale_price) / $product->regular_price) * 100);
-            }
-
-            // Get image URL with fallback
-            $imageUrl = $product->featuredImage 
-                ? asset($product->featuredImage->url)
-                : asset('assets/frontend/images/placeholder.jpg');
-
-            return [
-                'id' => $product->id,
-                'title' => $product->title,
-                'slug' => $product->slug,
-                'regular_price' => number_format($product->regular_price, 2),
-                'sale_price' => $product->sale_price ? number_format($product->sale_price, 2) : null,
-                'image' => $imageUrl,
-                'discount' => $discount,
-                'url' => route('product.show', $product->slug),
-                'in_stock' => $product->stock_quantity > 0 || is_null($product->stock_quantity)
-            ];
-        })->toArray();
+{
+    // Get user's wishlist product IDs for AJAX requests
+    $wishlistProductIds = [];
+    if (auth()->check()) {
+        $wishlistProductIds = auth()->user()->wishlist()->pluck('product_id')->toArray();
     }
+
+    \Log::info('Wishlist Product IDs:', $wishlistProductIds);
+    \Log::info('Products to format:', ['count' => count($products)]);
+
+    return collect($products)->map(function($product) use ($wishlistProductIds) {
+        // Calculate discount percentage
+        $discount = null;
+        if ($product->sale_price && 
+            $product->regular_price && 
+            $product->sale_price < $product->regular_price) {
+            $discount = round((($product->regular_price - $product->sale_price) / $product->regular_price) * 100);
+        }
+
+        // Get image URL with fallback
+        $imageUrl = $product->featuredImage 
+            ? asset($product->featuredImage->url)
+            : asset('assets/frontend/images/placeholder.jpg');
+
+        // Check if product is in wishlist - USE THE TRANSFORMED DATA
+        // The product should have in_wishlist property from getFilteredProducts method
+        $inWishlist = $product->in_wishlist ?? in_array($product->id, $wishlistProductIds);
+
+        \Log::info("Product {$product->id} wishlist status:", [
+            'product_id' => $product->id,
+            'in_wishlist_property' => $product->in_wishlist ?? 'not_set',
+            'in_array_result' => in_array($product->id, $wishlistProductIds),
+            'final_status' => $inWishlist
+        ]);
+
+        return [
+            'id' => $product->id,
+            'title' => $product->title,
+            'slug' => $product->slug,
+            'regular_price' => number_format($product->regular_price, 2),
+            'sale_price' => $product->sale_price ? number_format($product->sale_price, 2) : null,
+            'image' => $imageUrl,
+            'discount' => $discount,
+            'url' => route('product.show', $product->slug),
+            'in_stock' => $product->stock_quantity > 0 || is_null($product->stock_quantity),
+            'in_wishlist' => $inWishlist 
+        ];
+    })->toArray();
+}
 
     private function formatPagination($products)
     {
