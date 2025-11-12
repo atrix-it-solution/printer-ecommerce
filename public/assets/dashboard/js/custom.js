@@ -132,3 +132,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const manageStockCheckbox = document.getElementById('manageStock');
+    const stockQuantityField = document.getElementById('stockQuantityField');
+    const stockQuantityInput = document.getElementById('stock_quantity');
+
+    // Toggle stock quantity field visibility
+    manageStockCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            stockQuantityField.style.display = 'block';
+            // Set default value if empty
+            if (!stockQuantityInput.value) {
+                stockQuantityInput.value = '0';
+            }
+        } else {
+            stockQuantityField.style.display = 'none';
+            stockQuantityInput.value = '';
+        }
+    });
+
+    // Initialize on page load
+    if (manageStockCheckbox.checked) {
+        stockQuantityField.style.display = 'block';
+        if (!stockQuantityInput.value) {
+            stockQuantityInput.value = '0';
+        }
+    }
+});
+
+
+
+
+

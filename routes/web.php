@@ -20,8 +20,9 @@ use App\Http\Controllers\authentications\LoginController;
 use App\Http\Controllers\authentications\RegisterController;
 use App\Http\Controllers\authentications\LoginRegisterController;
 
-use App\Http\Middleware\CheckTokenExpiration;
-use App\Http\Middleware\CheckAdmin;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
@@ -43,13 +44,22 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-account', [MyAccountController::class, 'index'])->name('my-account');
     Route::get('/orders', [MyAccountController::class, 'orders'])->name('orders');
-    Route::get('/wishlist', [MyAccountController::class, 'wishlist'])->name('wishlist');
-    Route::get('/cart', function () {
-        return view('pages.frontend.cart');
-    })->name('cart');
 });
 
+// Cart Routes
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/count', [CartController::class, 'getCartData'])->name('cart.data');
 
+// Wishlist Routes
+Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+Route::post('/wishlist/toggle', [WishlistController::class, 'toggleWishlist'])->name('wishlist.toggle');
+Route::get('/wishlist', [WishlistController::class, 'viewWishlist'])->name('wishlist.view');
+Route::get('/wishlist/count', [WishlistController::class, 'getWishlistData'])->name('wishlist.data');
+Route::post('/wishlist/check', [WishlistController::class, 'checkWishlist'])->name('wishlist.check');
 
 Route::get('/about', function () {
     return view('pages.frontend.about');
@@ -86,14 +96,6 @@ Route::get('terms-and-conditions', function () {
 });
 
 
-
-Route::get('cart', function () {
-    return view('pages.frontend.cart');
-});
-
-Route::get('category', function () {
-    return view('pages.frontend.category');
-});
 Route::get('checkout', function () {
     return view('pages.frontend.checkout');
 });
@@ -130,9 +132,7 @@ Route::get('terms-and-conditions', function () {
 Route::get('view-order', function () {
     return view('pages.frontend.view-order');
 });
-Route::get('wishlist', function () {
-    return view('pages.frontend.wishlist');
-});
+
 Route::get('billing-address', function () {
     return view('pages.frontend.billing-address');
 });
