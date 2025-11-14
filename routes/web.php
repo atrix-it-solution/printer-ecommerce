@@ -22,6 +22,7 @@ use App\Http\Controllers\authentications\LoginRegisterController;
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\SearchController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -61,15 +62,16 @@ Route::get('/wishlist', [WishlistController::class, 'viewWishlist'])->name('wish
 Route::get('/wishlist/count', [WishlistController::class, 'getWishlistData'])->name('wishlist.data');
 Route::post('/wishlist/check', [WishlistController::class, 'checkWishlist'])->name('wishlist.check');
 
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/search-results', [SearchController::class, 'searchResults'])->name('search.results');
+
+Route::get('/blog', [BlogController::class, 'frontendIndex'])->name('frontend.blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'frontendShow'])->name('frontend.blog.single');
+
 Route::get('/about', function () {
     return view('pages.frontend.about');
 });
-Route::get('/blog', function () {
-    return view('pages.frontend.blog');
-});
-Route::get('/blog-details', function () {
-    return view('pages.frontend.blog-details');
-});
+
 Route::get('/portfolio', function () {
     return view('pages.frontend.portfolio');
 });
@@ -123,9 +125,7 @@ Route::get('privacy-policy', function () {
     return view('pages.frontend.privacy-policy');
 });
 
-Route::get('single-blog', function () {
-    return view('pages.frontend.single-blog');
-});
+
 Route::get('terms-and-conditions', function () {
     return view('pages.frontend.terms-and-conditions');
 });
@@ -139,9 +139,7 @@ Route::get('billing-address', function () {
 Route::get('shipping-address', function () {
     return view('pages.frontend.shipping-address');
 });
-Route::get('single-product', function () {
-    return view('pages.frontend.singleproduct');
-});
+
 
 Route::get('/login', function () {
     return redirect('/login-register');

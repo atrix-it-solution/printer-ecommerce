@@ -38,62 +38,44 @@
                 <div class="product_gallery">
                     <div id="product-gallery" class="slider-pro">
                         <div class="sp-slides">
-                             @if($product->galleryImages->count() > 0)
+                             <!-- Featured Image Slide -->
+                            @if($product->hasFeaturedImage())
+                            <div class="sp-slide">
+                                <a href="{{ $product->featuredImage->url }}" class="full_icon">
+                                    <i class="fa-solid fa-expand"></i>
+                                </a>
+                                <img class="sp-image img-fluid" src="{{ $product->featuredImage->url }}" alt="{{ $product->title }} - Featured Image" />
+                            </div>
+                            @endif
+
+                            <!-- Gallery Images -->
+                            @if($product->hasGalleryImages())
                                 @foreach($product->galleryImages as $index => $image)
-                                 <div class="sp-slide">
-                                    <a href="{{ Storage::url($image->file_path) }}" class="full_icon">
-                                        <i class="fa-solid fa-expand"></i>
-                                    </a>
-                                    <img class="sp-image img-fluid" src="{{ Storage::url($image->file_path) }}" alt="{{ $product->title }} - Image {{ $index + 1 }}" />
-                                </div>
+                                    <div class="sp-slide">
+                                        <a href="{{ Storage::url($image->file_path) }}" class="full_icon">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </a>
+                                        <img class="sp-image img-fluid" src="{{ Storage::url($image->file_path) }}" alt="{{ $product->title }} - Image {{ $index + 1 }}" />
+                                    </div>
                                 @endforeach
-                                 @endif
+                            @endif
 
-                            
-                            <!-- <div class="sp-slide">
-                                <a href="{{ asset('assets/images/product_img1.jpg') }}" class="full_icon">
-                                    <i class="fa-solid fa-expand"></i>
-                                </a>
-                                <img class="sp-image img-fluid" src="{{asset ('assets/images/product_img1.jpg')}}" data-src="{{asset ('assets/images/product_img1.jpg')}}" alt="Product image 1" />
-                            </div>
-
-                            
-                            <div class="sp-slide">
-                                <a href="{{ asset('assets/images/product_img11.jpg') }}" class="full_icon">
-                                    <i class="fa-solid fa-expand"></i>
-                                </a>
-                                <img class="sp-image img-fluid" src="{{asset ('assets/images/product_img11.jpg')}}" data-src="{{asset ('assets/images/product_img11.jpg')}}" alt="Product image 2" />
-                            </div>
-
-                            
-                            <div class="sp-slide">
-                                <a href="{{ asset('assets/images/product_img2.jpg') }}" class="full_icon">
-                                    <i class="fa-solid fa-expand"></i>
-                                </a>
-                                <img class="sp-image img-fluid" src="{{asset ('assets/images/product_img2.jpg')}}" data-src="{{asset ('assets/images/product_img2.jpg')}}" alt="Product image 3" />
-                            </div>
-
-                            
-                            <div class="sp-slide">
-                                <a href="{{ asset('assets/images/product_img3.jpg') }}" class="full_icon">
-                                    <i class="fa-solid fa-expand"></i>
-                                </a>
-                                <img class="sp-image img-fluid" src="{{asset ('assets/images/product_img3.jpg')}}" data-src="{{asset ('assets/images/product_img3.jpg')}}" alt="Product image 3" />
-                            </div> -->
-
+                        
                         </div>
 
                         <!-- Thumbnails -->
                         <div class="sp-thumbnails">
-                             @if($product->galleryImages->count() > 0)
+                            <!-- Featured Image Thumbnail -->
+                            @if($product->hasFeaturedImage())
+                            <img class="sp-thumbnail img-fluid" src="{{ $product->featuredImage->url }}" alt="{{ $product->title }} thumbnail" />
+                            @endif
+
+                            <!-- Gallery Image Thumbnails -->
+                            @if($product->hasGalleryImages())
                                 @foreach($product->galleryImages as $image)
-                                <img class="sp-thumbnail img-fluid" src="{{ Storage::url($image->file_path) }}" alt="{{ $product->title }} thumbnail" />
+                                    <img class="sp-thumbnail img-fluid" src="{{ Storage::url($image->file_path) }}" alt="{{ $product->title }} thumbnail" />
                                 @endforeach
                             @endif
-                            <!-- <img class="sp-thumbnail img-fluid" src="{{asset ('assets/images/product_img1.jpg')}}" alt="Product Thumb 1" />
-                            <img class="sp-thumbnail img-fluid" src="{{asset ('assets/images/product_img11.jpg')}}" alt="Product Thumb 2" />
-                            <img class="sp-thumbnail img-fluid" src="{{asset ('assets/images/product_img2.jpg')}}" alt="Product Thumb 3" />
-                            <img class="sp-thumbnail img-fluid" src="{{asset ('assets/images/product_img3.jpg')}}" alt="Product Thumb 3" /> -->
                         </div>
                     </div>
 
@@ -575,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
 jQuery(document).ready(function($) {
     $('#product-gallery').sliderPro({
         width: '100%',
-        height: 650,
+        height: 495,
         fade: true,
         arrows: true,
         buttons: false,
