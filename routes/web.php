@@ -23,6 +23,9 @@ use App\Http\Controllers\authentications\LoginRegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\OrderController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -44,7 +47,15 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 // Protected routes - require authentication
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-account', [MyAccountController::class, 'index'])->name('my-account');
-    Route::get('/orders', [MyAccountController::class, 'orders'])->name('orders');
+    // Order Routes
+    Route::get('/orders/success/{order}', [OrderController::class, 'success'])->name('order.success');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+    // Route::get('/orders', [MyAccountController::class, 'orders'])->name('orders');
+
+    // Checkout Routes
+    Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
+    Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
 });
 
 // Cart Routes
@@ -53,14 +64,23 @@ Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/cart/count', [CartController::class, 'getCartData'])->name('cart.data');
+Route::get('/cart/data', [CartController::class, 'getCartData'])->name('cart.data');
 
 // Wishlist Routes
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+Route::post('/wishlist/clear', [WishlistController::class, 'clearWishlist'])->name('wishlist.clear');
 Route::post('/wishlist/toggle', [WishlistController::class, 'toggleWishlist'])->name('wishlist.toggle');
 Route::get('/wishlist', [WishlistController::class, 'viewWishlist'])->name('wishlist.view');
 Route::get('/wishlist/count', [WishlistController::class, 'getWishlistData'])->name('wishlist.data');
 Route::post('/wishlist/check', [WishlistController::class, 'checkWishlist'])->name('wishlist.check');
+
+
+
+
+// Coupon Routes
+Route::post('/coupon/apply', [CouponController::class, 'applyCoupon'])->name('coupon.apply');
+Route::post('/coupon/remove', [CouponController::class, 'removeCoupon'])->name('coupon.remove');
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/search-results', [SearchController::class, 'searchResults'])->name('search.results');
@@ -98,9 +118,7 @@ Route::get('terms-and-conditions', function () {
 });
 
 
-Route::get('checkout', function () {
-    return view('pages.frontend.checkout');
-});
+
 Route::get('contact', function () {
     return view('pages.frontend.contact');
 });
@@ -118,9 +136,7 @@ Route::get('forgot-password', function () {
 });
 
 
-Route::get('orders', function () {
-    return view('pages.frontend.orders');
-});
+
 Route::get('privacy-policy', function () {
     return view('pages.frontend.privacy-policy');
 });

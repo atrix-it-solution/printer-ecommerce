@@ -115,13 +115,20 @@
                                         @endforeach
                                         
                                         <tr>
-				                            <td colspan="6" class="actions">
+                                            <td colspan="6" class="actions">
                                                 <div class="actions_inner">
+                                                    @if(!$appliedCoupon)
                                                     <div class="coupon">
                                                         <label for="coupon_code" class="screen-reader-text d-none">Coupon:</label> 
                                                         <input type="text" name="coupon_code" class="form-control" id="coupon_code" value="" placeholder="Coupon code">
-                                                        <button type="submit" class="btn btn-dark" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                                                        <button type="button" class="btn btn-dark" name="apply_coupon" onclick="applyCouponFromCart()">Apply coupon</button>
                                                     </div>
+                                                    @else
+                                                    <div class="applied-coupon alert alert-success">
+                                                        Coupon <strong>{{ $appliedCoupon['code'] }}</strong> applied! 
+                                                        <a href="#" onclick="removeCoupon()" class="text-danger ms-2">Remove</a>
+                                                    </div>
+                                                    @endif
                                                     <button type="submit" class="btn btn-dark button-update-cart" name="update_cart" value="Update cart" disabled="">Update cart</button>
                                                 </div>
                                             </td>
@@ -154,6 +161,21 @@
                                                     </span>
                                                 </td>
                                             </tr>
+
+                                             
+                                            @if($appliedCoupon)
+                                            <tr class="cart-discount">
+                                                <th>Discount ({{ $appliedCoupon['code'] }}) 
+                                                    <a href="#" onclick="removeCoupon()" class="text-danger ms-2" title="Remove coupon">
+                                                        <small>×</small>
+                                                    </a>
+                                                </th>
+                                                <td class="text-end text-success" data-title="Discount">
+                                                    -$<span id="cart-discount">{{ number_format($discountAmount, 2) }}</span>
+                                                </td>
+                                            </tr>
+                                            @endif
+
                                             <tr class="order-total">
                                                 <th>Total</th>
                                                 <td class="text-end" data-title="Total"><strong><span class="price-amount amount" id="cart-total">
@@ -221,7 +243,11 @@
             </section>
         </div>
 
+        @endsection
 
+
+        @section('script')
+<script src="{{ asset('assets/frontend/js/coupons.js') }}"></script>
         <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize quantity buttons

@@ -141,18 +141,18 @@ jQuery(document).ready(function() {
         $('#searchbar').removeClass("active");
     });
 
-    document.getElementById("shipAddress").addEventListener("change", function() {
-        const collapseElement = document.getElementById("shipping_fields");
-        const collapse = new bootstrap.Collapse(collapseElement, {
-            toggle: false // prevent auto toggle on init
-        });
+    // document.getElementById("shipAddress").addEventListener("change", function() {
+    //     const collapseElement = document.getElementById("shipping_fields");
+    //     const collapse = new bootstrap.Collapse(collapseElement, {
+    //         toggle: false // prevent auto toggle on init
+    //     });
 
-        if (this.checked) {
-            collapse.show();
-        } else {
-            collapse.hide();
-        }
-    });
+    //     if (this.checked) {
+    //         collapse.show();
+    //     } else {
+    //         collapse.hide();
+    //     }
+    // });
 });
 
 
@@ -350,7 +350,7 @@ class SearchManager {
         if (products.length > 0) {
             productsHtml = `
                 <div class="search-category mb-4">
-                    <h6 class="search-category-title mb-3">Products (${productCount})</h6>
+                    <h6 class="search-category-title mb-3">Products </h6>
                     <ul class="product_list list-unstyled">
             `;
             
@@ -386,7 +386,7 @@ class SearchManager {
         if (blogs.length > 0) {
             blogsHtml = `
                 <div class="search-category">
-                    <h6 class="search-category-title mb-3">Blog Posts (${blogCount})</h6>
+                    <h6 class="search-category-title mb-3">Blog Posts </h6>
                     <ul class="blog_list list-unstyled">
             `;
             

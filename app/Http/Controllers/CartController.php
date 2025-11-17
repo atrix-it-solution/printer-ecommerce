@@ -95,29 +95,62 @@ class CartController extends Controller
     }
 
     public function viewCart()
-    {
-        $cart = session()->get('cart', []);
+{
+    $cart = session()->get('cart', []);
+    
+    // Calculate cart totals
+    $subtotal = 0;
+    $totalSavings = 0;
+    $total = 0;
+    $discountAmount = 0;
+    $appliedCoupon = session()->get('applied_coupon');
+    
+    foreach ($cart as $item) {
+        $itemTotal = $item['price'] * $item['quantity'];
+        $subtotal += $itemTotal;
         
-        // Calculate cart totals
-        $subtotal = 0;
-        $totalSavings = 0;
-        $total = 0;
-        
-        foreach ($cart as $item) {
-            $itemTotal = $item['price'] * $item['quantity'];
-            $subtotal += $itemTotal;
-            
-            // Calculate savings if there's a sale price
-            if ($item['sale_price'] && $item['sale_price'] < $item['regular_price']) {
-                $savings = ($item['regular_price'] - $item['sale_price']) * $item['quantity'];
-                $totalSavings += $savings;
-            }
+        // Calculate savings if there's a sale price
+        if ($item['sale_price'] && $item['sale_price'] < $item['regular_price']) {
+            $savings = ($item['regular_price'] - $item['sale_price']) * $item['quantity'];
+            $totalSavings += $savings;
         }
-        
-        $total = $subtotal;
-        
-        return view('pages.frontend.cart', compact('cart', 'subtotal', 'totalSavings', 'total'));
     }
+    
+    // Apply coupon discount if any
+    if ($appliedCoupon) {
+        $discountAmount = $appliedCoupon['discount_amount'];
+        $total = $subtotal - $discountAmount;
+    } else {
+        $total = $subtotal;
+    }
+    
+    return view('pages.frontend.cart', compact('cart', 'subtotal', 'totalSavings', 'total', 'discountAmount', 'appliedCoupon'));
+}
+
+    // public function viewCart()
+    // {
+    //     $cart = session()->get('cart', []);
+        
+    //     // Calculate cart totals
+    //     $subtotal = 0;
+    //     $totalSavings = 0;
+    //     $total = 0;
+        
+    //     foreach ($cart as $item) {
+    //         $itemTotal = $item['price'] * $item['quantity'];
+    //         $subtotal += $itemTotal;
+            
+    //         // Calculate savings if there's a sale price
+    //         if ($item['sale_price'] && $item['sale_price'] < $item['regular_price']) {
+    //             $savings = ($item['regular_price'] - $item['sale_price']) * $item['quantity'];
+    //             $totalSavings += $savings;
+    //         }
+    //     }
+        
+    //     $total = $subtotal;
+        
+    //     return view('pages.frontend.cart', compact('cart', 'subtotal', 'totalSavings', 'total'));
+    // }
 
     public function updateCart(Request $request)
     {
