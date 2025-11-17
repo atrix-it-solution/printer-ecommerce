@@ -29,31 +29,33 @@ class WishlistManager {
         this.initialized = true;
     }
 
-   initializeWishlistIcons() {
+  initializeWishlistIcons() {
     // Use event delegation instead of individual event listeners
-        document.addEventListener('click', (e) => {
-            const icon = e.target.closest('.wishlist-toggle');
-            if (icon) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const productId = icon.getAttribute('data-product-id');
-                const productTitle = icon.getAttribute('data-product-title');
-                
-                this.toggleWishlist(productId, productTitle, icon);
-            }
-        });
+    document.addEventListener('click', (e) => {
+        let icon = e.target.closest('.wishlist-toggle'); // Change const to let
 
-        // RE-ENABLE INITIAL STATE CHECK - This is crucial!
-        const wishlistIcons = document.querySelectorAll('.wishlist-toggle');
-        // console.log('Found ' + wishlistIcons.length + ' wishlist icons to check');
-        
-        wishlistIcons.forEach(icon => {
+        if (!icon) {
+            icon = e.target.closest('.remove-from-wishlist');
+        }
+
+        if (icon) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             const productId = icon.getAttribute('data-product-id');
-            // console.log('Checking initial state for product:', productId);
-            this.checkWishlistState(productId, icon);
-        });
-    }
+            const productTitle = icon.getAttribute('data-product-title');
+            
+            this.toggleWishlist(productId, productTitle, icon);
+        }
+    });
+
+    // Initialize tooltips for all wishlist icons
+    const wishlistIcons = document.querySelectorAll('.wishlist-toggle, .remove-from-wishlist');
+    wishlistIcons.forEach(icon => {
+        const productId = icon.getAttribute('data-product-id');
+        this.checkWishlistState(productId, icon);
+    });
+}
     
     toggleWishlist(productId, productTitle, icon) {
     if (!icon || !this.routes.toggle) {
@@ -103,9 +105,16 @@ class WishlistManager {
         // console.log('Toggle response:', data);
         
         if (data.success) {
-            this.updateAllWishlistIcons(productId, data.is_in_wishlist);
-            this.updateWishlistCount(data.wishlist_count);
-            this.showWishlistToast(data.message, data.is_in_wishlist);
+            const isOnWishlistPage = window.location.pathname.includes('wishlist');
+                
+                if (isOnWishlistPage && !data.is_in_wishlist) {
+                    // On wishlist page and item was removed - remove from DOM
+                    this.removeFromWishlist(productId, productTitle, icon);
+                } else {
+                    this.updateAllWishlistIcons(productId, data.is_in_wishlist);
+                    this.updateWishlistCount(data.wishlist_count);
+                    this.showWishlistToast(data.message, data.is_in_wishlist);
+                }
         } else {
             throw new Error(data.message || 'Failed to update wishlist');
         }
@@ -182,7 +191,10 @@ class WishlistManager {
 
     updateAllWishlistIcons(productId, isInWishlist) {
         // Find ALL icons for this product across the page
-        const allIcons = document.querySelectorAll(`.wishlist-toggle[data-product-id="${productId}"]`);
+        const allIcons = document.querySelectorAll(`
+            .wishlist-toggle[data-product-id="${productId}"],
+            .remove-from-wishlist[data-product-id="${productId}"]
+        `);
         
         allIcons.forEach(icon => {
             this.updateWishlistIcon(icon, isInWishlist);
@@ -192,6 +204,11 @@ class WishlistManager {
 
    updateWishlistIcon(icon, isInWishlist) {
         if (!icon) return;
+
+        // For wishlist page, we use trash icon, so don't change it
+        if (icon.classList.contains('remove-from-wishlist')) {
+            return; // Keep the trash icon as is
+        }   
         
         // Get the SVG element or the icon element
         const heartSvg = icon.querySelector('svg');
@@ -220,13 +237,23 @@ class WishlistManager {
         }
     }
     updateWishlistTooltip(icon, isInWishlist) {
-        if (!icon) return;
+    if (!icon) return;
 
-        const tooltip = bootstrap.Tooltip.getInstance(icon);
+    const tooltip = bootstrap.Tooltip.getInstance(icon);
+    
+    // For wishlist page with trash icons, disable tooltip
+    if (icon.classList.contains('remove-from-wishlist')) {
         if (tooltip) {
-            tooltip.setContent({ '.tooltip-inner': isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' });
+            tooltip.dispose(); // Remove the tooltip entirely
         }
+        return;
     }
+    
+    // For heart icons on other pages, show tooltip
+    if (tooltip) {
+        tooltip.setContent({ '.tooltip-inner': isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' });
+    }
+}
 
     updateWishlistCount(count) {
         const wishlistCountElements = document.querySelectorAll('.wishlist-count, .header-wishlist .count');
@@ -377,7 +404,149 @@ class WishlistManager {
             this.checkWishlistState(productId, icon);
         });
     }
+
+
+
+
+removeFromWishlist(productId, productTitle, icon, wishlistCount) {
+    // console.log('Removing from wishlist for product:', productId);
+
+    // Remove the entire product card from DOM
+    const productCard = document.getElementById(`wishlistItem-${productId}`);
+    if (productCard) {
+        productCard.remove();
+    }
+    
+    // Use the count from server response instead of calculating
+    this.updateWishlistCount(wishlistCount);
+    this.showWishlistToast('Product removed from wishlist!', false);
+    
+    // Check if wishlist is now empty
+    const remainingItems = document.querySelectorAll('[id^="wishlistItem-"]').length;
+    if (remainingItems === 0) {
+        this.showEmptyWishlistState();
+    }
 }
+// removeFromWishlist(productId, productTitle, icon) {
+//     // console.log('Removing from wishlist for product:', productId);
+
+//     // Remove the entire product card from DOM
+//     const productCard = document.getElementById(`wishlistItem-${productId}`);
+//     if (productCard) {
+//         productCard.remove();
+//     }
+    
+//     // Update the count from the DOM instead of calling getWishlistCount()
+//     const currentCount = parseInt(document.getElementById('wishlistCount').textContent) || 0;
+//     const newCount = Math.max(0, currentCount - 1);
+    
+//     this.updateWishlistCount(newCount);
+//     this.showWishlistToast('Product removed from wishlist!', false);
+    
+//     // Check if wishlist is now empty
+//     const remainingItems = document.querySelectorAll('[id^="wishlistItem-"]').length;
+//     if (remainingItems === 0) {
+//         this.showEmptyWishlistState();
+//     }
+// }
+
+showEmptyWishlistState() {
+        const wishlistContainer = document.getElementById('wishlistItemsContainer');
+        const wishlistActions = document.querySelector('.wishlist-actions');
+        
+        if (wishlistContainer) {
+            wishlistContainer.innerHTML = `
+                <div class="empty-wishlist text-center py-5">
+                    <div class="empty-icon mb-4">
+                        <i class="fa fa-heart fa-4x text-muted"></i>
+                    </div>
+                    <h3 class="text-muted mb-3">Your wishlist is empty</h3>
+                    <p class="text-muted mb-4">You haven't added any products to your wishlist yet.</p>
+                    <a href="/shop" class="btn btn-dark btn-lg">
+                        <i class="fa fa-shopping-bag me-2"></i>Start Shopping
+                    </a>
+                </div>
+            `;
+        }
+        
+        if (wishlistActions) {
+            wishlistActions.remove();
+        }
+    }
+
+// Update the toggleWishlist method to handle removal specifically
+toggleWishlist(productId, productTitle, icon) {
+    if (!icon || !this.routes.toggle) {
+        console.error('Wishlist icon element not found or route not defined');
+        return;
+    }
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+    // console.log('Toggling wishlist for product:', productId);
+
+    fetch(this.routes.toggle, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            product_id: productId
+        })
+    })
+    .then(response => {
+        // console.log('Response status:', response.status);
+        
+        if (response.status === 401) {
+            return response.json().then(data => {
+                if (data.redirect) {
+                    this.redirectToLogin(data.login_url, productId);
+                }
+                throw new Error(data.message);
+            });
+        }
+        
+        if (!response.ok) {
+            return response.text().then(text => {
+                console.error('Server response:', text);
+                throw new Error(`Server error: ${response.status} ${response.statusText}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        // console.log('Toggle response:', data);
+        
+        if (data.success) {
+            // Check if we're on the wishlist page
+            const isOnWishlistPage = window.location.pathname.includes('wishlist');
+            
+            if (isOnWishlistPage && !data.is_in_wishlist) {
+                // On wishlist page and item was removed - remove from DOM
+                this.removeFromWishlist(productId, productTitle, icon, data.wishlist_count);
+            } else {
+                // On other pages or item was added - just update icon and count
+                this.updateAllWishlistIcons(productId, data.is_in_wishlist);
+                this.updateWishlistCount(data.wishlist_count);
+                this.showWishlistToast(data.message, data.is_in_wishlist);
+            }
+        } else {
+            throw new Error(data.message || 'Failed to update wishlist');
+        }
+    })
+    .catch(error => {
+        console.error('Toggle wishlist error:', error);
+        if (!error.message.includes('redirect')) {
+            this.showWishlistToast('Failed to update wishlist: ' + error.message, false);
+        }
+    });
+}
+}
+
+
+
 
 
 

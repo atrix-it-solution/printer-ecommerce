@@ -398,4 +398,33 @@ class WishlistController extends Controller
             ], 500);
         }
     }
+
+
+    public function clearWishlist(Request $request)
+    {
+        try {
+            if (Auth::check()) {
+                // Clear database wishlist
+                Wishlist::where('user_id', Auth::id())->delete();
+                Log::info('Database wishlist cleared for user: ' . Auth::id());
+            } else {
+                // Clear session wishlist
+                session()->forget('wishlist');
+                Log::info('Session wishlist cleared');
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Wishlist cleared successfully!',
+                'wishlist_count' => 0
+            ]);
+
+        } catch (\Exception $e) {
+            Log::error('Clear wishlist error:', ['error' => $e->getMessage()]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Server error: ' . $e->getMessage()
+            ], 500);
+        }
+    }
 }
