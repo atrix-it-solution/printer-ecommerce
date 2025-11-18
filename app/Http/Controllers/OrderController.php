@@ -25,7 +25,11 @@ class OrderController extends Controller
             abort(403, 'Unauthorized action.');
         }
         
-        $order->load('orderItems.product');
+        $order->load(['orderItems' => function($query) {
+            $query->with(['product' => function($query) {
+                $query->select('id', 'title', 'slug'); // Only select needed fields
+            }]);
+        }]);
         $user = Auth::user(); // Get authenticated user
         
         return view('pages.frontend.view-order', compact('order', 'user'));

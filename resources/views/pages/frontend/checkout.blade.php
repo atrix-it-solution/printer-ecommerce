@@ -84,19 +84,19 @@
                                 <div class="col-lg-6 my-2">
                                     <div class="form-group">
                                         <label for="fname">First Name <span class="required">*</span></label>
-                                        <input type="text" name="first_name" id="fname" value="{{ old('first_name', auth()->user()->first_name ?? '') }}" class="form-control" required />
+                                        <input type="text" name="first_name" id="fname" value="{{ old('first_name', $billingAddress->first_name ?? auth()->user()->first_name ?? '') }}" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 my-2">
                                     <div class="form-group">
                                         <label for="lname">Last Name <span class="required">*</span></label>
-                                        <input type="text" name="last_name" id="lname" value="{{ old('last_name', auth()->user()->last_name ?? '') }}" class="form-control" required />
+                                        <input type="text" name="last_name" id="lname" value="{{ old('last_name', $billingAddress->last_name ?? auth()->user()->last_name ?? '') }}" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-12 my-2">
                                     <div class="form-group">
                                         <label for="companyname">Company Name (Optional)</label>
-                                        <input type="text" name="company_name" id="companyname" value="{{ old('company_name') }}" class="form-control">
+                                        <input type="text" name="company_name" id="companyname" value="{{ old('company_name', $billingAddress->company_name ?? '') }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 my-2">
@@ -104,17 +104,17 @@
                                         <label for="country">Country / Region <span class="required">*</span></label>
                                         <select class="form-control" name="country" id="country" required>
                                             <option value="">Select Country</option>
-                                            <option value="India" {{ old('country') == 'India' ? 'selected' : '' }}>India</option>
-                                            <option value="US" {{ old('country') == 'US' ? 'selected' : '' }}>United States</option>
-                                            <option value="UK" {{ old('country') == 'UK' ? 'selected' : '' }}>United Kingdom</option>
+                                            <option value="India" {{ old('country', $billingAddress->country ?? '') == 'India' ? 'selected' : '' }}>India</option>
+                                            <option value="US" {{ old('country', $billingAddress->country ?? '') == 'US' ? 'selected' : '' }}>United States</option>
+                                            <option value="UK" {{ old('country', $billingAddress->country ?? '') == 'UK' ? 'selected' : '' }}>United Kingdom</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 my-2">
                                     <div class="form-group">
                                         <label for="street_address">Street address <span class="required">*</span></label>
-                                        <input type="text" name="street_address" id="street_address" placeholder="House number and street name" value="{{ old('street_address') }}" class="form-control mb-2" required>
-                                        <input type="text" name="apartment" id="apartment" placeholder="Apartment, suite, unit, etc. (optional)" value="{{ old('apartment') }}" class="form-control">
+                                        <input type="text" name="street_address" id="street_address" placeholder="House number and street name" value="{{ old('street_address', $billingAddress->street_address ?? '') }}" class="form-control mb-2" required>
+                                        <input type="text" name="apartment" id="apartment" placeholder="Apartment, suite, unit, etc. (optional)" value="{{ old('apartment', $billingAddress->apartment ?? '') }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 my-2">
@@ -122,33 +122,33 @@
                                         <label for="state">State <span class="required">*</span></label>
                                         <select class="form-control" name="state" id="state" required>
                                             <option value="">Select State</option>
-                                            <option value="Punjab" {{ old('state') == 'Punjab' ? 'selected' : '' }}>Punjab</option>
-                                            <option value="Chandigarh" {{ old('state') == 'Chandigarh' ? 'selected' : '' }}>Chandigarh</option>
+                                            <option value="Punjab" {{ old('state', $billingAddress->state ?? '') == 'Punjab' ? 'selected' : '' }}>Punjab</option>
+                                            <option value="Chandigarh" {{ old('state', $billingAddress->state ?? '') == 'Chandigarh' ? 'selected' : '' }}>Chandigarh</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 my-2">
                                     <div class="form-group">
                                         <label for="city">Town / City <span class="required">*</span></label>
-                                        <input type="text" name="city" id="city" value="{{ old('city') }}" class="form-control" required>
+                                        <input type="text" name="city" id="city" value="{{ old('city', $billingAddress->city ?? '') }}" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 my-2">
                                     <div class="form-group">
                                         <label for="zipcode">ZIP Code <span class="required">*</span></label>
-                                        <input type="text" name="zip_code" id="zipcode" value="{{ old('zip_code') }}" class="form-control" required>
+                                        <input type="text" name="zip_code" id="zipcode" value="{{ old('zip_code', $billingAddress->zip_code ?? '') }}" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 my-2">
                                     <div class="form-group">
                                         <label for="phone">Phone Number <span class="required">*</span></label>
-                                        <input type="tel" name="phone" id="phone" value="{{ old('phone', auth()->user()->phone ?? '') }}" class="form-control" required>
+                                        <input type="tel" name="phone" id="phone" value="{{ old('phone', $billingAddress->phone ?? auth()->user()->phone ?? '') }}" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 my-2">
                                     <div class="form-group">
                                         <label for="email">Email Address <span class="required">*</span></label>
-                                        <input type="email" name="email" id="email" value="{{ old('email', auth()->user()->email ?? '') }}" class="form-control" required>
+                                        <input type="email" name="email" id="email" value="{{ old('email', $billingAddress->email ?? auth()->user()->email ?? '') }}" class="form-control" required>
                                     </div>
                                 </div>
                                 <!-- <div class="col-lg-12 my-2">
@@ -171,19 +171,19 @@
                                     <div class="col-lg-6 my-2">
                                         <div class="form-group">
                                             <label for="shipping_first_name">First Name <span class="required">*</span></label>
-                                            <input type="text" name="shipping_first_name" id="shipping_first_name" value="{{ old('shipping_first_name') }}" class="form-control" />
+                                            <input type="text" name="shipping_first_name" id="shipping_first_name" value="{{ old('shipping_first_name' ,$shippingAddress->first_name ?? '') }}" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-lg-6 my-2">
                                         <div class="form-group">
                                             <label for="shipping_last_name">Last Name <span class="required">*</span></label>
-                                            <input type="text" name="shipping_last_name" id="shipping_last_name" value="{{ old('shipping_last_name') }}" class="form-control" />
+                                            <input type="text" name="shipping_last_name" id="shipping_last_name" value="{{ old('shipping_last_name', $shippingAddress->last_name ?? '') }}" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-lg-12 my-2">
                                         <div class="form-group">
                                             <label for="shipping_company_name">Company Name (Optional)</label>
-                                            <input type="text" name="shipping_company_name" id="shipping_company_name" value="{{ old('shipping_company_name') }}" class="form-control">
+                                            <input type="text" name="shipping_company_name" id="shipping_company_name" value="{{ old('shipping_company_name',$shippingAddress->company_name ?? '') }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 my-2">
@@ -191,17 +191,17 @@
                                             <label for="shipping_country">Country / Region <span class="required">*</span></label>
                                             <select class="form-control" name="shipping_country" id="shipping_country">
                                                 <option value="">Select Country</option>
-                                                <option value="India" {{ old('shipping_country') == 'India' ? 'selected' : '' }}>India</option>
-                                                <option value="US" {{ old('shipping_country') == 'US' ? 'selected' : '' }}>United States</option>
-                                                <option value="UK" {{ old('shipping_country') == 'UK' ? 'selected' : '' }}>United Kingdom</option>
+                                                <option value="India" {{ old('shipping_country', $shippingAddress->country ?? '') == 'India' ? 'selected' : '' }}>India</option>
+                                                <option value="US" {{ old('shipping_country', $shippingAddress->country ?? '') == 'US' ? 'selected' : '' }}>United States</option>
+                                                <option value="UK" {{ old('shipping_country', $shippingAddress->country ?? '') == 'UK' ? 'selected' : '' }}>United Kingdom</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 my-2">
                                         <div class="form-group">
                                             <label for="shipping_street_address">Street address <span class="required">*</span></label>
-                                            <input type="text" name="shipping_street_address" id="shipping_street_address" placeholder="House number and street name" value="{{ old('shipping_street_address') }}" class="form-control mb-2">
-                                            <input type="text" name="shipping_apartment" id="shipping_apartment" placeholder="Apartment, suite, unit, etc. (optional)" value="{{ old('shipping_apartment') }}" class="form-control">
+                                            <input type="text" name="shipping_street_address" id="shipping_street_address" placeholder="House number and street name" value="{{ old('shipping_street_address' ,$shippingAddress->street_address ?? '') }}" class="form-control mb-2">
+                                            <input type="text" name="shipping_apartment" id="shipping_apartment" placeholder="Apartment, suite, unit, etc. (optional)" value="{{ old('shipping_apartment' ,$shippingAddress->apartment ?? '') }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 my-2">
@@ -209,21 +209,21 @@
                                             <label for="shipping_state">State <span class="required">*</span></label>
                                             <select class="form-control" name="shipping_state" id="shipping_state">
                                                 <option value="">Select State</option>
-                                                <option value="Punjab" {{ old('shipping_state') == 'Punjab' ? 'selected' : '' }}>Punjab</option>
-                                                <option value="Chandigarh" {{ old('shipping_state') == 'Chandigarh' ? 'selected' : '' }}>Chandigarh</option>
+                                                <option value="Punjab" {{ old('shipping_state', $shippingAddress->state ?? '') == 'Punjab' ? 'selected' : '' }}>Punjab</option>
+                                                <option value="Chandigarh" {{ old('shipping_state', $shippingAddress->state ?? '') == 'Chandigarh' ? 'selected' : '' }}>Chandigarh</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 my-2">
                                         <div class="form-group">
                                             <label for="shipping_city">Town / City <span class="required">*</span></label>
-                                            <input type="text" name="shipping_city" id="shipping_city" value="{{ old('shipping_city') }}" class="form-control">
+                                            <input type="text" name="shipping_city" id="shipping_city" value="{{ old('shipping_city', $shippingAddress->city ?? '') }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 my-2">
                                         <div class="form-group">
                                             <label for="shipping_zip_code">ZIP Code <span class="required">*</span></label>
-                                            <input type="text" name="shipping_zip_code" id="shipping_zip_code" value="{{ old('shipping_zip_code') }}" class="form-control">
+                                            <input type="text" name="shipping_zip_code" id="shipping_zip_code" value="{{ old('shipping_zip_code',$shippingAddress->zip_code ?? '') }}" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -325,7 +325,7 @@
                                     </li>
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="cod" id="cashDelivery" name="payment_method" required />
+                                            <input class="form-check-input" type="radio" value="cash on delivery" id="cashDelivery" name="payment_method" required />
                                             <label class="form-check-label" for="cashDelivery">Cash on delivery</label>
                                         </div>
                                     </li>

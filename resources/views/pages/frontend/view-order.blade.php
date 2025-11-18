@@ -4,15 +4,8 @@
 
 @section('content')
         <div class="bodyWrapper flex-grow-1">
-            <section class="subheader py-5" style="background-image: url('images/account_bg.jpg');">
-                <div class="container py-lg-5">
-                    <div class="row">
-                        <div class="col-md-6 text-white">
-                            <h1 class="text-dark">My Account</h1>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            @include('partials.subheader-myaccount')
+
 
             <section class="myaccount_sec py-5">
                 <div class="container">
@@ -38,11 +31,27 @@
                                                 @foreach($order->orderItems as $item)
                                                 <tr>
                                                     <td>
-                                                        <a href="#">{{ $item->product->name }}</a> 
+                                                        @if($item->product)
+                                                            <a href="{{ route('product.show', $item->product->slug) }}">{{ $item->product->title }}</a>
+                                                        @else
+                                                            <span>{{ $item->product_name }}</span>
+                                                        @endif
                                                         <strong>× <span class="total_item">{{ $item->quantity }}</span></strong>
+                                                        
+                                                        <!-- Show product details -->
+                                                        @if($item->product_sale_price && $item->product_sale_price < $item->product_regular_price)
+                                                            <div class="product_price mt-1">
+                                                                <del class="text-muted me-2">${{ number_format($item->product_regular_price, 2) }}</del>
+                                                                <span class="text-danger">${{ number_format($item->product_sale_price, 2) }}</span>
+                                                            </div>
+                                                        @else
+                                                            <div class="product_price mt-1">
+                                                                <span>${{ number_format($item->product_price, 2) }}</span>
+                                                            </div>
+                                                        @endif
                                                     </td>
                                                     <td class="text-end">
-                                                        <div class="price">${{ number_format($item->price * $item->quantity, 2) }}</div>
+                                                        <div class="price">${{ number_format($item->total_price, 2) }}</div>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -50,16 +59,40 @@
                                             <tfoot>
                                                 <tr>
                                                     <td>Subtotal:</td>
-                                                    <td class="text-end fs-5 fw-semibold">${{ number_format($order->total_amount, 2) }}</td>
+                                                    <td class="text-end fs-5 fw-semibold">${{ number_format($order->subtotal, 2) }}</td>
                                                 </tr>
+                                                
+                                                @if($order->discount_amount > 0)
+                                                <tr>
+                                                    <td>Discount:
+                                                        @if($order->coupon_code)
+                                                            <small class="text-muted">({{ $order->coupon_code }})</small>
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-end fs-5 fw-semibold text-success">-${{ number_format($order->discount_amount, 2) }}</td>
+                                                </tr>
+                                                @endif
+                                                
+                                                <tr>
+                                                    <td>Shipping:</td>
+                                                    <td class="text-end fs-5 fw-semibold">
+                                                        @if($order->total_amount - $order->subtotal + $order->discount_amount > 0)
+                                                            ${{ number_format($order->total_amount - $order->subtotal + $order->discount_amount, 2) }}
+                                                        @else
+                                                            Free
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                
                                                 <tr>
                                                     <td>Total:</td>
                                                     <td class="text-end fs-5 fw-semibold">${{ number_format($order->total_amount, 2) }}</td>
                                                 </tr>
+                                                
                                                 <tr>
                                                     <td>Payment method:</td>
                                                     <td class="text-end">{{ ucfirst($order->payment_method) }}</td>
-                                                </tr>
+                                                </tr>                                                
                                                 <tr>
                                                     <td>Actions:</td>
                                                     <td class="text-end">
@@ -70,12 +103,44 @@
                                         </table>
                                     </div>
                                     
-                                    <div class="billing_address shadow p-4 border border-light mt-4 rounded-3">
+                                   <div class="billing_address shadow p-4 border border-light mt-4 rounded-3">
                                         <h4 class="pb-2">Billing address</h4>
                                         <address class="mb-0">
-                                            {!! nl2br(e($order->billing_address)) !!}
+                                            <strong>{{ $order->billing_first_name }} {{ $order->billing_last_name }}</strong><br>
+                                            @if($order->billing_company_name)
+                                                {{ $order->billing_company_name }}<br>
+                                            @endif
+                                            {{ $order->billing_street_address }}<br>
+                                            @if($order->billing_apartment)
+                                                {{ $order->billing_apartment }}<br>
+                                            @endif
+                                            {{ $order->billing_city }}, {{ $order->billing_state }} {{ $order->billing_zip_code }}<br>
+                                            {{ $order->billing_country }}<br>
+                                            <strong>Phone:</strong> {{ $order->billing_phone }}<br>
+                                            <strong>Email:</strong> {{ $order->billing_email }}
                                         </address>
                                     </div>
+
+                                    <!-- Add shipping address if different -->
+                                    @if($order->shipping_first_name !== $order->billing_first_name || $order->shipping_street_address !== $order->billing_street_address)
+                                    <div class="shipping_address shadow p-4 border border-light mt-4 rounded-3">
+                                        <h4 class="pb-2">Shipping address</h4>
+                                        <address class="mb-0">
+                                            <strong>{{ $order->shipping_first_name }} {{ $order->shipping_last_name }}</strong><br>
+                                            @if($order->shipping_company_name)
+                                                {{ $order->shipping_company_name }}<br>
+                                            @endif
+                                            {{ $order->shipping_street_address }}<br>
+                                            @if($order->shipping_apartment)
+                                                {{ $order->shipping_apartment }}<br>
+                                            @endif
+                                            {{ $order->shipping_city }}, {{ $order->shipping_state }} {{ $order->shipping_zip_code }}<br>
+                                            {{ $order->shipping_country }}<br>
+                                            <strong>Phone:</strong> {{ $order->shipping_phone }}<br>
+                                            <strong>Email:</strong> {{ $order->shipping_email }}
+                                        </address>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -83,52 +148,10 @@
                 </div>
             </section>
             
+    @include('partials.features_sec')
 
 
-            <hr style="opacity: .1;">
-
-            <section class="features_sec py-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-6 col-xl-3 my-3">
-                            <div class="feature_box">
-                                <div class="feature_icon">
-                                    <img src="{{ asset('assets/frontend/images/sicon1.svg') }}" alt="Complimentary Shipping" class="img-fluid" />
-                                </div>
-                                <h4>Complimentary Shipping</h4>
-                                <p>Free worldwide shipping and returns - customs and duties taxes included.</p>
-                            </div>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <div class="feature_box">
-                                <div class="feature_icon">
-                                    <img src="{{ asset('assets/frontend/images/sicon2.svg') }}" alt="Customer service" class="img-fluid" />
-                                </div>
-                                <h4>Customer service</h4>
-                                <p>We are available from Monday-Friday to answer your questions.</p>
-                            </div>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <div class="feature_box">
-                                <div class="feature_icon">
-                                    <img src="{{ asset('assets/frontend/images/sicon3.svg') }}" alt="Secure payment" class="img-fluid" />
-                                </div>
-                                <h4>Secure payment</h4>
-                                <p>Your payment information is processed securely.</p>
-                            </div>
-                        </div>
-                        <div class="col-6 col-xl-3 my-3">
-                            <div class="feature_box">
-                                <div class="feature_icon">
-                                    <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
-                                </div>
-                                <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+           
         </div>
         @endsection
 

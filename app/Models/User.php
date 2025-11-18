@@ -64,4 +64,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function billingAddress()
+    {
+        return $this->hasOne(Address::class)->where('type', 'billing')->where('is_default', true);
+    }
+
+    public function shippingAddress()
+    {
+        return $this->hasOne(Address::class)->where('type', 'shipping')->where('is_default', true);
+    }
 }

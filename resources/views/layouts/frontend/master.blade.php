@@ -16,7 +16,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-
+    {!! CookieConsent::styles() !!}
      <!-- JS (jquery) -->
      <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
 
@@ -92,7 +92,7 @@
             </div>
         </div>
     </div>
-    
+    {!! CookieConsent::scripts() !!}
      <!--JS Files -->
      @yield('script')
      <script src="{{ asset('assets/frontend/js/font-awesome-all.min.js') }}"></script>

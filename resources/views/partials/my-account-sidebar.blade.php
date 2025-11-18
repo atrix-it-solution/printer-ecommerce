@@ -26,7 +26,7 @@
             <li><a href="/my-account" class="{{ request()->is('my-account') ? 'active' : '' }}"><i class="fa-solid fa-grip"></i> <span>Dashboard</span></a></li>
             <li><a href="/orders" class="{{ request()->is('orders') ? 'active' : '' }}"><i class="fa-solid fa-bag-shopping"></i> <span>My Orders</span></a></li>
             <li><a href="/wishlist" class="{{ request()->is('wishlist') ? 'active' : '' }}"><i class="fa-solid fa-heart"></i> <span>My Wishlist</span></a></li>
-            <li><a href="/edit-address" class="{{ request()->is('edit-address') ? 'active' : '' }}"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
+             <li><a href="{{ route('address.index') }}" class="{{ request()->routeIs('address.*') ? 'active' : '' }}"><i class="fa-solid fa-address-card"></i> <span>Address</span></a></li>
             <li><a href="/edit-account" class="{{ request()->is('edit-account') ? 'active' : '' }}"><i class="fa-solid fa-user"></i> <span>Account Details</span></a></li>
             
             <li>

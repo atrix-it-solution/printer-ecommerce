@@ -26,6 +26,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AddressController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -47,6 +48,7 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 // Protected routes - require authentication
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-account', [MyAccountController::class, 'index'])->name('my-account');
+    Route::get('/edit-account', [MyAccountController::class, 'accountDetails'])->name('edit-account');
     // Order Routes
     Route::get('/orders/success/{order}', [OrderController::class, 'success'])->name('order.success');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
@@ -56,6 +58,12 @@ Route::middleware(['auth'])->group(function () {
     // Checkout Routes
     Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
     Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+
+    Route::get('/address', [AddressController::class, 'index'])->name('address.index');
+    Route::get('/address/billing', [AddressController::class, 'editBilling'])->name('address.billing');
+    Route::post('/address/billing', [AddressController::class, 'updateBilling'])->name('address.billing.update');
+    Route::get('/address/shipping', [AddressController::class, 'editShipping'])->name('address.shipping');
+    Route::post('/address/shipping', [AddressController::class, 'updateShipping'])->name('address.shipping.update');
 });
 
 // Cart Routes
@@ -76,7 +84,12 @@ Route::get('/wishlist/count', [WishlistController::class, 'getWishlistData'])->n
 Route::post('/wishlist/check', [WishlistController::class, 'checkWishlist'])->name('wishlist.check');
 
 
-
+// Route::get('billing-address', function () {
+//     return view('pages.frontend.billing-address');
+// });
+// Route::get('shipping-address', function () {
+//     return view('pages.frontend.shipping-address');
+// });
 
 // Coupon Routes
 Route::post('/coupon/apply', [CouponController::class, 'applyCoupon'])->name('coupon.apply');
@@ -122,12 +135,8 @@ Route::get('terms-and-conditions', function () {
 Route::get('contact', function () {
     return view('pages.frontend.contact');
 });
-Route::get('edit-account', function () {
-    return view('pages.frontend.edit-account');
-});
-Route::get('edit-address', function () {
-    return view('pages.frontend.edit-address');
-});
+
+
 Route::get('faq', function () {
     return view('pages.frontend.faq');
 });
@@ -145,16 +154,9 @@ Route::get('privacy-policy', function () {
 Route::get('terms-and-conditions', function () {
     return view('pages.frontend.terms-and-conditions');
 });
-Route::get('view-order', function () {
-    return view('pages.frontend.view-order');
-});
 
-Route::get('billing-address', function () {
-    return view('pages.frontend.billing-address');
-});
-Route::get('shipping-address', function () {
-    return view('pages.frontend.shipping-address');
-});
+
+
 
 
 Route::get('/login', function () {

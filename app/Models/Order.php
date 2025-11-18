@@ -123,4 +123,9 @@ class Order extends Model
     {
         return '$' . number_format($this->discount_amount, 2);
     }
+
+    public function getStatusAttribute()
+    {
+        return $this->order_status;
+    }
 }
