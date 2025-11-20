@@ -96,7 +96,7 @@
                                                 <tr>
                                                     <td>Actions:</td>
                                                     <td class="text-end">
-                                                        <a href="#" class="btn btn-dark px-4 text-uppercase fs-7 py-2">Invoice</a>
+                                                        <a href="{{ route('orders.invoice.download', $order) }}" class="btn btn-dark px-4 text-uppercase fs-7 py-2">Invoice</a>
                                                     </td>
                                                 </tr>
                                             </tfoot>
@@ -309,7 +309,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@proprintershop.us</p>
                             </div>
                         </div>
                     </div>

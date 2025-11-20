@@ -8,7 +8,7 @@
                 <div class="row gx-0">
                     <div class="col-lg-6">
                         <div class="contactimg h-100">
-                            <img src="{{ asset('assets/frontend/images/contactimg.jpg') }}" alt="Contact printhelp" class="img-fluid h-100 w-100 object-fit-cover" />
+                            <img src="{{ asset('assets/frontend/images/contactimg.jpg') }}" alt="Contact Pro Printer Shop" class="img-fluid h-100 w-100 object-fit-cover" />
                         </div>
                     </div>
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">
@@ -80,7 +80,7 @@
                         <h3 class="pb-2">Contact Info</h3>
                         <ul class="list-unstyled infobox d-flex flex-column">
                             <li class="border-bottom"><a class="d-flex" href="tel:+919876543210"><i class="fa-solid text-theme fa-phone"></i> +91 98765-43210</a></li>
-                            <li class="border-bottom"><a class="d-flex" href="mailto:info@printhelp.com"><i class="fa-regular text-theme fa-envelope"></i> info@printhelp.com</a></li>
+                            <li class="border-bottom"><a class="d-flex" href="mailto:info@proprintershop.us"><i class="fa-regular text-theme fa-envelope"></i> info@proprintershop.us</a></li>
                             <li class="border-bottom"><a class="d-flex" href="javascript:void(0);"><i class="fa-solid text-theme fa-map-marker-alt"></i> 1901 thorn ridge cir. shiloh, hawai 81063</a></li>
                             <li class=""><a class="d-flex" href="javascript:void(0);"><i class="fa-regular text-theme fa-clock"></i> We are an online store, so you can shop 24 hours a day!</a></li>
                         </ul>
@@ -182,7 +182,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@proprintershop.us</p>
                             </div>
                         </div>
                     </div>

@@ -54,7 +54,7 @@
                     <div class="rotate_text d-none d-lg-block text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 120 120" class="tab-vertical__textcircle">
                             <defs><path d="M 60, 60 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0" id="txt-path"></path></defs>
-                            <text><textPath startOffset="0" xlink:href="#txt-path">PrintHelp Trending Product</textPath></text>
+                            <text><textPath startOffset="0" xlink:href="#txt-path">Pro Printer Shop Trending Product</textPath></text>
                         </svg>
                     </div>
                     <div class="row gx-lg-0">
@@ -323,7 +323,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@proprintershop.us</p>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
  <head>
      <meta charset="UTF-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <title>@yield('title') - Print Help</title>
+     <title>@yield('title') - Pro Printer Shop</title>
      <!-- CSS Files -->
      <link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome-all.min.css') }}" />
      <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}" />

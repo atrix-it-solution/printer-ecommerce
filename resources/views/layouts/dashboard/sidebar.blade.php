@@ -5,7 +5,7 @@
                 <img src="{{ asset('storage/' . $setting->site_logo) }}" alt="Site Logo" style="max-height: 50px; max-width: 200px;">
             </div>
         @else
-            <h4 class="text-center">Print-Ecommerce</h4>
+            <h4 class="text-center">Pro Printer Shop</h4>
         @endif
         <hr class="text-black">
     </div>

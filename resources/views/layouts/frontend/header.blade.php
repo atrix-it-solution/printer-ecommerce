@@ -4,7 +4,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-3">
                             <ul class="topbar_info_list d-flex align-items-center justify-content-center justify-content-lg-start gap-4 mb-0 list-unstyled">
-                                <li><a href="mailto:info@printhelp.com"><i class="fa-solid fa-envelope"></i> info@printhelp.com</a></li>
+                                <li><a href="mailto:info@proprintershop.us"><i class="fa-solid fa-envelope"></i> info@proprintershop.us</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
@@ -46,12 +46,12 @@
                         <div class="d-xl-none pt-1"><a href="javascript:void(0);" class="search-trigger" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></div>
                     </div>
                     <a class="navbar-brand" href="/">
-                        <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="PrintHelp Logo" class="img-fluid" />
+                        <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="Pro Printer Shop Logo" class="img-fluid" />
                     </a>
                     <div class="d-flex align-items-center justify-content-end justify-content-xl-between flex-xl-grow-1">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <a class="navbar-brand d-block pt-0 d-xl-none text-center me-0 mb-3" href="/">
-                                <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="PrintHelp Logo" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="Pro Printer Shop Logo" class="img-fluid" />
                             </a>
 
                             <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 ps-xl-3 ps-xxl-4">
@@ -79,7 +79,7 @@
                             <div class="mobile_info d-xl-none">
                                 <ul class="navbar-nav pt-4">
                                     <li><a href="tel:+919410109369"><i class="text-theme me-2 fa-solid fa-phone"></i> +91 94101-09369</a></li>
-                                    <li><a href="mailto:info@printhelp.com"><i class="text-theme me-2 fa-regular fa-envelope"></i> info@printhelp.com</a></li>
+                                    <li><a href="mailto:info@proprintershop.us"><i class="text-theme me-2 fa-regular fa-envelope"></i> info@proprintershop.us</a></li>
                                     <li><a href="javascript:void(0);"><i class="text-theme me-2 fa-solid fa-map-marker-alt"></i> Saharanpur, UP, India</a></li>
                                 </ul>
                             </div>
