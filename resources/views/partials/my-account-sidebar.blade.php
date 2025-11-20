@@ -2,23 +2,25 @@
     <div class="account_sidebar">
         <div class="user_info mb-3 d-flex gap-2">
             <div class="user_img">
-                @php
+                 @php
                     // Use Auth facade to get user data
                     $user = Auth::user();
-                    // Get initials from name
-                    $names = explode(' ', $user->name);
+                    // Use display_name if available, otherwise use name
+                    $displayName = $user->display_name ?? $user->name;
+                    // Get initials from display name
+                    $names = explode(' ', $displayName);
                     $initials = '';
                     if(count($names) >= 2) {
                         $initials = strtoupper(substr($names[0], 0, 1) . substr($names[count($names)-1], 0, 1));
                     } else {
-                        $initials = strtoupper(substr($user->name, 0, 2));
+                        $initials = strtoupper(substr($displayName, 0, 2));
                     }
                 @endphp
                 <span>{{ $initials }}</span>
                 <!-- <img src="{{ asset('assets/frontend/images/dummy.jpg') }}" alt="User Name" class="img-fluid"/> -->
             </div>
             <div class="user_info_r">
-                <h4>{{ ucwords(strtolower($user->name)) }}</h4>
+                <h4>{{ ucwords(strtolower($displayName)) }}</h4>
                 <div class="email">{{ $user->email }}</div>
             </div>
         </div>

@@ -31,18 +31,18 @@ class LoginController extends Controller
 
             if (Auth::user()->role === 'customer') {
                 $this->revokeUserTokens(Auth::user());
-                return redirect()->intended('/');
+                return redirect()->intended('/')->with('success', 'Login successful!');
             }
 
             // Redirect based on user role
             if (Auth::user()->isAdmin()) {
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/dashboard')->with('success', 'Welcome back!');
             }
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ])->withInput($request->except('password'));
+        ])->withInput($request->only('email', 'remember'));
     }
 
     /**

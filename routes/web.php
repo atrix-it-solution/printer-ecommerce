@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\MyAccountController;
+use App\Http\Controllers\Frontend\UserProfileController;
 
 use App\Http\Controllers\authentications\LoginController;
 use App\Http\Controllers\authentications\RegisterController;
@@ -27,6 +28,8 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ForgotPasswordController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -64,6 +67,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/address/billing', [AddressController::class, 'updateBilling'])->name('address.billing.update');
     Route::get('/address/shipping', [AddressController::class, 'editShipping'])->name('address.shipping');
     Route::post('/address/shipping', [AddressController::class, 'updateShipping'])->name('address.shipping.update');
+
+    Route::get('/my-account/edit', [UserProfileController::class, 'edit'])->name('my-account.edit');
+    Route::post('/my-account/update', [UserProfileController::class, 'update'])->name('my-account.update');
+
+    Route::get('/orders/{order}/invoice/download', [InvoiceController::class, 'download'])->name('orders.invoice.download');
+    Route::get('/orders/{order}/invoice/view', [InvoiceController::class, 'view'])->name('orders.invoice.view');
+
+Route::get('/wishlist', [WishlistController::class, 'viewWishlist'])->name('wishlist.view');
+
 });
 
 // Cart Routes
@@ -79,9 +91,15 @@ Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name
 Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 Route::post('/wishlist/clear', [WishlistController::class, 'clearWishlist'])->name('wishlist.clear');
 Route::post('/wishlist/toggle', [WishlistController::class, 'toggleWishlist'])->name('wishlist.toggle');
-Route::get('/wishlist', [WishlistController::class, 'viewWishlist'])->name('wishlist.view');
 Route::get('/wishlist/count', [WishlistController::class, 'getWishlistData'])->name('wishlist.data');
 Route::post('/wishlist/check', [WishlistController::class, 'checkWishlist'])->name('wishlist.check');
+
+// Password Reset Routes with OTP
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::post('/verify-otp', [ForgotPasswordController::class, 'verifyOTP'])->name('password.verify.otp');
+Route::post('/resend-otp', [ForgotPasswordController::class, 'resendOTP'])->name('password.resend.otp');
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
 
 // Route::get('billing-address', function () {
@@ -101,16 +119,13 @@ Route::get('/search-results', [SearchController::class, 'searchResults'])->name(
 Route::get('/blog', [BlogController::class, 'frontendIndex'])->name('frontend.blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'frontendShow'])->name('frontend.blog.single');
 
+// Invoice routes
+
+
 Route::get('/about', function () {
     return view('pages.frontend.about');
 });
 
-Route::get('/portfolio', function () {
-    return view('pages.frontend.portfolio');
-});
-Route::get('/portfolio-details', function () {
-    return view('pages.frontend.portfolio-details');
-});
 Route::get('/team', function () {
     return view('pages.frontend.team');
 });
@@ -140,9 +155,7 @@ Route::get('contact', function () {
 Route::get('faq', function () {
     return view('pages.frontend.faq');
 });
-Route::get('forgot-password', function () {
-    return view('pages.frontend.forgot-password');
-});
+
 
 
 

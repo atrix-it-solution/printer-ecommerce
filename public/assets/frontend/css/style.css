@@ -759,6 +759,42 @@ ul.social_menu li a:hover {
 .topbar_info_list a:hover {
     color: var(--theme-light);
 }
+/* EMERGENCY FIX - Force topbar and offer slider to show immediately */
+.topbar {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.offer_slider {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.offer_slide {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Show first slide immediately before Slick initializes */
+.offer_slider:not(.slick-initialized) .offer_slide {
+    display: none !important;
+}
+
+.offer_slider:not(.slick-initialized) .offer_slide:first-child {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Prevent any transitions that might cause delay */
+.offer_slider,
+.offer_slide {
+    transition: none !important;
+    animation: none !important;
+}
 .payment-icon svg {
     width: 55px;
     height: 35px;

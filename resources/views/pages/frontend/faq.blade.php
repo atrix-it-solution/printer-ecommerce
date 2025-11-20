@@ -65,7 +65,7 @@
                                     <div class="accordion-item">
                                         <h5 class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">What are your shipping, returns and order change policies?</h5>
                                         <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample1">
-                                            <div class="accordion-body">Orders are confirmed by email once payment is processed and typically ship within the timeframe shown on the product page. You can change your shipping address only before the order is dispatched—contact support as soon as possible. Returns for unopened or unused items are accepted within the period stated in our Returns Policy; defective items are handled via warranty or replacement per the manufacturer's process. For any order or return help, contact support@printhelp.com and include your order number.</div>
+                                            <div class="accordion-body">Orders are confirmed by email once payment is processed and typically ship within the timeframe shown on the product page. You can change your shipping address only before the order is dispatched—contact support as soon as possible. Returns for unopened or unused items are accepted within the period stated in our Returns Policy; defective items are handled via warranty or replacement per the manufacturer's process. For any order or return help, contact support@proprintershop.us and include your order number.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@proprintershop.us</p>
                             </div>
                         </div>
                     </div>

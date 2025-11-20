@@ -28,8 +28,8 @@
                             <p>Welcome back! Please enter your username and password to login.</p>
                         </div>
 
-                        <!-- Login Specific Errors -->
-                        @if($errors->has('login_email') || $errors->has('login_password'))
+                         <!-- Login Specific Errors -->
+                        @if($errors->has('email') || $errors->has('password') || session('error'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <ul class="mb-0">
                                     @if($errors->has('email'))
@@ -37,6 +37,9 @@
                                     @endif
                                     @if($errors->has('password'))
                                         <li>{{ $errors->first('password') }}</li>
+                                    @endif
+                                    @if(session('error'))
+                                        <li>{{ session('error') }}</li>
                                     @endif
                                 </ul>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -53,7 +56,7 @@
                                                    id="login_email" name="email" placeholder="Email Address" 
                                                    value="{{ old('email') }}" required autocomplete="email">
                                             <label for="login_email">Email address</label>
-                                            @error('email', 'login')
+                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -64,7 +67,7 @@
                                                    id="login_password" name="password" placeholder="Enter Password" 
                                                    required autocomplete="current-password">
                                             <label for="login_password">Password</label>
-                                            @error('password', 'login')
+                                            @error('password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>

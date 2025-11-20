@@ -11,7 +11,7 @@
                 <div class="hero_slide_box">
                     <a href="javascript:void(0);" class="slide_link"></a>
                     <div class="slide_img">
-                        <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="PrintHelp" class="img-fluid w-100" />
+                        <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="Pro Printer Shop" class="img-fluid w-100" />
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                 <div class="hero_slide_box">
                     <a href="javascript:void(0);" class="slide_link"></a>
                     <div class="slide_img">
-                        <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="PrintHelp" class="img-fluid w-100" />
+                        <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="Pro Printer Shop" class="img-fluid w-100" />
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="hero_slide_box">
                     <a href="javascript:void(0);" class="slide_link"></a>
                     <div class="slide_img">
-                        <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="PrintHelp" class="img-fluid w-100" />
+                        <img src="{{ asset('assets/frontend/images/printer_banner.png') }}" alt="Pro Printer Shop" class="img-fluid w-100" />
                     </div>
                 </div>
             </div>
@@ -350,7 +350,7 @@
                         <path d="M 60, 60 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0" id="txt-path"></path>
                     </defs>
                     <text>
-                        <textPath startOffset="0" xlink:href="#txt-path"> PrintHelp Trending Product</textPath>
+                        <textPath startOffset="0" xlink:href="#txt-path"> Pro Printer Shop Trending Product</textPath>
                     </text>
                 </svg>
             </div>

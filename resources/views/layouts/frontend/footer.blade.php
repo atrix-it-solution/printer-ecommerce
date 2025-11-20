@@ -30,7 +30,7 @@
                                     <h4 class="widget-title">Contact us</h4>
                                     <ul class="menu">
                                         <li class="phone_icon"><a href="tel:+919410109369">+91 94101-09369</a></li>
-                                        <li class="email_icon"><a href="mailto:info@printhelp.com">info@printhelp.com</a></li>
+                                        <li class="email_icon"><a href="mailto:info@proprintershop.us">info@proprintershop.us</a></li>
                                     </ul>
                                 </aside>
                             </div>
@@ -40,8 +40,6 @@
                                 <aside>
                                     <h4 class="widget-title">Quick link</h4>
                                     <ul class="menu">
-                                        <li><a href="/single-product">Single product</a></li>
-                                        <li><a href="/login-register">Login Register</a></li>
                                         <li><a href="#">License Transfer Policy</a></li>
                                         <li><a href="#">Code Of Ethics And Conducts</a></li>
                                         <li><a href="#">Direct Seller Contract</a></li>
@@ -123,7 +121,7 @@
 
                     <div class="row pt-2">
                         <div class="col-md-6">
-                            <p class="mb-0">Copyright © 2025 PrintHelp - All Right Reserved.</p>
+                            <p class="mb-0">Copyright © 2025 Pro Printer Shop - All Right Reserved.</p>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="bodyWrapper flex-grow-1">
-               @include('partials.subheader-myaccount')
+    @include('partials.subheader-myaccount')
 
 
     <section class="myaccount_sec py-5">

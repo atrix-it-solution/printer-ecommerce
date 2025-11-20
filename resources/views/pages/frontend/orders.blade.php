@@ -51,7 +51,7 @@
                                                     </td>
                                                     <td class="">
                                                         <a href="{{ route('orders.show', $order) }}" class="text-decoration-underline me-2">View</a>
-                                                        <a href="#" class="text-decoration-underline">Invoice</a>
+                                                        <a href="{{ route('orders.invoice.download', $order) }}" class="text-decoration-underline">Invoice</a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -248,7 +248,7 @@
                                     <img src="{{ asset('assets/frontend/images/sicon4.svg') }}" alt="Contact us" class="img-fluid" />
                                 </div>
                                 <h4>Contact us</h4>
-                                <p>Need to contact us? Send us an e-mail at support@printhelp.com</p>
+                                <p>Need to contact us? Send us an e-mail at support@proprintershop.us</p>
                             </div>
                         </div>
                     </div>
