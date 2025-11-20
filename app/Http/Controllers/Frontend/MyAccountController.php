@@ -37,11 +37,11 @@ class MyAccountController extends Controller
     /**
      * Show the user's wishlist.
      */
-    public function wishlist()
+    public function accountDetails()
     {
         $user = Auth::user();
         
-        return view('pages.frontend.wishlist', [
+        return view('pages.frontend.edit-account', [
             'user' => $user
         ]);
     }

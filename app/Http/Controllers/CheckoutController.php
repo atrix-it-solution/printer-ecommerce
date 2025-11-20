@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product\Product; 
+use App\Models\Address;
 
 class CheckoutController extends Controller
 {
@@ -37,8 +38,21 @@ class CheckoutController extends Controller
                 $total = $subtotal;
                 $discountAmount = 0;
             }
+
+            // Get user's saved addresses
+            $user = Auth::user();
+            $billingAddress = $user->billingAddress;
+            $shippingAddress = $user->shippingAddress;
             
-            return view('pages.frontend.checkout', compact('cart', 'subtotal', 'total', 'appliedCoupon', 'discountAmount'));
+            return view('pages.frontend.checkout', compact(
+                'cart', 
+                'subtotal', 
+                'total', 
+                'appliedCoupon', 
+                'discountAmount',
+                'billingAddress',
+                'shippingAddress'
+            ));
             
         } catch (\Exception $e) {
             Log::error('Checkout page error: ' . $e->getMessage());
@@ -49,12 +63,12 @@ class CheckoutController extends Controller
     public function processCheckout(Request $request)
     {
         try {
-             \Log::info('Checkout process started', [
-            'user_id' => Auth::id(),
-            'request_data' => $request->all(),
-            'cart_count' => count(session()->get('cart', [])),
-            'session_id' => session()->getId()
-        ]);
+            \Log::info('Checkout process started', [
+                'user_id' => Auth::id(),
+                'request_data' => $request->all(),
+                'cart_count' => count(session()->get('cart', [])),
+                'session_id' => session()->getId()
+            ]);
 
             $request->validate([
                 'first_name' => 'required|string|max:255',
@@ -66,7 +80,7 @@ class CheckoutController extends Controller
                 'city' => 'required|string',
                 'state' => 'required|string',
                 'zip_code' => 'required|string',
-                'payment_method' => 'required|string|in:cod,bank_transfer,check',
+                'payment_method' => 'required|string|in:cash on delivery,bank_transfer,check',
                 'agree_terms' => 'required|accepted'
             ]);
             
@@ -74,7 +88,7 @@ class CheckoutController extends Controller
             $cart = session()->get('cart', []);
             $appliedCoupon = session()->get('applied_coupon');
 
-               \Log::info('Cart data in checkout:', ['cart' => $cart]);
+            \Log::info('Cart data in checkout:', ['cart' => $cart]);
             
             if (empty($cart)) {
                 return redirect()->route('cart.view')->with('error', 'Your cart is empty.');
@@ -84,6 +98,9 @@ class CheckoutController extends Controller
             $subtotal = $this->calculateSubtotal($cart);
             $discountAmount = $appliedCoupon ? $appliedCoupon['discount_amount'] : 0;
             $total = $subtotal - $discountAmount;
+            
+            // Auto-save addresses if they don't exist
+            $this->saveAddressesFromCheckout($request);
             
             // Create order
             $order = $this->createOrder($request, $cart, $subtotal, $discountAmount, $total, $appliedCoupon);
@@ -101,9 +118,68 @@ class CheckoutController extends Controller
             return redirect()->route('order.success', ['order' => $order->id])->with('success', 'Order placed successfully!');
             
         } catch (\Exception $e) {
-             \Log::error('Checkout process error: ' . $e->getMessage());
-        \Log::error('Stack trace: ' . $e->getTraceAsString());
+            \Log::error('Checkout process error: ' . $e->getMessage());
+            \Log::error('Stack trace: ' . $e->getTraceAsString());
             return back()->with('error', 'Unable to process your order. Please try again.')->withInput();
+        }
+    }
+
+    /**
+     * Save addresses from checkout form
+     */
+    private function saveAddressesFromCheckout($request)
+    {
+        $user = Auth::user();
+
+        // Save billing address if not exists
+        if (!$user->billingAddress) {
+            Address::updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'type' => 'billing',
+                    'is_default' => true
+                ],
+                [
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'company_name' => $request->company_name,
+                    'country' => $request->country,
+                    'street_address' => $request->street_address,
+                    'apartment' => $request->apartment,
+                    'city' => $request->city,
+                    'state' => $request->state,
+                    'zip_code' => $request->zip_code,
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                ]
+            );
+        }
+
+        // Save shipping address if different from billing and not exists
+        $hasDifferentShipping = $request->has('different_shipping') && 
+                               ($request->shipping_first_name || $request->shipping_street_address);
+        
+        if ($hasDifferentShipping && !$user->shippingAddress) {
+            Address::updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'type' => 'shipping',
+                    'is_default' => true
+                ],
+                [
+                    'first_name' => $request->shipping_first_name ?? $request->first_name,
+                    'last_name' => $request->shipping_last_name ?? $request->last_name,
+                    'company_name' => $request->shipping_company_name ?? $request->company_name,
+                    'country' => $request->shipping_country ?? $request->country,
+                    'street_address' => $request->shipping_street_address ?? $request->street_address,
+                    'apartment' => $request->shipping_apartment ?? $request->apartment,
+                    'city' => $request->shipping_city ?? $request->city,
+                    'state' => $request->shipping_state ?? $request->state,
+                    'zip_code' => $request->shipping_zip_code ?? $request->zip_code,
+                    'phone' => $request->shipping_phone ?? $request->phone,
+                    'email' => $request->shipping_email ?? $request->email,
+                ]
+            );
         }
     }
     
@@ -119,7 +195,7 @@ class CheckoutController extends Controller
             'discount_amount' => $discountAmount,
             'total_amount' => $total,
             'payment_method' => $request->payment_method,
-            'payment_status' => $request->payment_method === 'cod' ? 'pending' : 'pending',
+            'payment_status' => $request->payment_method === 'cash on delivery' ? 'pending' : 'pending',
             'order_status' => 'pending',
             
             // Billing details
