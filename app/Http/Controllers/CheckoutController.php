@@ -114,6 +114,8 @@ class CheckoutController extends Controller
             // Clear cart and coupon session
             session()->forget('cart');
             session()->forget('applied_coupon');
+            session(['last_order_id' => $order->id]);
+
             
             return redirect()->route('order.success', ['order' => $order->id])->with('success', 'Order placed successfully!');
             

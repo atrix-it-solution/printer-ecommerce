@@ -41,6 +41,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -57,7 +61,7 @@ class User extends Authenticatable
      // Check if user is admin
     public function isAdmin()
     {
-        return $this->role === 'admin';
+        return $this->role === 'admin' || $this->is_admin === true;
     }
 
     // Check if user is customer

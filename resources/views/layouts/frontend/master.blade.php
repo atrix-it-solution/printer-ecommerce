@@ -6,6 +6,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <title>@yield('title') - Pro Printer Shop</title>
      <!-- CSS Files -->
+     <link rel="icon" type="image/png" sizes="32x32"  href="{{ asset('favicon.png') }}">
      <link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome-all.min.css') }}" />
      <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}" />
      <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.min.css') }}" />
@@ -14,8 +15,6 @@
      <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
     {!! CookieConsent::styles() !!}
      <!-- JS (jquery) -->
      <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
