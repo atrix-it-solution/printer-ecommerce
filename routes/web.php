@@ -31,6 +31,10 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ForgotPasswordController;
 
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
@@ -47,6 +51,8 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+
+Route::get('/email/verify/{token}', [RegisterController::class, 'verifyEmail'])->name('verification.verify');
 
 // Protected routes - require authentication
 Route::middleware(['auth'])->group(function () {
@@ -186,7 +192,8 @@ Route::middleware(['auth', 'admin'])->prefix('dashboard')->group(function () {
     Route::resource('/products', ProductController::class);
     Route::resource('/blogcategories', BlogCategoryController::class);
     Route::resource('/blogs', BlogController::class);
-    Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+    Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
     
     // Settings Routes with more descriptive names
     Route::get('/settings', [SettingsController::class, 'index'])->name('dashboard.settings.index');

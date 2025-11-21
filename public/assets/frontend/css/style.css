@@ -64,7 +64,7 @@ h5 {
     margin-bottom: 15px;
 }
 header .navbar-brand img {
-    height: 70px;
+    height: 53px;
     object-fit: contain;
 }
 .header_right_area li a {
@@ -1831,7 +1831,7 @@ table.shop_table tfoot td {
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
     header .navbar-brand img {
-        height: 56px;
+        height: 47px;
         object-fit: contain;
     }
     header nav ul > li.nav-item .nav-link {
@@ -1940,6 +1940,9 @@ table.shop_table tfoot td {
     }
 }
 @media screen and (max-width: 575px) {
+    header .navbar-brand img {
+    height: 39px;
+    }
     .cusheading_row h2 {
         font-size: 32px;
     }

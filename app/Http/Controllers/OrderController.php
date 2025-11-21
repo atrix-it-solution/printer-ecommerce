@@ -9,39 +9,86 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('user_id', Auth::id())
-                      ->orderBy('created_at', 'desc')
-                      ->paginate(10);
+        // Check if user is admin (dashboard) or regular user
+        if (Auth::check() && Auth::user()->isAdmin()) {
+            // Admin dashboard - show all orders
+            $orders = Order::with('user')
+                          ->orderBy('created_at', 'desc')
+                          ->paginate(10);
+        } else {
+            // Regular user - show only their orders
+            $orders = Order::where('user_id', Auth::id())
+                          ->orderBy('created_at', 'desc')
+                          ->paginate(10);
+        }
         
-        // Pass user data to the view
         $user = Auth::user();
         
-        return view('pages.frontend.orders', compact('orders', 'user'));
+        // Return different views based on user role
+        if (Auth::check() && Auth::user()->isAdmin()) {
+            return view('pages.dashboard.ordersdashboard.index', compact('orders', 'user'));
+        } else {
+            return view('pages.frontend.orders', compact('orders', 'user'));
+        }
     }
     
     public function show(Order $order)
     {
-        if ($order->user_id !== Auth::id()) {
+        // FIX: Use proper type casting
+        if ((int)$order->user_id !== (int)Auth::id()) {
+            \Log::error('Order show access denied', [
+                'order_id' => $order->id,
+                'order_user_id' => $order->user_id,
+                'order_user_id_type' => gettype($order->user_id),
+                'auth_user_id' => Auth::id(),
+                'auth_user_id_type' => gettype(Auth::id()),
+                'order_number' => $order->order_number
+            ]);
             abort(403, 'Unauthorized action.');
         }
         
         $order->load(['orderItems' => function($query) {
             $query->with(['product' => function($query) {
-                $query->select('id', 'title', 'slug'); // Only select needed fields
+                $query->select('id', 'title', 'slug');
             }]);
         }]);
-        $user = Auth::user(); // Get authenticated user
+        $user = Auth::user();
         
         return view('pages.frontend.view-order', compact('order', 'user'));
     }
 
-    public function success(Order $order)
+   public function success(Order $order)
+{
+    // Check session first, then user ID
+    $lastOrderId = session('last_order_id');
+    
+    if ($lastOrderId && $lastOrderId == $order->id) {
+        session()->forget('last_order_id');
+        return view('pages.frontend.order-success', compact('order'));
+    }
+    
+    // Fallback to user check
+    if ((int)$order->user_id === (int)Auth::id()) {
+        return view('pages.frontend.order-success', compact('order'));
+    }
+    
+    abort(403, "Order #{$order->order_number} access denied.");
+}
+
+    public function destroy(Order $order)
     {
-        // Verify that the order belongs to the authenticated user
-        if (Auth::check() && $order->user_id !== Auth::id()) {
+        // Check if user is authorized to delete this order
+        if ($order->user_id !== Auth::id() && !Auth::user()->isAdmin()) {
             abort(403, 'Unauthorized action.');
         }
+
+        // Delete order items first (if needed, depending on your database constraints)
+        $order->orderItems()->delete();
         
-        return view('pages.frontend.order-success', compact('order'));
+        // Delete the order
+        $order->delete();
+
+        return redirect()->route('orders.index')
+            ->with('success', 'Order deleted successfully.');
     }
 }

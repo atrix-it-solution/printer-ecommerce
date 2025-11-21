@@ -46,12 +46,12 @@
                         <div class="d-xl-none pt-1"><a href="javascript:void(0);" class="search-trigger" id="search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Search"><i class="fa-solid fa-search"></i></a></div>
                     </div>
                     <a class="navbar-brand" href="/">
-                        <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="Pro Printer Shop Logo" class="img-fluid" />
+                        <img src="{{ asset('assets/frontend/images/logo.png') }}" alt="Pro Printer Shop Logo" class="img-fluid" />
                     </a>
                     <div class="d-flex align-items-center justify-content-end justify-content-xl-between flex-xl-grow-1">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <a class="navbar-brand d-block pt-0 d-xl-none text-center me-0 mb-3" href="/">
-                                <img src="{{ asset('assets/frontend/images/vsipl-logo.png') }}" alt="Pro Printer Shop Logo" class="img-fluid" />
+                                <img src="{{ asset('assets/frontend/images/logo.png') }}" alt="Pro Printer Shop Logo" class="img-fluid" />
                             </a>
 
                             <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 ps-xl-3 ps-xxl-4">

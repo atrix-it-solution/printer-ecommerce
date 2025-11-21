@@ -9,10 +9,18 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class InvoiceController extends Controller
 {
-    public function download(Order $order)
+     public function download(Order $order)
     {
-        // Check if order belongs to authenticated user
-        if ($order->user_id !== Auth::id()) {
+        // FIX: Use proper type casting
+        if ((int)$order->user_id !== (int)Auth::id()) {
+            \Log::error('Invoice download access denied', [
+                'order_id' => $order->id,
+                'order_user_id' => $order->user_id,
+                'order_user_id_type' => gettype($order->user_id),
+                'auth_user_id' => Auth::id(),
+                'auth_user_id_type' => gettype(Auth::id()),
+                'order_number' => $order->order_number
+            ]);
             abort(403, 'Unauthorized action.');
         }
 
@@ -31,8 +39,16 @@ class InvoiceController extends Controller
 
     public function view(Order $order)
     {
-        // Check if order belongs to authenticated user
-        if ($order->user_id !== Auth::id()) {
+        // FIX: Use proper type casting
+        if ((int)$order->user_id !== (int)Auth::id()) {
+            \Log::error('Invoice view access denied', [
+                'order_id' => $order->id,
+                'order_user_id' => $order->user_id,
+                'order_user_id_type' => gettype($order->user_id),
+                'auth_user_id' => Auth::id(),
+                'auth_user_id_type' => gettype(Auth::id()),
+                'order_number' => $order->order_number
+            ]);
             abort(403, 'Unauthorized action.');
         }
 
